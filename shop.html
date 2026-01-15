@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Bluefin India Shop - Premium Yellowfin Tuna delivered to your doorstep.">
+    <title>Shop - The Bluefin India | Fresh Seafood Online</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Dedicated CSS -->
+    <link rel="stylesheet" href="css/bluefin-website.css">
+</head>
+
+<body>
+    <!-- SPLASH SCREEN -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-water">
+            <div class="water-wave wave-splash-1"></div>
+            <div class="water-wave wave-splash-2"></div>
+            <div class="water-wave wave-splash-3"></div>
+        </div>
+        <div class="splash-content">
+            <div class="splash-logo">
+                <img src="images/fish-logo.jpg" alt="The Bluefin India Logo">
+            </div>
+            <h1 class="splash-title">The Bluefin India</h1>
+            <p class="splash-subtitle">Premium Yellowfin Tuna Selection</p>
+            <div class="splash-loader">
+                <div class="loader-wave"></div>
+                <div class="loader-wave"></div>
+                <div class="loader-wave"></div>
+            </div>
+        </div>
+        <div class="splash-bubbles">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/fish-logo.jpg" alt="The Yellowfin India Logo">
+                <span>The Bluefin India</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="bluefin-website.html#home">Home</a></li>
+                <li><a href="bluefin-website.html#about">About</a></li>
+                <li><a href="bluefin-website.html#products">Products</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="bluefin-website.html#features">Why Us</a></li>
+                <li><a href="bluefin-website.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SHOP PAGE CONTENT -->
+    <main class="shop-page">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Collection</h2>
+                <p>Pure, sustainable, and delivered fresh to your doorstep.</p>
+            </div>
+
+            <!-- Cart Icon -->
+            <div class="cart-icon-float" onclick="openCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="shop-products-grid">
+                <!-- Product 1 -->
+                <div class="shop-product-card" onclick="openProductDetail(1)">
+                    <div class="shop-product-image">
+                        <img src="images/bluefin-underwater.jpg" alt="Yellowfin Tuna Steaks" loading="lazy">
+                        <span class="shop-badge fresh">Fresh Today</span>
+                    </div>
+                    <div class="shop-product-info">
+                        <h3>Yellowfin Tuna Steaks</h3>
+                        <p>Premium cut, sushi-grade</p>
+                        <div class="shop-product-price">
+                            <span class="price">₹1,200/kg</span>
+                            <button class="btn-quick-add"
+                                onclick="event.stopPropagation(); quickAdd(1, 'Yellowfin Tuna Steaks', 1200)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="shop-product-card" onclick="openProductDetail(2)">
+                    <div class="shop-product-image">
+                        <img src="images/tuna-on-wood.jpg" alt="Yellowfin Saku Blocks" loading="lazy">
+                        <span class="shop-badge bestseller">Best Seller</span>
+                    </div>
+                    <div class="shop-product-info">
+                        <h3>Yellowfin Saku Blocks</h3>
+                        <p>Perfect for sashimi</p>
+                        <div class="shop-product-price">
+                            <span class="price">₹1,500/kg</span>
+                            <button class="btn-quick-add"
+                                onclick="event.stopPropagation(); quickAdd(2, 'Yellowfin Saku Blocks', 1500)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="shop-product-card" onclick="openProductDetail(3)">
+                    <div class="shop-product-image">
+                        <img src="images/tuna-on-ice.jpg" alt="Whole Yellowfin Loin" loading="lazy">
+                        <span class="shop-badge premium">Premium</span>
+                    </div>
+                    <div class="shop-product-info">
+                        <h3>Whole Yellowfin Loin</h3>
+                        <p>Bulk order, restaurant quality</p>
+                        <div class="shop-product-price">
+                            <span class="price">₹1,000/kg</span>
+                            <button class="btn-quick-add"
+                                onclick="event.stopPropagation(); quickAdd(3, 'Whole Yellowfin Loin', 1000)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="shop-product-card" onclick="openProductDetail(4)">
+                    <div class="shop-product-image">
+                        <img src="images/tuna-artistic.jpg" alt="Tuna Cubes" loading="lazy">
+                    </div>
+                    <div class="shop-product-info">
+                        <h3>Tuna Cubes</h3>
+                        <p>Pre-cut for convenience</p>
+                        <div class="shop-product-price">
+                            <span class="price">₹900/kg</span>
+                            <button class="btn-quick-add"
+                                onclick="event.stopPropagation(); quickAdd(4, 'Tuna Cubes', 900)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="shop-product-card" onclick="openProductDetail(5)">
+                    <div class="shop-product-image">
+                        <img src="images/bluefin-underwater.jpg" alt="Tuna Belly (Toro)" loading="lazy">
+                    </div>
+                    <div class="shop-product-info">
+                        <h3>Tuna Belly (Toro)</h3>
+                        <p>Fatty, premium cut</p>
+                        <div class="shop-product-price">
+                            <span class="price">₹2,000/kg</span>
+                            <button class="btn-quick-add"
+                                onclick="event.stopPropagation(); quickAdd(5, 'Tuna Belly (Toro)', 2000)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="shop-product-card" onclick="openProductDetail(6)">
+                    <div class="shop-product-image">
+                        <img src="images/tuna-can.jpg" alt="Smoked Yellowfin" loading="lazy">
+                    </div>
+                    <div class="shop-product-info">
+                        <h3>Smoked Yellowfin</h3>
+                        <p>Ready to eat</p>
+                        <div class="shop-product-price">
+                            <span class="price">₹1,800/kg</span>
+                            <button class="btn-quick-add"
+                                onclick="event.stopPropagation(); quickAdd(6, 'Smoked Yellowfin', 1800)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="shop-product-card" onclick="openProductDetail(7)">
+                    <div class="shop-product-image">
+                        <img src="images/tuna-jumping.jpg" alt="Tuna Tataki" loading="lazy">
+                    </div>
+                    <div class="shop-product-info">
+                        <h3>Tuna Tataki</h3>
+                        <p>Seared, ready to serve</p>
+                        <div class="shop-product-price">
+                            <span class="price">₹1,600/kg</span>
+                            <button class="btn-quick-add"
+                                onclick="event.stopPropagation(); quickAdd(7, 'Tuna Tataki', 1600)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="shop-product-card" onclick="openProductDetail(8)">
+                    <div class="shop-product-image">
+                        <img src="images/tuna-school-underwater.jpg" alt="Yellowfin Poke Mix" loading="lazy">
+                        <span class="shop-badge trending">Trending</span>
+                    </div>
+                    <div class="shop-product-info">
+                        <h3>Yellowfin Poke Mix</h3>
+                        <p>Marinated, ready to serve</p>
+                        <div class="shop-product-price">
+                            <span class="price">₹1,400/kg</span>
+                            <button class="btn-quick-add"
+                                onclick="event.stopPropagation(); quickAdd(8, 'Yellowfin Poke Mix', 1400)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content product-modal">
+            <span class="modal-close" onclick="closeProductDetail()">&times;</span>
+            <div class="product-detail-grid">
+                <div class="product-detail-image">
+                    <img id="modalProductImage" src="" alt="">
+                </div>
+                <div class="product-detail-info">
+                    <h2 id="modalProductName"></h2>
+                    <div class="modal-product-price">
+                        <span id="modalProductPrice"></span>
+                        <span class="price-unit">/kg</span>
+                    </div>
+                    <div class="stock-status-modal">
+                        <i class="fas fa-check-circle"></i> In Stock - Fresh Today
+                    </div>
+                    <p id="modalProductDesc"></p>
+
+                    <div class="quantity-selector-modal">
+                        <label>Quantity (kg):</label>
+                        <div class="quantity-controls-modal">
+                            <button onclick="decreaseModalQuantity()"><i class="fas fa-minus"></i></button>
+                            <input type="number" id="modalQuantity" value="1" min="1" max="50">
+                            <button onclick="increaseModalQuantity()"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <label class="gift-wrap-checkbox">
+                        <input type="checkbox" id="modalGiftWrap">
+                        <span>Add Wrap (+₹50)</span>
+                    </label>
+
+                    <div class="modal-total">
+                        <span>Total:</span>
+                        <span id="modalTotal">₹0</span>
+                    </div>
+
+                    <button class="btn-add-to-cart-modal" onclick="addToCartFromModal()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal">
+            <span class="modal-close" onclick="closeCart()">&times;</span>
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+
+            <div id="cartItems" class="cart-items-list">
+                <!-- Cart items will be loaded here -->
+            </div>
+
+            <div class="cart-summary-modal">
+                <div class="summary-row-modal">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">₹0</span>
+                </div>
+                <div class="summary-row-modal">
+                    <span>Wrap:</span>
+                    <span id="cartGiftWrap">₹0</span>
+                </div>
+                <div class="summary-divider-modal"></div>
+                <div class="summary-row-modal total-row-modal">
+                    <span>Total:</span>
+                    <span id="cartTotal">₹0</span>
+                </div>
+            </div>
+
+            <button class="btn-checkout-modal" onclick="openCheckout()">
+                <i class="fas fa-lock"></i> Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-modal">
+            <span class="modal-close" onclick="closeCheckout()">&times;</span>
+            <h2><i class="fas fa-credit-card"></i> Checkout</h2>
+
+            <form id="checkoutForm" onsubmit="placeOrder(event)">
+                <div class="form-group-modal">
+                    <label>Full Name *</label>
+                    <input type="text" id="checkoutName" required>
+                </div>
+
+                <div class="form-group-modal">
+                    <label>Mobile Number *</label>
+                    <input type="tel" id="checkoutMobile" required pattern="[0-9]{10}" maxlength="10">
+                </div>
+
+                <div class="form-group-modal">
+                    <label>Delivery Address *</label>
+                    <textarea id="checkoutAddress" required rows="3"></textarea>
+                </div>
+
+                <div class="form-row-modal">
+                    <div class="form-group-modal">
+                        <label>City *</label>
+                        <input type="text" id="checkoutCity" required>
+                    </div>
+                    <div class="form-group-modal">
+                        <label>Pincode *</label>
+                        <input type="text" id="checkoutPincode" required pattern="[0-9]{6}" maxlength="6">
+                    </div>
+                </div>
+
+                <div class="payment-options-modal">
+                    <label class="payment-option-modal">
+                        <input type="radio" name="payment" value="upi" checked>
+                        <span><i class="fas fa-mobile-alt"></i> UPI Payment</span>
+                    </label>
+                    <label class="payment-option-modal">
+                        <input type="radio" name="payment" value="cod">
+                        <span><i class="fas fa-money-bill-wave"></i> Cash on Delivery</span>
+                    </label>
+                </div>
+
+                <div class="checkout-total-modal">
+                    <span>Total Amount:</span>
+                    <span id="checkoutTotalAmount">₹0</span>
+                </div>
+
+                <button type="submit" class="btn-place-order-modal">
+                    <i class="fas fa-check-circle"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>The Bluefin India</h3>
+                <p>India's premier supplier of premium Yellowfin tuna. Fresh, sustainable, and available 365
+                    days a year. Serving restaurants, hotels, and distributors nationwide since 2010.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="bluefin-website.html#home">Home</a></li>
+                    <li><a href="bluefin-website.html#about">About</a></li>
+                    <li><a href="bluefin-website.html#products">Products</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="bluefin-website.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Seafood Plaza, Kochi, Kerala, India</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> organic@bluefinindia.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Bluefin India. All rights reserved.</p>
+            <p style="margin-top: 15px; opacity: 0.8; font-size: 1rem;">
+                <i class="fas fa-laptop-code"></i> Website Design & Digital Marketing by
+                <strong style="color: #ffffff;"><a href="https://www.alcas.in/">ALCAS Digital Solutions</a></strong>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Dedicated JavaScript -->
+    <script src="js/bluefin-website.js"></script>
+</body>
+
+</html>

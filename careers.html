@@ -145,7 +145,7 @@
     <header class="header" id="header">
         <nav class="navbar container">
             <div class="nav-brand">
-                <img src="images/alcas.jpg" alt="ALCAS Logo" class="nav-logo" loading="lazy">
+                <img src="images/alcas.jpg" alt="ALCAS Logo" class="nav-logo">
                 <div class="brand-text">
                     <span class="brand-name">ALCAS</span>
                     <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
@@ -180,14 +180,10 @@
         <div class="spline-bg">
             <canvas id="spline-canvas" style="width: 100%; height: 100%;"></canvas>
             <script type="module">
-                if (window.innerWidth > 992) {
-                    import { Application } from 'https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.90/build/runtime.js';
-                    const canvas = document.getElementById('spline-canvas');
-                    const app = new Application(canvas);
-                    app.load('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode').catch(err => console.error(err));
-                } else {
-                    document.getElementById('spline-canvas').style.display = 'none';
-                }
+                import { Application } from 'https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.90/build/runtime.js';
+                const canvas = document.getElementById('spline-canvas');
+                const app = new Application(canvas);
+                app.load('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode').catch(err => console.error(err));
             </script>
         </div>
         <div class="hero-overlay"></div>

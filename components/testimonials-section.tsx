@@ -4,11 +4,22 @@ import { CircularTestimonials } from "./ui/circular-testimonials";
 
 const testimonials = [
   {
-    quote:
-      "We're currently updating our client success stories with our latest projects. Stay tuned to see how we've helped brands like Healthifem and AL Sam reach new heights.",
-    name: "Success Stories",
-    designation: "Coming Soon",
-    src: "/resources/logos/healthifem.png",
+    quote: "Thanks to the stunning logo you created for our shop, we experienced a 45% increase in brand visibility and a 30% growth in new customer visits within the first quarter. You truly made our brand look premium!",
+    name: "SBJ Jewelry",
+    designation: "Chennai, India",
+    src: "/images/alcas.jpg", // Placeholder for actual client logo if available
+  },
+  {
+    quote: "We needed a fresh, modern platform to represent our fitness brand. They delivered a stunning website, fully optimized with SEO best practices, resulting in a 300% increase in organic traffic.",
+    name: "Niya Fit",
+    designation: "Chennai, India",
+    src: "/images/alcas.jpg",
+  },
+  {
+    quote: "Your creative logo design helped Mithra’s Biryani achieve a 35% growth in new customer reach after our rebranding. Your sense of branding and communication made the process perfectly elegant.",
+    name: "Mithra's Biryani",
+    designation: "Chennai, India",
+    src: "/images/alcas.jpg",
   }
 ];
 

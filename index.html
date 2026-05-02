@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="ALCAS Digital Solutions - Complete Digital Transformation Proposal for Bluefin India. Website Development, CRM, Social Media & Digital Marketing Services.">
-    <title>ALCAS for Bluefin India - Digital Transformation Proposal</title>
+        content="ALCAS DIGITAL MARKETING AGENCY - Complete Digital Transformation. Website Development, CRM, Social Media & Digital Marketing Services.">
+    <title>ALCAS DIGITAL MARKETING AGENCY</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,11 +21,13 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/alcas.jpg">
 
 </head>
 
 <body>
-    <!-- SPLASH SCREEN WITH FISH LOGO -->
+    <!-- SPLASH SCREEN WITH FISH LOGO (DISABLED FOR NOW)
     <div class="splash-screen" id="splashScreen">
         <div class="splash-water">
             <div class="water-wave wave-splash-1"></div>
@@ -34,10 +36,10 @@
         </div>
         <div class="splash-content">
             <div class="splash-logo">
-                <img src="images/alcas.jpg" alt="bluefin India Logo">
+                <img src="images/alcas.jpg" alt="ALCAS Logo">
             </div>
-            <h1 class="splash-title">ALCAS × Bluefin India</h1>
-            <p class="splash-subtitle">Digital Transformation Proposal</p>
+            <h1 class="splash-title">ALCAS DIGITAL</h1>
+            <p class="splash-subtitle">Marketing Agency</p>
             <div class="splash-loader">
                 <div class="loader-wave"></div>
                 <div class="loader-wave"></div>
@@ -53,21 +55,25 @@
             <div class="bubble bubble-6"></div>
         </div>
     </div>
+    -->
 
     <!-- HEADER / NAVBAR -->
     <header class="header" id="header">
         <nav class="navbar container">
             <div class="nav-brand">
-                <img src="images/alcas.jpg" alt="Bluefin Logo" class="nav-logo">
-                <span>ALCAS for Bluefin India</span>
+                <img src="images/alcas.jpg" alt="ALCAS Logo" class="nav-logo">
+                <div class="brand-text">
+                    <span class="brand-name">ALCAS</span>
+                    <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                </div>
             </div>
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#proposal" class="nav-link">Our Proposal</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#benefits" class="nav-link">Benefits</a></li>
-                <li><a href="#timeline" class="nav-link">Timeline</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
             <div class="nav-toggle" id="navToggle">
@@ -78,31 +84,29 @@
 
     <!-- HERO SECTION WITH VIDEO BACKGROUND -->
     <section class="hero" id="home">
-        <!-- Video Background -->
-        <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="videos/work.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
+        <!-- 3D Robot Background -->
+        <div class="hero-video-container" style="background: radial-gradient(circle at 60% 50%, #1a1a1a 0%, #000 100%);">
+            <canvas id="spline-canvas" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></canvas>
+            <script type="module">
+                import { Application } from 'https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.90/build/runtime.js';
+                const canvas = document.getElementById('spline-canvas');
+                const app = new Application(canvas);
+                app.load('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode').catch(err => console.error("Spline Load Error:", err));
+            </script>
+            <div class="hero-overlay" style="background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%); pointer-events: none;"></div>
         </div>
 
-        <div class="hero-content container">
-            <div class="hero-text">
-                <div class="hero-badge">
-                    <span>ALCAS Digital Solutions</span>
-                    <i class="fas fa-arrow-right"></i>
-                    <span>Bluefin India</span>
-                </div>
-                <h1 class="hero-title">Complete Digital Transformation for Bluefin India</h1>
-                <p class="hero-subtitle">We'll build your online presence, automate your operations, and grow your
-                    seafood business with cutting-edge digital solutions.</p>
+        <div class="hero-content container" style="pointer-events: none;">
+            <div class="hero-text" style="pointer-events: auto;">
+                <h1 class="hero-title shining-text">Nothing to Something.</h1>
+                <p class="hero-subtitle">At Alcas, we're more than just a digital marketing agency — we're your growth partner. We craft stunning websites and create data-driven marketing strategies to help your brand stand out, attract attention, and thrive in the digital world.</p>
 
                 <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">
+                    <a href="services.html" class="btn btn-primary">
                         <i class="fas fa-rocket"></i>
                         View Our Services
                     </a>
-                    <a href="#contact" class="btn btn-secondary">
+                    <a href="contact.html" class="btn btn-secondary">
                         <i class="fas fa-handshake"></i>
                         Let's Talk
                     </a>
@@ -110,11 +114,15 @@
 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <h3>4</h3>
-                        <p>Core Services</p>
+                        <h3>05+</h3>
+                        <p>Year of Experience</p>
                     </div>
                     <div class="stat-item">
-                        <h3>100%</h3>
+                        <h3>150+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99.9%</h3>
                         <p>Custom Solutions</p>
                     </div>
                     <div class="stat-item">
@@ -129,1456 +137,720 @@
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
+    
 
-    <!-- PROPOSAL OVERVIEW -->
-    <section class="proposal" id="proposal">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What ALCAS Will Do for Bluefin India</h2>
-                <p class="section-subtitle">A comprehensive digital ecosystem to transform your seafood business</p>
+
+    <!-- FEATURED CAROUSEL PROJECTS -->
+    <section class="portfolio" id="portfolio">
+        <style>
+            .portfolio { 
+                background: var(--cream); 
+                padding: 5rem 0; 
+                overflow-x: hidden;
+            }
+            .carousel-container {
+                position: relative;
+                width: 100%;
+                height: 460px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                perspective: 1200px;
+                margin-top: 3rem;
+            }
+            .carousel-card {
+                position: absolute;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+                transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+                cursor: pointer;
+                background: #000;
+                border: 2px solid rgba(255, 255, 255, 0.08);
+            }
+            .carousel-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.6s ease;
+            }
+            .carousel-card:hover .carousel-image {
+                transform: scale(1.04);
+            }
+            .carousel-label {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 1.2rem 1.5rem;
+                background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+                pointer-events: none;
+            }
+            .carousel-label h3 {
+                color: #fff;
+                font-size: 1.1rem;
+                margin: 0 0 0.15rem 0;
+            }
+            .carousel-label span {
+                color: var(--orange-accent);
+                font-size: 0.8rem;
+                font-weight: 600;
+            }
+            .carousel-controls {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            .carousel-btn {
+                background: rgba(255, 255, 255, 0.5);
+                border: 2px solid var(--orange-main);
+                color: var(--orange-main);
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                z-index: 20;
+            }
+            .carousel-btn:hover {
+                background: var(--orange-main);
+                color: #fff;
+            }
+
+            /* ===== PREMIUM POPUP MODAL ===== */
+            .project-modal-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.75);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.35s ease, visibility 0.35s ease;
+                padding: 1.5rem;
+            }
+            .project-modal-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            .project-modal {
+                background: linear-gradient(145deg, #1c1c1e, #111113);
+                border-radius: 20px;
+                max-width: 860px;
+                width: 100%;
+                max-height: 92vh;
+                overflow-y: auto;
+                box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 50px 100px rgba(0, 0, 0, 0.7);
+                transform: scale(0.92) translateY(40px);
+                transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            .project-modal-overlay.active .project-modal {
+                transform: scale(1) translateY(0);
+            }
+            /* Hide scrollbar */
+            .project-modal::-webkit-scrollbar { width: 0; }
+            .project-modal { scrollbar-width: none; }
+
+            .modal-image-wrap {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+                border-radius: 20px 20px 0 0;
+            }
+            .modal-image-wrap img {
+                width: 100%;
+                display: block;
+                max-height: 480px;
+                object-fit: cover;
+            }
+            /* Gradient over image bottom */
+            .modal-image-wrap::after {
+                content: '';
+                position: absolute;
+                bottom: 0; left: 0; right: 0;
+                height: 120px;
+                background: linear-gradient(to top, #1c1c1e, transparent);
+                pointer-events: none;
+            }
+            .modal-close {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(6px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                color: #fff;
+                font-size: 1.1rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                z-index: 2;
+            }
+            .modal-close:hover {
+                background: var(--orange-main);
+                border-color: var(--orange-main);
+                transform: rotate(90deg);
+            }
+            .modal-body {
+                padding: 0 2.5rem 2.5rem;
+                margin-top: -2rem;
+                position: relative;
+                z-index: 1;
+            }
+            .modal-tags {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .modal-tag {
+                background: rgba(255, 152, 0, 0.12);
+                color: var(--orange-accent);
+                padding: 0.4rem 1rem;
+                border-radius: 50px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                border: 1px solid rgba(255, 152, 0, 0.2);
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+            }
+            .modal-body h2 {
+                color: #fff;
+                font-size: 2.2rem;
+                margin-bottom: 0.2rem;
+                font-family: var(--font-display);
+                letter-spacing: -0.5px;
+            }
+            .modal-role {
+                color: var(--orange-accent);
+                font-size: 1.05rem;
+                font-weight: 600;
+                margin-bottom: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .modal-role::before {
+                content: '';
+                width: 8px;
+                height: 8px;
+                background: var(--orange-main);
+                border-radius: 50%;
+                display: inline-block;
+            }
+            .modal-divider {
+                width: 100%;
+                height: 1px;
+                background: linear-gradient(to right, rgba(255,152,0,0.3), transparent);
+                margin-bottom: 1.2rem;
+            }
+            .modal-body p {
+                color: #999;
+                font-size: 1.05rem;
+                line-height: 1.8;
+                margin-bottom: 2rem;
+            }
+            .modal-actions {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .modal-visit-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                background: var(--orange-gradient);
+                color: #fff;
+                padding: 0.9rem 2.2rem;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 20px rgba(230, 81, 0, 0.3);
+            }
+            .modal-visit-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 30px rgba(230, 81, 0, 0.45);
+            }
+            .modal-copy-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: transparent;
+                color: #888;
+                padding: 0.9rem 1.5rem;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.9rem;
+                border: 1px solid rgba(255,255,255,0.12);
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .modal-copy-btn:hover {
+                color: #fff;
+                border-color: rgba(255,255,255,0.3);
+            }
+            @media (max-width: 768px) {
+                .modal-image-wrap { aspect-ratio: 16/10; }
+                .modal-body { padding: 0 1.5rem 1.5rem; }
+                .modal-body h2 { font-size: 1.6rem; }
+                .modal-actions { flex-direction: column; }
+                .modal-visit-btn, .modal-copy-btn { width: 100%; justify-content: center; }
+            }
+        </style>
+        
+        <div class="container relative">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our <span class="gradient-text">Client Work</span> & Live Projects</h2>
+                <p class="section-subtitle">Enterprise platforms, dashboards, and brand websites — shipped and running in production.</p>
+            </div>
+            
+            <div class="carousel-container" id="projectCarousel">
+                <!-- Cards injected by JS -->
             </div>
 
-            <div class="proposal-grid">
-                <div class="proposal-card reveal">
-                    <div class="proposal-number">01</div>
-                    <div class="proposal-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Professional Website with CRM</h3>
-                    <p>We'll build a stunning, fully-functional website integrated with a powerful CRM system to manage
-                        your customers, orders, and inventory seamlessly.</p>
-                    <ul class="proposal-features">
-                        <li><i class="fas fa-check"></i> Custom website design</li>
-                        <li><i class="fas fa-check"></i> Integrated CRM system</li>
-                        <li><i class="fas fa-check"></i> Order management</li>
-                        <li><i class="fas fa-check"></i> Customer database</li>
-                        <li><i class="fas fa-check"></i> Mobile responsive</li>
-                    </ul>
-                </div>
-
-                <div class="proposal-card reveal">
-                    <div class="proposal-number">02</div>
-                    <div class="proposal-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <h3>Social Media Management</h3>
-                    <p>We'll handle all your social media presence across Facebook, Instagram, LinkedIn, and more -
-                        creating content, engaging customers, and building your brand.</p>
-                    <ul class="proposal-features">
-                        <li><i class="fas fa-check"></i> Content creation</li>
-                        <li><i class="fas fa-check"></i> Community management</li>
-                        <li><i class="fas fa-check"></i> Brand strategy</li>
-                        <li><i class="fas fa-check"></i> Influencer partnerships</li>
-                        <li><i class="fas fa-check"></i> Monthly reports</li>
-                    </ul>
-                </div>
-
-                <div class="proposal-card reveal">
-                    <div class="proposal-number">03</div>
-                    <div class="proposal-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Digital Advertising Campaigns</h3>
-                    <p>We'll run targeted ad campaigns on Google, Facebook, and Instagram to bring qualified leads
-                        directly to your business and maximize your ROI.</p>
-                    <ul class="proposal-features">
-                        <li><i class="fas fa-check"></i> Google Ads setup</li>
-                        <li><i class="fas fa-check"></i> Facebook & Instagram ads</li>
-                        <li><i class="fas fa-check"></i> Lead generation</li>
-                        <li><i class="fas fa-check"></i> Retargeting campaigns</li>
-                        <li><i class="fas fa-check"></i> Performance optimization</li>
-                    </ul>
-                </div>
-                <div class="proposal-card reveal">
-                    <div class="proposal-number">04</div>
-                    <div class="proposal-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Brand Identity & Positioning</h3>
-                    <p>We craft a powerful and consistent brand identity that builds trust, attracts the right audience,
-                        and makes your business instantly recognizable across all platforms.</p>
-                    <ul class="proposal-features">
-                        <li><i class="fas fa-check"></i> Logo & visual identity design</li>
-                        <li><i class="fas fa-check"></i> Brand colors & typography</li>
-                        <li><i class="fas fa-check"></i> Brand voice & messaging</li>
-                        <li><i class="fas fa-check"></i> Social media branding</li>
-                        <li><i class="fas fa-check"></i> Brand consistency guidelines</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BlueFIN INDIA SHOWCASE -->
-    <section class="showcase">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Showcasing bluefin India's Premium Products</h2>
-                <p class="section-subtitle">This is what we'll be marketing for you - premium quality tuna fish</p>
-            </div>
-
-            <div class="showcase-grid">
-                <div class="showcase-card reveal">
-                    <div class="showcase-image">
-                        <img src="images/tuna-steaks.jpg" alt="Premium bluefin Tuna Steaks">
-                        <div class="showcase-overlay">
-                            <h3>Yellowfin Tuna Steaks</h3>
-                            <p>Premium Quality</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="showcase-card reveal">
-                    <div class="showcase-image">
-                        <img src="images/bluefin-swimming.jpg" alt="bluefin Tuna Swimming">
-                        <div class="showcase-overlay">
-                            <h3>Fresh Yellowfin Tuna</h3>
-                            <p>365 Days Available</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="showcase-card reveal">
-                    <div class="showcase-image">
-                        <img src="images/bluefin-underwater.jpg" alt="bluefin Tuna Underwater">
-                        <div class="showcase-overlay">
-                            <h3>Sustainable Sourcing</h3>
-                            <p>Ocean Fresh</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="showcase-card reveal">
-                    <div class="showcase-image">
-                        <img src="images/school-of-fish.jpg" alt="School of Fish">
-                        <div class="showcase-overlay">
-                            <h3>Marine Excellence</h3>
-                            <p>Premium Selection</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="showcase-card reveal">
-                    <div class="showcase-image">
-                        <img src="images/tuna-on-ice.jpg" alt="Fresh Tuna on Ice">
-                        <div class="showcase-overlay">
-                            <h3>Restaurant Quality</h3>
-                            <p>Flash Frozen Fresh</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="showcase-card reveal">
-                    <div class="showcase-image">
-                        <img src="images/tuna-can.jpg" alt="Fresh Tuna on Ice">
-                        <div class="showcase-overlay">
-                            <h3>tuna-can</h3>
-                            <p>Processed Tuna Products</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="showcase-cta reveal">
-                <h3>We'll Create Stunning Visual Content Like This</h3>
-                <p>Professional photography, videography, and graphic design to showcase your premium products across
-                    all digital platforms.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- WEBSITE PREVIEW SECTION -->
-    <section class="website-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Your Actual Website Preview</h2>
-                <p class="section-subtitle">This is EXACTLY what we'll build for Bluefin India</p>
-            </div>
-
-            <div class="preview-intro reveal">
-                <p>Below is a full preview of your complete website. Scroll through to see every section - from the
-                    homepage hero to the contact form. This is not a concept - this is the actual design we'll deliver.
-                </p>
-                <div style="margin-top: 2.5rem; text-align: center;">
-                    <a href="bluefin-website.html" target="_blank" class="btn btn-primary"
-                        style="font-size: 1.2rem; padding: 1.2rem 3rem; display: inline-flex; align-items: center; gap: 12px;">
-                        <i class="fas fa-external-link-alt"></i> Open Full Website in New Tab
-                    </a>
-                    <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--ocean-blue); font-weight: 600;">Click
-                        to view the complete, interactive website</p>
-                </div>
-            </div>
-
-            <!-- FULL WEBSITE MOCKUP -->
-            <div class="website-mockup reveal">
-                <div class="mockup-browser">
-                    <!-- Browser Header -->
-                    <div class="browser-header">
-                        <div class="browser-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="browser-url">
-                            <i class="fas fa-lock"></i> https://www.Bluefinindia.com
-                        </div>
-                        <div class="browser-actions">
-                            <i class="fas fa-redo-alt"></i>
-                        </div>
-                    </div>
-
-                    <!-- Website Content -->
-                    <div class="browser-content">
-                        <!-- Navigation Bar -->
-                        <div class="sample-nav">
-                            <div class="sample-nav-content">
-                                <div class="sample-logo">
-                                    <img src="images/fish-logo.jpg" alt="Logo">
-                                    <span>The Bluefin India</span>
-                                </div>
-                                <div class="sample-menu">
-                                    <span>Home</span>
-                                    <span>About</span>
-                                    <span>Products</span>
-                                    <span>Contact</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Hero Section -->
-                        <div class="sample-hero">
-                            <img src="images/deep blue.jpg" alt="Premium Tuna">
-                            <div class="sample-hero-overlay">
-                                <div class="sample-hero-content">
-                                    <h1>The Bluefin India</h1>
-                                    <p class="sample-tagline">Premium Yellowfin Tuna</p>
-                                    <p class="sample-subtitle">Fresh. Sustainable. Available 365 Days a Year.</p>
-                                    <div class="sample-buttons">
-                                        <button class="sample-btn-primary">View Products</button>
-                                        <button class="sample-btn-secondary">Contact Us</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- About Section -->
-                        <div class="sample-about">
-                            <div class="sample-section-header">
-                                <h2>About The Bluefin India</h2>
-                                <p>Your trusted partner for premium quality tuna</p>
-                            </div>
-                            <div class="sample-about-grid">
-                                <div class="sample-about-text">
-                                    <div class="sample-badge">🐟 Available 365 Days</div>
-                                    <h3>Premium Tuna Supplier Since 2010</h3>
-                                    <p>We are India's leading supplier of premium Yellowfin tuna, serving
-                                        restaurants, hotels, and seafood distributors across the country.</p>
-                                    <p>With over a decade of experience, we've built a reputation for delivering the
-                                        freshest, highest-quality tuna year-round.</p>
-                                </div>
-                                <div class="sample-about-image">
-                                    <img src="images/deep blue.jpg" alt="Bluefin Tuna">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Products Section -->
-                        <div class="sample-products">
-                            <div class="sample-section-header">
-                                <h2>Our Premium Products</h2>
-                                <p>Finest quality tuna, delivered fresh to your doorstep</p>
-                            </div>
-                            <div class="sample-products-grid">
-                                <div class="sample-product-card">
-                                    <div class="sample-product-img">
-                                        <img src="images/tuna-school-underwater.jpg" alt="Bluefin Tuna">
-                                    </div>
-                                    <div class="sample-product-info">
-                                        <h3>Premium Yellowfin Tuna</h3>
-                                        <p>Sashimi grade quality, available 365 days</p>
-                                        <ul>
-                                            <li>✓ Flash Frozen Fresh</li>
-                                            <li>✓ Sustainably Sourced</li>
-                                            <li>✓ Year-Round Availability</li>
-                                        </ul>
-                                        <button>Order Now</button>
-                                    </div>
-                                </div>
-                                <div class="sample-product-card">
-                                    <div class="sample-product-img">
-                                        <img src="images/tuna-jumping.jpg" alt="Bluefin Tuna">
-                                    </div>
-                                    <div class="sample-product-info">
-                                        <h3>Yellowfin Tuna</h3>
-                                        <p>Perfect for grilling and searing</p>
-                                        <ul>
-                                            <li>✓ Restaurant Quality</li>
-                                            <li>✓ Rich in Omega-3</li>
-                                            <li>✓ Bulk Orders Available</li>
-                                        </ul>
-                                        <button>Order Now</button>
-                                    </div>
-                                </div>
-                                <div class="sample-product-card">
-                                    <div class="sample-product-img">
-                                        <img src="images/tuna-can.jpg" alt="Processed Tuna">
-                                    </div>
-                                    <div class="sample-product-info">
-                                        <h3>Processed Tuna</h3>
-                                        <p>Premium canned and custom cuts</p>
-                                        <ul>
-                                            <li>✓ Custom Processing</li>
-                                            <li>✓ Private Labeling</li>
-                                            <li>✓ Wholesale Pricing</li>
-                                        </ul>
-                                        <button>Order Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Features Section -->
-                        <div class="sample-features">
-                            <div class="sample-section-header">
-                                <h2>Why Choose The Bluefin India</h2>
-                                <p>Your success is our priority</p>
-                            </div>
-                            <div class="sample-features-grid">
-                                <div class="sample-feature">
-                                    <div class="sample-feature-icon">📅</div>
-                                    <h4>365-Day Availability</h4>
-                                    <p>Year-round supply</p>
-                                </div>
-                                <div class="sample-feature">
-                                    <div class="sample-feature-icon">⭐</div>
-                                    <h4>Premium Quality</h4>
-                                    <p>Sashimi-grade tuna</p>
-                                </div>
-                                <div class="sample-feature">
-                                    <div class="sample-feature-icon">❄️</div>
-                                    <h4>Cold Chain</h4>
-                                    <p>Perfect freshness</p>
-                                </div>
-                                <div class="sample-feature">
-                                    <div class="sample-feature-icon">🌱</div>
-                                    <h4>Sustainable</h4>
-                                    <p>Eco-friendly sourcing</p>
-                                </div>
-                                <div class="sample-feature">
-                                    <div class="sample-feature-icon">🚚</div>
-                                    <h4>Fast Delivery</h4>
-                                    <p>Pan-India shipping</p>
-                                </div>
-                                <div class="sample-feature">
-                                    <div class="sample-feature-icon">💬</div>
-                                    <h4>Expert Support</h4>
-                                    <p>24/7 customer service</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Contact Section -->
-                        <div class="sample-contact">
-                            <div class="sample-section-header">
-                                <h2>Get In Touch</h2>
-                                <p>Ready to order premium tuna? Contact us today</p>
-                            </div>
-                            <div class="sample-contact-grid">
-                                <div class="sample-contact-info">
-                                    <h3>Contact Information</h3>
-                                    <div class="sample-info-item">
-                                        <strong>📞 Phone:</strong> +91 98765 43210
-                                    </div>
-                                    <div class="sample-info-item">
-                                        <strong>✉️ Email:</strong> orders@Bluefinindia.com
-                                    </div>
-                                    <div class="sample-info-item">
-                                        <strong>📍 Address:</strong> Mumbai, India
-                                    </div>
-                                    <div class="sample-info-item">
-                                        <strong>🕒 Hours:</strong> Mon-Sat: 9AM-6PM
-                                    </div>
-                                </div>
-                                <div class="sample-contact-form">
-                                    <h3>Send Message</h3>
-                                    <div class="sample-form-field">Your Name</div>
-                                    <div class="sample-form-field">Your Email</div>
-                                    <div class="sample-form-field">Phone Number</div>
-                                    <div class="sample-form-field">Select Product</div>
-                                    <div class="sample-form-field large">Your Message</div>
-                                    <button class="sample-submit-btn">Send Message</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Footer -->
-                        <div class="sample-footer">
-                            <div class="sample-footer-content">
-                                <div class="sample-footer-col">
-                                    <h4>The Bluefin India</h4>
-                                    <p>Premium tuna supplier</p>
-                                </div>
-                                <div class="sample-footer-col">
-                                    <h4>Quick Links</h4>
-                                    <p>Home • About • Products</p>
-                                </div>
-                                <div class="sample-footer-col">
-                                    <h4>Contact</h4>
-                                    <p>+91 98765 43210</p>
-                                </div>
-                            </div>
-                            <div class="sample-footer-bottom">
-                                © 2026 The Bluefin India • Website by ALCAS
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Explanation -->
-            <div class="preview-explanation reveal">
-                <h3>Complete Website Includes:</h3>
-                <div class="explanation-grid">
-                    <div class="explanation-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h4>Professional Navigation</h4>
-                            <p>Logo, menu, and smooth scrolling</p>
-                        </div>
-                    </div>
-                    <div class="explanation-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h4>Stunning Hero Section</h4>
-                            <p>Full-screen image with clear messaging</p>
-                        </div>
-                    </div>
-                    <div class="explanation-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h4>About Section</h4>
-                            <p>Company story and 365-day availability</p>
-                        </div>
-                    </div>
-                    <div class="explanation-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h4>Product Showcase</h4>
-                            <p>3 main products with features and CTA</p>
-                        </div>
-                    </div>
-                    <div class="explanation-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h4>Features/Benefits</h4>
-                            <p>6 key reasons to choose Bluefin India</p>
-                        </div>
-                    </div>
-                    <div class="explanation-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h4>Contact Form</h4>
-                            <p>Easy inquiry and order placement</p>
-                        </div>
-                    </div>
-                    <div class="explanation-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h4>Professional Footer</h4>
-                            <p>Links, contact info, and branding</p>
-                        </div>
-                    </div>
-                    <div class="explanation-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h4>Mobile Responsive</h4>
-                            <p>Perfect on all devices and screen sizes</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="artistic-showcase reveal">
-                <div class="artistic-image">
-                    <img src="images/tuna-artistic.jpg" alt="Artistic Tuna Design">
-                </div>
-                <div class="artistic-text">
-                    <h3>Premium Brand Identity</h3>
-                    <p>Beyond just a website, we'll create a complete brand identity for Bluefin India. Every visual
-                        element, from photography to graphics, will reflect the premium quality of your products.</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Professional product photography</li>
-                        <li><i class="fas fa-check"></i> Custom graphic design and branding</li>
-                        <li><i class="fas fa-check"></i> Comprehensive brand style guide</li>
-                        <li><i class="fas fa-check"></i> Marketing materials for all platforms</li>
-                    </ul>
-                </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
-    </section>
 
-    <!-- DETAILED SERVICES -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Complete Service Package</h2>
-                <p class="section-subtitle">Everything you need to dominate the digital seafood market</p>
-            </div>
-
-            <div class="service-detailed">
-                <div class="service-detail-card reveal">
-                    <div class="service-detail-header">
-                        <i class="fas fa-laptop-code"></i>
-                        <h3>Website & CRM Development</h3>
-                    </div>
-                    <div class="service-detail-content">
-                        <div class="service-detail-text">
-                            <h4>What We'll Build:</h4>
-                            <p>A professional, modern website that showcases your premium tuna products and integrates a
-                                powerful CRM system to manage your entire business operations.</p>
-
-                            <h4>Key Features:</h4>
-                            <div class="features-grid">
-                                <div class="feature-item">
-                                    <i class="fas fa-paint-brush"></i>
-                                    <div>
-                                        <strong>Custom Design</strong>
-                                        <p>Unique, brand-focused design that stands out</p>
-                                    </div>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-users-cog"></i>
-                                    <div>
-                                        <strong>CRM Integration</strong>
-                                        <p>Manage customers, leads, and orders in one place</p>
-                                    </div>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <div>
-                                        <strong>Order System</strong>
-                                        <p>Online ordering with payment integration</p>
-                                    </div>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-mobile-alt"></i>
-                                    <div>
-                                        <strong>Mobile Optimized</strong>
-                                        <p>Perfect experience on all devices</p>
-                                    </div>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-search"></i>
-                                    <div>
-                                        <strong>SEO Ready</strong>
-                                        <p>Optimized to rank on Google</p>
-                                    </div>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-chart-line"></i>
-                                    <div>
-                                        <strong>Analytics Dashboard</strong>
-                                        <p>Track performance and insights</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="margin-top: 2.5rem; text-align: center;">
-                            <div class="hero-buttons">
-                                <a href="#pricing" class="btn btn-primary">
-                                    <i class="fas fa-dollar-sign"></i>
-                                    pricing
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Premium Popup Modal -->
+        <div class="project-modal-overlay" id="projectModal">
+            <div class="project-modal">
+                <div class="modal-image-wrap">
+                    <img id="modalImage" src="" alt="">
+                    <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
                 </div>
-
-                <div class="service-detail-card reveal">
-                    <div class="service-detail-header">
-                        <i class="fas fa-hashtag"></i>
-                        <h3>Social Media Management</h3>
-                    </div>
-                    <div class="service-detail-content">
-                        <div class="service-detail-text">
-                            <h4>What We'll Do:</h4>
-                            <p>Complete management of your social media presence to build brand awareness,
-                                engage
-                                customers, and drive sales.</p>
-
-                            <h4>Platforms We'll Manage:</h4>
-                            <div class="platforms-grid">
-                                <div class="platform-item">
-                                    <i class="fab fa-facebook"></i>
-                                    <span>Facebook</span>
-                                </div>
-                                <div class="platform-item">
-                                    <i class="fab fa-instagram"></i>
-                                    <span>Instagram</span>
-                                </div>
-                                <div class="platform-item">
-                                    <i class="fab fa-youtube"></i>
-                                    <span>YouTube</span>
-                                </div>
-                            </div>
-
-                            <h4>Our Services Include:</h4>
-                            <ul class="service-list">
-                                <li><i class="fas fa-camera"></i> Professional content creation (photos, videos,
-                                    graphics)</li>
-                                <li><i class="fas fa-calendar-alt"></i> Daily posting schedule</li>
-                                <li><i class="fas fa-comments"></i> Community engagement & response management
-                                </li>
-                                <li><i class="fas fa-star"></i> Influencer collaborations</li>
-                                <li><i class="fas fa-chart-bar"></i> Monthly performance reports</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="#pricing" class="btn btn-primary">
-                            <i class="fas fa-dollar-sign"></i>
-                            pricing
+                <div class="modal-body">
+                    <div class="modal-tags" id="modalTags"></div>
+                    <h2 id="modalTitle"></h2>
+                    <div class="modal-role" id="modalRole"></div>
+                    <div class="modal-divider"></div>
+                    <p id="modalDesc"></p>
+                    <div class="modal-actions">
+                        <a id="modalLink" href="javascript:void(0)" target="_blank" class="modal-visit-btn">
+                            <i class="fas fa-globe"></i> Visit Live Site <i class="fas fa-external-link-alt"></i>
                         </a>
-                    </div>
-                </div>
-
-                <div class="service-detail-card reveal">
-                    <div class="service-detail-header">
-                        <i class="fas fa-ad"></i>
-                        <h3>Digital Advertising</h3>
-                    </div>
-                    <div class="service-detail-content">
-                        <div class="service-detail-text">
-                            <h4>What We'll Do:</h4>
-                            <p>Create and manage high-converting ad campaigns to bring qualified customers to
-                                your
-                                business.</p>
-
-                            <h4>Ad Platforms:</h4>
-                            <div class="ad-platforms">
-                                <div class="ad-platform-card">
-                                    <i class="fab fa-google"></i>
-                                    <h5>Google Ads</h5>
-                                    <p>Search ads, display ads, YouTube ads</p>
-                                </div>
-                                <div class="ad-platform-card">
-                                    <i class="fab fa-facebook"></i>
-                                    <h5>Facebook Ads</h5>
-                                    <p>Targeted campaigns for your ideal customers</p>
-                                </div>
-                                <div class="ad-platform-card">
-                                    <i class="fab fa-instagram"></i>
-                                    <h5>Instagram Ads</h5>
-                                    <p>Visual storytelling that converts</p>
-                                </div>
-                            </div>
-
-                            <h4>Campaign Strategy:</h4>
-                            <ul class="service-list">
-                                <li><i class="fas fa-bullseye"></i> Audience research & targeting</li>
-                                <li><i class="fas fa-pen"></i> Ad copy & creative design</li>
-                                <li><i class="fas fa-sync"></i> A/B testing & optimization</li>
-                                <li><i class="fas fa-redo"></i> Retargeting campaigns</li>
-                                <li><i class="fas fa-dollar-sign"></i> Budget management & ROI tracking</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="#pricing" class="btn btn-primary">
-                            <i class="fas fa-dollar-sign"></i>
-                            pricing
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-detail-card reveal">
-                <div class="service-detail-header">
-                    <i class="fas fa-palette"></i>
-                    <h3>Brand Identity & Positioning</h3>
-                </div>
-
-                <div class="service-detail-content">
-                    <div class="service-detail-text">
-                        <h4>What We'll Do:</h4>
-                        <p>We create a strong, memorable brand identity that builds trust, differentiates your
-                            business,
-                            and ensures consistency across all customer touchpoints.</p>
-
-                        <h4>Brand Elements We Build:</h4>
-                        <div class="platforms-grid">
-                            <div class="platform-item">
-                                <i class="fas fa-pen-nib"></i>
-                                <span>Logo Design</span>
-                            </div>
-                            <div class="platform-item">
-                                <i class="fas fa-font"></i>
-                                <span>Typography</span>
-                            </div>
-                            <div class="platform-item">
-                                <i class="fas fa-palette"></i>
-                                <span>Color System</span>
-                            </div>
-                        </div>
-
-                        <h4>Our Services Include:</h4>
-                        <ul class="service-list">
-                            <li><i class="fas fa-lightbulb"></i> Brand strategy & positioning</li>
-                            <li><i class="fas fa-pencil-ruler"></i> Visual identity & design system</li>
-                            <li><i class="fas fa-bullhorn"></i> Brand voice & messaging guidelines</li>
-                            <li><i class="fas fa-share-alt"></i> Social media & digital branding</li>
-                            <li><i class="fas fa-book"></i> Brand guidelines & usage documentation</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="hero-buttons">
-                    <a href="#pricing" class="btn btn-primary">
-                        <i class="fas fa-dollar-sign"></i>
-                        pricing
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- CRM SYSTEM ARCHITECTURE - VISUAL REPRESENTATION -->
-    <section class="database-schema" id="crm-database">
-        <div class="container">
-            <div class="section-header">
-                <h2>How Your CRM System Works</h2>
-                <p>A simple visual guide to understanding your complete business management system</p>
-            </div>
-
-            <div class="schema-intro">
-                <p>Your CRM system is designed to manage everything from franchise locations to customer orders. Here's
-                    how
-                    all the pieces work together to run your business smoothly.</p>
-            </div>
-
-            <!-- Visual Flow Diagram -->
-            <div class="crm-visual-flow">
-                <!-- Step 1: Franchise Setup -->
-                <div class="flow-step reveal">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <h3>Your Franchise Locations</h3>
-                    <p class="step-description">Each of your business locations is registered in the system with
-                        complete
-                        details</p>
-                    <div class="step-details">
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Location & Address</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-id-card"></i>
-                            <span>Unique Reference Code</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-toggle-on"></i>
-                            <span>Active/Inactive Status</span>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
-
-                <!-- Step 2: User Management -->
-                <div class="flow-step reveal">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-users-cog"></i>
-                    </div>
-                    <h3>Your Team Members</h3>
-                    <p class="step-description">Employees and managers who access the system at each franchise</p>
-                    <div class="step-details">
-                        <div class="detail-item">
-                            <i class="fas fa-user-shield"></i>
-                            <span>Admin or Franchise User</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>Email & Contact Info</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-key"></i>
-                            <span>Secure Login Access</span>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
-
-                <!-- Step 3: Lead Management -->
-                <div class="flow-step reveal">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <h3>Potential Customers (Leads)</h3>
-                    <p class="step-description">People interested in your products - tracked from first contact</p>
-                    <div class="step-details">
-                        <div class="detail-item">
-                            <i class="fas fa-phone"></i>
-                            <span>Contact Information</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Status: New → Contacted → Qualified</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-sticky-note"></i>
-                            <span>Notes & Follow-up History</span>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
-
-
-                <!-- Step 4: Customer Management -->
-                <div class="flow-step reveal">
-                    <div class="step-number">4</div>
-                    <div class="step-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Active Customers</h3>
-                    <p class="step-description">Converted leads who are now buying from you</p>
-                    <div class="step-details">
-                        <div class="detail-item">
-                            <i class="fas fa-address-book"></i>
-                            <span>Complete Customer Profile</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-tags"></i>
-                            <span>Type: Regular, VIP, Wholesale</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-history"></i>
-                            <span>Purchase History</span>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
-
-                <!-- Step 5: Orders -->
-                <div class="flow-step reveal">
-                    <div class="step-number">5</div>
-                    <div class="step-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3>Customer Orders</h3>
-                    <p class="step-description">Every order placed by your customers, tracked from start to delivery</p>
-                    <div class="step-details">
-                        <div class="detail-item">
-                            <i class="fas fa-receipt"></i>
-                            <span>Order Number & Date</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-rupee-sign"></i>
-                            <span>Amount & Payment Status</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-truck"></i>
-                            <span>Delivery Status & Tracking</span>
-                        </div>
-                    </div>
-                    <div class="flow-split">
-                        <div class="split-arrow left">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                        <div class="split-arrow right">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 6A & 6B: Split into Order Items and Follow-ups -->
-                <div class="flow-split-container">
-                    <div class="flow-step-small reveal">
-                        <div class="step-icon-small">
-                            <i class="fas fa-list-ul"></i>
-                        </div>
-                        <h4>Order Items</h4>
-                        <p>Individual products in each order</p>
-                        <ul class="mini-list">
-                            <li>Product Name & Description</li>
-                            <li>Quantity Ordered</li>
-                            <li>Price per Item</li>
-                            <li>Total Amount</li>
-                        </ul>
-                    </div>
-
-                    <div class="flow-step-small reveal">
-                        <div class="step-icon-small">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <h4>Follow-ups</h4>
-                        <p>Scheduled customer interactions</p>
-                        <ul class="mini-list">
-                            <li>Call, Visit, Email, WhatsApp</li>
-                            <li>Date & Time Scheduled</li>
-                            <li>Priority Level</li>
-                            <li>Outcome & Next Steps</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Step 7: Activity Tracking -->
-                <div class="flow-step reveal">
-                    <div class="step-number">7</div>
-                    <div class="step-icon">
-                        <i class="fas fa-history"></i>
-                    </div>
-                    <h3>Activity Tracking</h3>
-                    <p class="step-description">Complete record of who did what and when - for security and
-                        accountability
-                    </p>
-                    <div class="step-details">
-                        <div class="detail-item">
-                            <i class="fas fa-user-clock"></i>
-                            <span>User Actions Logged</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-edit"></i>
-                            <span>Changes Tracked</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Security & Audit Trail</span>
-                        </div>
-                    </div>
-                </div>
-                <a href="https://mermaid.ai/app/projects/28a22bc0-25ce-439e-9fc4-6000071196f0/diagrams/1cdc8e17-3e92-4aee-9ec7-e1e650fd65d5/version/v0.1/edit" target="_blank" class="btn btn-primary"
-                        style="font-size: 1.2rem; padding: 1.2rem 3rem; display:inline-flex; align-items: center; gap: 12px;">
-                        <i class="fas fa-external-link-alt"></i> Open Full Website in New Tab
-                    </a>
-            </div>
-
-            <!-- Simple Data Flow Diagram -->
-            <div class="simple-flow-diagram reveal">
-                <h3>The Complete Journey</h3>
-                <div class="journey-flow">
-                    <div class="journey-step">
-                        <div class="journey-icon">📍</div>
-                        <p>Franchise Location</p>
-                    </div>
-                    <div class="journey-arrow">→</div>
-                    <div class="journey-step">
-                        <div class="journey-icon">👥</div>
-                        <p>Team Members</p>
-                    </div>
-                    <div class="journey-arrow">→</div>
-                    <div class="journey-step">
-                        <div class="journey-icon">🎯</div>
-                        <p>New Leads</p>
-                    </div>
-                    <div class="journey-arrow">→</div>
-                    <div class="journey-step">
-                        <div class="journey-icon">✅</div>
-                        <p>Customers</p>
-                    </div>
-                    <div class="journey-arrow">→</div>
-                    <div class="journey-step">
-                        <div class="journey-icon">🛒</div>
-                        <p>Orders</p>
-                    </div>
-                    <div class="journey-arrow">→</div>
-                    <div class="journey-step">
-                        <div class="journey-icon">🚚</div>
-                        <p>Delivery</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Key Benefits Section -->
-            <div class="schema-features">
-                <h3>Why This System Design Matters</h3>
-                <div class="features-grid-db">
-                    <div class="feature-db">
-                        <i class="fas fa-link"></i>
-                        <h4>Everything Connected</h4>
-                        <p>All your business data is linked together - see customer history, orders, and follow-ups in
-                            one
-                            place</p>
-                    </div>
-                    <div class="feature-db">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>Secure and Organized</h4>
-                        <p>Each franchise's data is kept separate and secure, with proper access controls for your team
-                        </p>
-                    </div>
-                    <div class="feature-db">
-                        <i class="fas fa-chart-line"></i>
-                        <h4>Track Everything Easily</h4>
-                        <p>From first contact to final delivery, every step is recorded so nothing falls through the
-                            cracks
-                        </p>
-                    </div>
-                    <div class="feature-db">
-                        <i class="fas fa-users"></i>
-                        <h4>Multi-Franchise Ready</h4>
-                        <p>Manage multiple locations easily, with each franchise having its own customers and orders</p>
-                    </div>
-                    <div class="feature-db">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Boost Revenue Across Locations </h4>
-                        <p>Track performance, identify top-selling franchises, and scale what works to maximize overall
-                            sales</p>
-                    </div>
-                    <div class="feature-db">
-                        <i class="fas fa-award"></i>
-                        <h4>Faster Growth, Smarter Control</h4>
-                        <p>Empower each franchise to sell independently while you retain full visibility and profit
-                            insights</p>
+                        <button class="modal-copy-btn" id="modalCopyBtn">
+                            <i class="fas fa-link"></i> Copy Link
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const projects = [
+                    {
+                        image: 'images/NMG WEBSITE.jpeg',
+                        title: 'NMG Marine Service',
+                        role: 'WEBSITE',
+                        description: 'Complete digital platform for marine service operations. Built responsive service website with clear service segmentation, inquiry flow, and optimized UI for industrial/service-based users. Ensured fast performance and deployment-ready architecture.',
+                        link: 'https://nmgmarineservice.com/',
+                        tags: ['Full Stack', 'Production', 'Client Project']
+                    },
+                    {
+                        image: 'images/Lendirt.jpeg',
+                        title: 'Lend-It',
+                        role: 'Future Project',
+                        description: 'Modern lending platform interface focused on simplicity and user engagement. Built responsive UI for loan-related workflows and interactions. Focused on performance, minimal design, and usability.',
+                        link: 'https://lend-it-jade.vercel.app/',
+                        tags: ['Fintech', 'Web App', 'Frontend']
+                    },
+                    {
+                        image: 'images/Bethel.jpeg',
+                        title: 'Bethel Express Impex',
+                        role: 'WEBSITE',
+                        description: 'Corporate website for an import/export company to improve digital presence and lead generation. Built modern UI aligned with global trade business standards. Optimized for mobile responsiveness and SEO visibility.',
+                        link: 'https://www.bethelexpressimpex.com/',
+                        tags: ['Corporate', 'SEO', 'Branding']
+                    },
+                    {
+                        image: 'images/NMG CRM.jpeg',
+                        title: 'NMG Marine Dashboard',
+                        role: 'CRM',
+                        description: 'Admin dashboard for managing marine service operations, requests, and internal data. Implemented role-based access and structured data handling. Managed multiple domain deployments and improved UI consistency across builds.',
+                        link: 'https://www.nmgmarineservice.in/dashboard',
+                        tags: ['Dashboard', 'Admin', 'Enterprise']
+                    },
+                    {
+                        image: 'images/niyafit.png',
+                        title: 'NiyaFitness',
+                        role: 'WEBSITE',
+                        description: 'Vibrant fitness website with workout plans, personal training services, and membership options. Bold typography with energetic color scheme and responsive layout across all devices.',
+                        link: 'https://niyafit46.wixsite.com/niyafitness',
+                        tags: ['Fitness', 'Branding', 'Website']
+                    }
+                ];
+
+                const carousel = document.getElementById('projectCarousel');
+                const modal = document.getElementById('projectModal');
+                let currentIndex = Math.floor(projects.length / 2);
+
+                // Create cards — auto-detect image orientation
+                const isMobile = window.innerWidth <= 768;
+                const LANDSCAPE_W = isMobile ? 320 : 560;
+                const LANDSCAPE_H = isMobile ? 200 : 340;
+                const PORTRAIT_W = isMobile ? 220 : 300;
+                const PORTRAIT_H = isMobile ? 300 : 420;
+
+                let loadedCount = 0;
+                projects.forEach((project, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'carousel-card';
+                    card.dataset.index = index;
+
+                    const img = new Image();
+                    img.className = 'carousel-image';
+                    img.alt = project.title;
+                    img.onload = function() {
+                        const isPortrait = img.naturalHeight > img.naturalWidth;
+                        card.style.width = (isPortrait ? PORTRAIT_W : LANDSCAPE_W) + 'px';
+                        card.style.height = (isPortrait ? PORTRAIT_H : LANDSCAPE_H) + 'px';
+                        loadedCount++;
+                        if (loadedCount === projects.length) updateCards();
+                    };
+                    img.src = project.image;
+
+                    const label = document.createElement('div');
+                    label.className = 'carousel-label';
+                    label.innerHTML = `<h3>${project.title}</h3><span>${project.role}</span>`;
+
+                    card.appendChild(img);
+                    card.appendChild(label);
+                    card.addEventListener('click', () => openModal(index));
+                    carousel.appendChild(card);
+                });
+
+                const cards = document.querySelectorAll('.carousel-card');
+                const total = cards.length;
+
+                // --- Modal logic ---
+                function openModal(index) {
+                    const p = projects[index];
+                    document.getElementById('modalImage').src = p.image;
+                    document.getElementById('modalImage').alt = p.title;
+                    document.getElementById('modalTitle').textContent = p.title;
+                    document.getElementById('modalRole').textContent = p.role;
+                    document.getElementById('modalDesc').textContent = p.description;
+                    document.getElementById('modalLink').href = p.link;
+
+                    const tagsContainer = document.getElementById('modalTags');
+                    tagsContainer.innerHTML = '';
+                    p.tags.forEach(tag => {
+                        const span = document.createElement('span');
+                        span.className = 'modal-tag';
+                        span.textContent = tag;
+                        tagsContainer.appendChild(span);
+                    });
+
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeModal() {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+
+                document.getElementById('modalClose').addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeModal();
+                });
+
+                // Copy link to clipboard
+                document.getElementById('modalCopyBtn').addEventListener('click', () => {
+                    const link = document.getElementById('modalLink').href;
+                    navigator.clipboard.writeText(link).then(() => {
+                        const btn = document.getElementById('modalCopyBtn');
+                        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        btn.style.color = '#4caf50';
+                        btn.style.borderColor = '#4caf50';
+                        setTimeout(() => {
+                            btn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                            btn.style.color = '';
+                            btn.style.borderColor = '';
+                        }, 2000);
+                    });
+                });
+
+                // --- Carousel logic ---
+                function updateCards() {
+                    cards.forEach((card, index) => {
+                        let offset = index - currentIndex;
+                        let pos = (offset + total) % total;
+                        if (pos > Math.floor(total / 2)) {
+                            pos = pos - total;
+                        }
+
+                        const isCenter = pos === 0;
+                        const isAdjacent = Math.abs(pos) === 1;
+
+                        const translateX = pos * 60;
+                        const scale = isCenter ? 1 : isAdjacent ? 0.85 : 0.7;
+                        const rotateY = pos * -15;
+                        const zIndex = isCenter ? 10 : isAdjacent ? 5 : 1;
+                        const opacity = isCenter ? 1 : isAdjacent ? 0.6 : 0;
+                        const blur = isCenter ? 0 : 4;
+
+                        card.style.transform = `translateX(${translateX}%) scale(${scale}) rotateY(${rotateY}deg)`;
+                        card.style.zIndex = zIndex;
+                        card.style.opacity = opacity;
+                        card.style.filter = `blur(${blur}px)`;
+                        card.style.visibility = Math.abs(pos) > 1 ? 'hidden' : 'visible';
+                        card.style.pointerEvents = isCenter ? 'auto' : 'none';
+                    });
+                }
+
+                document.getElementById('nextBtn').addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % total;
+                    updateCards();
+                });
+
+                document.getElementById('prevBtn').addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + total) % total;
+                    updateCards();
+                });
+
+                // Auto play
+                let timer = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % total;
+                    updateCards();
+                }, 4000);
+
+                carousel.addEventListener('mouseenter', () => clearInterval(timer));
+                carousel.addEventListener('mouseleave', () => {
+                    timer = setInterval(() => {
+                        currentIndex = (currentIndex + 1) % total;
+                        updateCards();
+                    }, 4000);
+                });
+
+                updateCards();
+            });
+        </script>
     </section>
-    <!-- PRICING & QUOTATIONS -->
-    <section class="pricing-section" id="pricing">
+
+    <!-- BRAND PARTNERS SHOWCASE (FEATURE CAROUSEL) -->
+    <section class="feature-carousel-section">
+        <div class="container">
+            <div class="feature-carousel-container" id="featureCarousel">
+                <div class="feature-nav-col">
+                    <div class="feature-nav-track" id="featureNavTrack">
+                        <!-- Chips injected by JS -->
+                    </div>
+                </div>
+                <div class="feature-display-col">
+                    <div class="feature-card-stack" id="featureCardStack">
+                        <!-- Cards injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const brands = [
+                    { id: 'healthifem', label: 'Healthifem', icon: 'fas fa-heartbeat', image: 'resources/logos/healthifem.png?v=2', desc: 'Empowering wellness through digital transformation.' },
+                    { id: 'gulf_parlor', label: 'Gulf Parlor', icon: 'fas fa-utensils', image: 'resources/logos/gulf_parlor.png?v=2', desc: 'Premium dining experiences redefined.' },
+                    { id: 'freaks', label: 'Freaks 2.0', icon: 'fas fa-wand-magic-sparkles', image: 'resources/logos/freaks.png?v=2', desc: 'Creative boundary-pushing design.' },
+                    { id: 'bsc', label: 'BSC', icon: 'fas fa-briefcase', image: 'resources/logos/bsc.png?v=2', desc: 'Streamlined corporate identity systems.' },
+                    { id: 'al_sam', label: 'AL Sam', icon: 'fas fa-globe', image: 'resources/logos/al_sam.png?v=2', desc: 'Global logistics and trade connectivity.' },
+                    { id: 'sacola', label: 'Sacola', icon: 'fas fa-shopping-bag', image: 'resources/logos/sacola.png?v=2', desc: 'Innovative retail solutions for the next gen.' },
+                    { id: 'quest', label: 'Quest', icon: 'fas fa-search', image: 'resources/logos/quest.png?v=2', desc: 'Data-driven research and analytics.' },
+                    { id: 'pp', label: 'PP', icon: 'fas fa-check-circle', image: 'resources/logos/pp.png?v=2', desc: 'Uncompromising quality and precision.' },
+                    { id: 'pixel', label: 'Pixel', icon: 'fas fa-camera', image: 'resources/logos/pixel.png?v=2', desc: 'Perfecting detail in digital photography.' },
+                    { id: 'osia', label: 'Osia', icon: 'fas fa-crown', image: 'resources/logos/osia.png?v=2', desc: 'Luxury brand positioning and identities.' }
+                ];
+
+                const navTrack = document.getElementById('featureNavTrack');
+                const cardStack = document.getElementById('featureCardStack');
+                let currentIdx = 0;
+                const ITEM_H = 75;
+
+                // Initialize
+                brands.forEach((b, i) => {
+                    const chip = document.createElement('button');
+                    chip.className = `feature-chip ${i === 0 ? 'active' : ''}`;
+                    chip.innerHTML = `<i class="${b.icon}"></i> <span>${b.label}</span>`;
+                    chip.onclick = () => goTo(i);
+                    navTrack.appendChild(chip);
+
+                    const card = document.createElement('div');
+                    card.className = `feature-card ${i === 0 ? 'active' : ''}`;
+                    card.innerHTML = `
+                        <img src="${b.image}" alt="${b.label}">
+                        <div class="feature-card-overlay">
+                            <div class="feature-card-badge">${i + 1} • ${b.label}</div>
+                            <p class="feature-card-desc">${b.desc}</p>
+                        </div>
+                    `;
+                    cardStack.appendChild(card);
+                });
+
+                const chips = document.querySelectorAll('.feature-chip');
+                const cards = document.querySelectorAll('.feature-card');
+
+                function goTo(idx) {
+                    currentIdx = idx;
+                    update();
+                }
+
+                function update() {
+                    chips.forEach((chip, i) => {
+                        let diff = i - currentIdx;
+                        if (diff > brands.length / 2) diff -= brands.length;
+                        if (diff < -brands.length / 2) diff += brands.length;
+                        
+                        chip.style.transform = `translateY(${diff * ITEM_H}px)`;
+                        chip.style.opacity = 1 - Math.abs(diff) * 0.3;
+                        chip.classList.toggle('active', i === currentIdx);
+                    });
+
+                    cards.forEach((card, i) => {
+                        card.classList.remove('active', 'prev', 'next');
+                        let diff = i - currentIdx;
+                        if (diff === 0) card.classList.add('active');
+                        else if (diff === -1 || (currentIdx === 0 && i === brands.length - 1)) card.classList.add('prev');
+                        else if (diff === 1 || (currentIdx === brands.length - 1 && i === 0)) card.classList.add('next');
+                    });
+                }
+
+                let autoTimer = setInterval(() => {
+                    goTo((currentIdx + 1) % brands.length);
+                }, 3500);
+
+                const container = document.getElementById('featureCarousel');
+                container.onmouseenter = () => clearInterval(autoTimer);
+                container.onmouseleave = () => {
+                    autoTimer = setInterval(() => goTo((currentIdx + 1) % brands.length), 3500);
+                };
+
+                update();
+            });
+        </script>
+    </section>
+
+    <!-- PRICING & QUOTATIONS MOVED TO pricing.html -->
+
+    <!-- CORE SERVICES SUMMARY -->
+    <section class="benefits" id="services-summary">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Transparent Pricing - Choose Your Package</h2>
-                <p class="section-subtitle">Flexible options tailored to your business needs</p>
+                <h2 class="section-title">Our Core Services</h2>
+                <p class="section-subtitle">Complete digital business systems designed for rapid growth</p>
             </div>
 
-            <!-- CRM Packages -->
-            <div class="pricing-category">
-                <h3 class="category-title"><i class="fas fa-database"></i> CRM System Packages</h3>
+           <div class="benefits-grid">
 
-                <div class="pricing-grid">
-                    <!-- Package 1: Basic CRM -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-header">
-                            <h4>Basic CRM</h4>
-                            <div class="price-tag">₹75,000</div>
-                            <p class="price-subtitle">Perfect for getting started</p>
-                        </div>
-                        <div class="pricing-body">
-                            <p class="package-description">This Plan delivers a practical and cost-effective CRM system
-                                designed to manage franchise operations efficiently. It covers all essential CRM
-                                functionalities, ensuring smooth business operations without unnecessary complexity.</p>
+    <div class="benefit-card reveal">
+        <div class="benefit-icon">
+            <i class="fas fa-code"></i>
+        </div>
+        <h3>Website Development</h3>
+        <p>High-performance, conversion-focused websites designed to grow your business online.</p>
+    </div>
 
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> All Basic CRM Features</li>
-                                <li><i class="fas fa-check-circle"></i> User Management (Admin & Franchise Users)</li>
-                                <li><i class="fas fa-check-circle"></i> Lead & Customer Management</li>
-                                <li><i class="fas fa-check-circle"></i> Order Processing & Tracking</li>
-                                <li><i class="fas fa-check-circle"></i> Follow-up Scheduling</li>
-                                <li><i class="fas fa-check-circle"></i> Activity Logging</li>
-                                <li><i class="fas fa-check-circle"></i> Basic Reporting Dashboard</li>
-                                <li><i class="fas fa-check-circle"></i> Mobile Responsive Design</li>
-                                <li><i class="fas fa-check-circle"></i> 3 Months Support</li>
-                            </ul>
+    <div class="benefit-card reveal">
+        <div class="benefit-icon">
+            <i class="fas fa-database"></i>
+        </div>
+        <h3>CRM Implementation</h3>
+        <p>Smart CRM systems to capture, manage, and convert leads efficiently.</p>
+    </div>
 
-                            <div class="pricing-footer">
-                                <p class="payment-terms"><strong>Payment:</strong> 50% Advance, 50% on Delivery</p>
-                            </div>
-                        </div>
-                    </div>
+    <div class="benefit-card reveal">
+        <div class="benefit-icon">
+            <i class="fas fa-hashtag"></i>
+        </div>
+        <h3>Social Media Growth</h3>
+        <p>Strategic content and engagement to turn followers into loyal customers.</p>
+    </div>
 
-                    <!-- Package 2: Professional CRM (RECOMMENDED) -->
-                    <div class="pricing-card featured reveal">
-                        <span class="featured-badge">RECOMMENDED</span>
-                        <div class="pricing-header">
-                            <h4>Professional CRM</h4>
-                            <div class="original-price">₹1,14,000</div>
-                            <div class="price-tag">₹1,02,600</div>
-                            <p class="price-subtitle">Best value for growing businesses</p>
-                        </div>
-                        <div class="pricing-body">
-                            <p class="package-description">The Professional Plan includes everything in the Basic Plan,
-                                plus
-                                advanced features like WhatsApp integration, email automation, and enhanced analytics.
-                                Ideal
-                                for businesses looking to scale operations and improve customer engagement.</p>
+    <div class="benefit-card reveal">
+        <div class="benefit-icon">
+            <i class="fas fa-bullhorn"></i>
+        </div>
+        <h3>Performance Marketing</h3>
+        <p>Data-driven ad campaigns that generate high-quality leads and measurable ROI.</p>
+    </div>
 
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> Complete CRM System Development</li>
-                                <li><i class="fas fa-check-circle"></i> WhatsApp Integration for Follow-ups</li>
-                                <li><i class="fas fa-check-circle"></i> Email Automation</li>
-                                <li><i class="fas fa-check-circle"></i> Advanced Analytics & Reports</li>
-                                <li><i class="fas fa-check-circle"></i> Custom Fields & Forms</li>
-                                <li><i class="fas fa-check-circle"></i> Data Export (Excel/PDF)</li>
-                                <li><i class="fas fa-check-circle"></i> Multi-Franchise Dashboard</li>
-                                <li><i class="fas fa-check-circle"></i> Priority Support</li>
-                                <li><i class="fas fa-check-circle"></i> 6 Months Support</li>
-                            </ul>
+    <div class="benefit-card reveal">
+        <div class="benefit-icon">
+            <i class="fas fa-robot"></i>
+        </div>
+        <h3>AI & Automation</h3>
+        <p>Intelligent workflows and chatbots to streamline operations and boost efficiency.</p>
+    </div>
 
-                            <div class="pricing-footer">
-                                <p class="payment-terms"><strong>Payment:</strong> 50% Advance, 50% on Delivery</p>
-                                <p class="discount-note">💰 Save ₹11,400 with this package!</p>
-                            </div>
-                        </div>
-                    </div>
+    <div class="benefit-card reveal">
+        <div class="benefit-icon">
+            <i class="fas fa-palette"></i>
+        </div>
+        <h3>Branding & Creative</h3>
+        <p>Powerful brand identities and creatives that make your business stand out.</p>
+    </div>
 
-                    <!-- Package 3: Enterprise CRM -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-header">
-                            <h4>Enterprise CRM</h4>
-                            <div class="price-tag">₹1,20,000</div>
-                            <p class="price-subtitle">Complete business solution</p>
-                        </div>
-                        <div class="pricing-body">
-                            <p class="package-description">The Enterprise Plan is a comprehensive solution with all
-                                Professional features plus API integrations, dedicated account manager, and unlimited
-                                customization. Perfect for established businesses with complex requirements.</p>
-
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> All Professional CRM Features</li>
-                                <li><i class="fas fa-check-circle"></i> API Integration Support</li>
-                                <li><i class="fas fa-check-circle"></i> Third-Party App Integrations</li>
-                                <li><i class="fas fa-check-circle"></i> Custom Workflow Automation</li>
-                                <li><i class="fas fa-check-circle"></i> Advanced Security Features</li>
-                                <li><i class="fas fa-check-circle"></i> Dedicated Account Manager</li>
-                                <li><i class="fas fa-check-circle"></i> Unlimited Customization</li>
-                                <li><i class="fas fa-check-circle"></i> Training Sessions for Team</li>
-                                <li><i class="fas fa-check-circle"></i> 12 Months Premium Support</li>
-                            </ul>
-
-                            <div class="pricing-footer">
-                                <p class="payment-terms"><strong>Payment:</strong> 40% Advance, 40% Milestone, 20% on
-                                    Delivery</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Website Development Packages -->
-            <div class="pricing-category">
-                <h3 class="category-title"><i class="fas fa-globe"></i> Website Development Packages</h3>
-
-                <div class="pricing-grid-2col">
-                    <!-- Basic Website -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-header">
-                            <h4>Basic Website</h4>
-                            <div class="price-tag">₹15,000</div>
-                            <p class="price-subtitle">Professional online presence</p>
-                        </div>
-                        <div class="pricing-body">
-                            <p class="package-description">A clean, professional 5-page website perfect for establishing
-                                your online presence. Includes responsive design, contact forms, and basic SEO
-                                optimization.
-                            </p>
-
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> 5 Pages (Home, About, Services, Products,
-                                    Contact)
-                                </li>
-                                <li><i class="fas fa-check-circle"></i> Mobile Responsive Design</li>
-                                <li><i class="fas fa-check-circle"></i> Contact Form Integration</li>
-                                <li><i class="fas fa-check-circle"></i> Basic SEO Setup</li>
-                                <li><i class="fas fa-check-circle"></i> Social Media Links</li>
-                                <li><i class="fas fa-check-circle"></i> Google Maps Integration</li>
-                                <li><i class="fas fa-check-circle"></i> 1 Month Support</li>
-                            </ul>
-
-                            <div class="pricing-footer">
-                                <p class="payment-terms"><strong>Payment:</strong> 50% Advance, 50% on Delivery</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Premium Website -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-header">
-                            <h4>Premium Website</h4>
-                            <div class="price-tag">₹30,000</div>
-                            <p class="price-subtitle">Advanced features & design</p>
-                        </div>
-                        <div class="pricing-body">
-                            <p class="package-description">An advanced website with up to 10 pages, custom animations,
-                                advanced SEO, and premium features. Perfect for businesses wanting to stand out online.
-                            </p>
-
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> Up to 10 Pages</li>
-                                <li><i class="fas fa-check-circle"></i> Custom Animations & Effects</li>
-                                <li><i class="fas fa-check-circle"></i> Advanced SEO Optimization</li>
-                                <li><i class="fas fa-check-circle"></i> Blog/News Section</li>
-                                <li><i class="fas fa-check-circle"></i> Image Gallery/Portfolio</li>
-                                <li><i class="fas fa-check-circle"></i> WhatsApp Integration</li>
-                                <li><i class="fas fa-check-circle"></i> Email Newsletter Setup</li>
-                                <li><i class="fas fa-check-circle"></i> Analytics Integration</li>
-                                <li><i class="fas fa-check-circle"></i> 3 Months Support</li>
-                            </ul>
-
-                            <div class="pricing-footer">
-                                <p class="payment-terms"><strong>Payment:</strong> 50% Advance, 50% on Delivery</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Digital Marketing Packages -->
-            <div class="pricing-category">
-                <h3 class="category-title"><i class="fas fa-bullhorn"></i> Digital Marketing Packages</h3>
-                <div class="pricing-grid-2col">
-                    <!-- Agency Management Fee -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-header">
-                            <h4>Agency Management Fee</h4>
-                            <div class="price-tag">₹25,000<span>/mo</span></div>
-                            <p class="price-subtitle">Professional Campaign Management</p>
-                        </div>
-                        <div class="pricing-body">
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> Meta Ads: ₹25,000/mo</li>
-                                <li><i class="fas fa-plus-circle"></i> Madgicx Tool: ₹8,000/mo (6m plan)</li>
-                                <li><i class="fas fa-chart-line"></i> Campaign Setup & Optimization</li>
-                                <li><i class="fas fa-file-invoice-dollar"></i> Monthly Performance Reports</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Recommended Ad Spend -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-header">
-                            <h4>Recommended Ad Spend</h4>
-                            <div class="price-tag">₹80,000<span>/mo</span></div>
-                            <p class="price-subtitle">Direct budget to platforms</p>
-                        </div>
-                        <div class="pricing-body">
-                            <ul class="features-list">
-                                <li><i class="fas fa-search"></i> Google Ads: ₹40,000</li>
-                                <li><i class="fas fa-bullhorn"></i> Meta Lead Gen (FB & IG): ₹30,000</li>
-                                <li><i class="fas fa-sync-alt"></i> Remarketing: ₹10,000</li>
-                                <li><i class="fas fa-users"></i> Targeted Audience Reach</li>
-                                <li><i class="fas fa-mouse-pointer"></i> High-Quality Lead Generation</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Brand Identity Packages -->
-            <div class="pricing-category">
-                <h3 class="category-title">
-                    <i class="fas fa-palette"></i> Brand Identity Packages
-                </h3>
-
-                <div class="pricing-grid-2col">
-                    <!-- Basic Brand Identity -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-header">
-                            <h4>Basic Brand Identity</h4>
-                            <div class="price-tag">₹12,000</div>
-                            <p class="price-subtitle">Strong brand foundation</p>
-                        </div>
-
-                        <div class="pricing-body">
-                            <p class="package-description">
-                                A professional brand identity package designed to give your business a clean,
-                                consistent, and trustworthy visual presence across platforms.
-                            </p>
-
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> Logo design (2 concepts + revisions)</li>
-                                <li><i class="fas fa-check-circle"></i> Brand color palette</li>
-                                <li><i class="fas fa-check-circle"></i> Typography selection</li>
-                                <li><i class="fas fa-check-circle"></i> Basic brand usage guidelines</li>
-                                <li><i class="fas fa-check-circle"></i> Social media profile branding</li>
-                                <li><i class="fas fa-check-circle"></i> Business card design</li>
-                                <li><i class="fas fa-check-circle"></i> 1 Month Support</li>
-                            </ul>
-
-                            <div class="pricing-footer">
-                                <p class="payment-terms">
-                                    <strong>Payment:</strong> Full Payment should be made at the time of booking
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Premium Brand Identity -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-header">
-                            <h4>Premium Brand Identity</h4>
-                            <div class="price-tag">₹25,000</div>
-                            <p class="price-subtitle">Complete brand system</p>
-                        </div>
-
-                        <div class="pricing-body">
-                            <p class="package-description">
-                                A complete brand identity and positioning solution built to create a memorable,
-                                scalable, and premium brand presence for long-term growth.
-                            </p>
-
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> Custom logo design (3–4 concepts)</li>
-                                <li><i class="fas fa-check-circle"></i> Complete visual identity system</li>
-                                <li><i class="fas fa-check-circle"></i> Brand strategy & positioning</li>
-                                <li><i class="fas fa-check-circle"></i> Brand voice & messaging guidelines</li>
-                                <li><i class="fas fa-check-circle"></i> Social media post templates</li>
-                                <li><i class="fas fa-check-circle"></i> Marketing collateral (flyer, banner)</li>
-                                <li><i class="fas fa-check-circle"></i> Brand guideline document (PDF)</li>
-                                <li><i class="fas fa-check-circle"></i> 3 Months Support</li>
-                            </ul>
-
-                            <div class="pricing-footer">
-                                <p class="payment-terms">
-                                    <strong>Payment:</strong> Full Payment should be made at the time of booking
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional Services -->
-            <div class="additional-services">
-                <h3><i class="fas fa-plus-circle"></i> Additional Services Starts from</h3>
-                <div class="services-grid">
-                    <div class="service-item">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Additional Page</span>
-                        <strong>₹2,000/page</strong>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-search"></i>
-                        <span>Monthly SEO</span>
-                        <strong>₹5,000/month</strong>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-pencil-alt"></i>
-                        <span>Content Writing</span>
-                        <strong>₹1,000/page</strong>
-                    </div>
-                    <div class="service-item">
-    <i class="fas fa-image"></i>
-    <span>Poster Editing</span>
-    <strong>₹500/post</strong>
 </div>
 
-<div class="service-item">
-    <i class="fas fa-video"></i>
-    <span>Short-form Video Editing</span>
-    <strong>₹1,000/reel</strong>
-</div>
-
-<div class="service-item">
-    <i class="fas fa-camera"></i>
-    <span>Product Shoot</span>
-    <strong>₹10,000/shoot</strong>
-</div>
-                </div>
+            <div style="text-align: center; margin-top: 3rem; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="services.html" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">
+                    View Full Service Details <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                </a>
+                <a href="pricing.html" class="btn btn-secondary" style="padding: 1rem 3rem; font-size: 1.1rem; border: 2px solid var(--orange-main); color: var(--orange-main); background: transparent;">
+                    View Pricing & Packages <i class="fas fa-tag" style="margin-left: 10px;"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="benefits" id="benefits">
+    <!-- OUR PROCESS -->
+    <section class="timeline" id="process">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Why Choose ALCAS for Your Digital Transformation</h2>
-                <p class="section-subtitle">We're not just a service provider - we're your growth partner</p>
-            </div>
-
-            <div class="benefits-grid">
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>Industry Expertise</h3>
-                    <p>We understand the seafood industry and know exactly how to position your premium tuna business
-                        online.</p>
-                </div>
-
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>All-in-One Solution</h3>
-                    <p>Website, CRM, social media, and ads - everything managed by one expert team.</p>
-                </div>
-
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Proven Results</h3>
-                    <p>Our strategies are data-driven and optimized for maximum ROI and business growth.</p>
-                </div>
-
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Dedicated Support</h3>
-                    <p>24/7 support team ready to help you succeed at every step of your digital journey.</p>
-                </div>
-
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Continuous Optimization</h3>
-                    <p>We constantly monitor, test, and improve your digital presence for better results.</p>
-                </div>
-
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Transparent Reporting</h3>
-                    <p>Monthly detailed reports showing exactly what we're doing and the results we're achieving.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section class="timeline" id="timeline">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Project Timeline</h2>
-                <p class="section-subtitle">From kickoff to launch - here's how we'll transform your business</p>
+                <h2 class="section-title">Our Process</h2>
+                <p class="section-subtitle">A meticulously crafted sequence designed to transform your ambitious visions into dominant digital realities.</p>
             </div>
 
             <div class="timeline-container">
                 <div class="timeline-item reveal">
                     <div class="timeline-marker">
-                        <i class="fas fa-handshake"></i>
+                        <i class="fas fa-search"></i>
                     </div>
                     <div class="timeline-content">
-                        <h3>Week 1-2: Discovery & Planning</h3>
-                        <p>We'll meet with your team, understand your business goals, analyze your market, and create a
-                            detailed project plan.</p>
+                        <h3>01. Discover & Strategize</h3>
+                        <p>We dive deep into your brand DNA, charting a precise roadmap uniquely aligned with your ultimate business objectives.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
                     <div class="timeline-marker">
-                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-hammer"></i>
                     </div>
                     <div class="timeline-content">
-                        <h3>Week 3-6: Design & Development</h3>
-                        <p>Our team will design your website, set up the CRM system, and create your brand assets for
-                            social media.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-marker">
-                        <i class="fas fa-vial"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <h3>Week 7-8: Testing & Refinement</h3>
-                        <p>Thorough testing of all systems, gathering your feedback, and making necessary adjustments.
-                        </p>
+                        <h3>02. Engineer & Craft</h3>
+                        <p>Our team builds striking, high-performance digital assets that instantly captivate your audience and outshine the competition.</p>
                     </div>
                 </div>
 
@@ -1587,23 +859,357 @@
                         <i class="fas fa-rocket"></i>
                     </div>
                     <div class="timeline-content">
-                        <h3>Week 9: Launch</h3>
-                        <p>Website goes live, social media accounts activated, and ad campaigns launched!</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-marker">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <h3>Ongoing: Growth & Optimization</h3>
-                        <p>Continuous management, optimization, and monthly reporting to ensure your success.</p>
+                        <h3>03. Launch & Elevate</h3>
+                        <p>We deploy your project with flawless precision, continuously optimizing the results for explosive growth and brand dominance.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Client <span class="gradient-text">Success Stories</span></h2>
+                <p>Hear from the visionaries who leveled up their businesses with ALCAS.</p>
+            </div>
+            
+            <div class="circular-testimonial-wrapper reveal">
+                <div class="circular-testimonial-grid">
+                    <!-- Images Column -->
+                    <div class="testimonial-images-container" id="testimonialImages">
+                        <img src="images/11 SBJ logo.png" alt="SBJ Jewelry" class="circular-img active" data-index="0">
+                        <img src="images/niyafit.png" alt="Niya Fit" class="circular-img" data-index="1">
+                        <img src="images/mithras-briyani.png" alt="Mithra's Biryani" class="circular-img" data-index="2">
+                    </div>
+
+                    <!-- Content Column -->
+                    <div class="testimonial-info-container">
+                        <div id="testimonialContent">
+                            <div class="testimonial-info active" data-index="0">
+                                <h3 class="client-name">SBJ Jewelry</h3>
+                                <p class="client-location">Chennai, India</p>
+                                <p class="client-quote">"Thanks to the stunning logo you created for our shop, we experienced a 45% increase in brand visibility and a 30% growth in new customer visits within the first quarter. You truly made our brand look premium!"</p>
+                            </div>
+                            <div class="testimonial-info" data-index="1">
+                                <h3 class="client-name">Niya Fit</h3>
+                                <p class="client-location">Chennai, India</p>
+                                <p class="client-quote">"We needed a fresh, modern platform to represent our fitness brand. They delivered a stunning website, fully optimized with SEO best practices, resulting in a 300% increase in organic traffic and customer engagement."</p>
+                            </div>
+                            <div class="testimonial-info" data-index="2">
+                                <h3 class="client-name">Mithra's Biryani</h3>
+                                <p class="client-location">Chennai, India</p>
+                                <p class="client-quote">"Your creative logo design helped Mithra’s Biryani achieve a 35% growth in new customer reach after our rebranding. Your sense of branding and communication made the entire process perfectly elegant."</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-nav">
+                            <button class="nav-btn" id="testimonialPrev"><i class="fas fa-arrow-left"></i></button>
+                            <button class="nav-btn" id="testimonialNext"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .circular-testimonial-wrapper {
+            margin-top: 0;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem 0;
+        }
+        .circular-testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (min-width: 992px) {
+            .circular-testimonial-grid {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+        .testimonial-images-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            perspective: 1500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circular-img {
+            position: absolute;
+            width: 80%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: all 0.8s cubic-bezier(0.4, 2, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .circular-img.active {
+            opacity: 1;
+            z-index: 3;
+            transform: translateX(0) translateY(0) scale(1) rotateY(0);
+            pointer-events: auto;
+        }
+        .circular-img.left {
+            opacity: 0.6;
+            z-index: 2;
+            transform: translateX(-30%) translateY(-15%) scale(0.8) rotateY(20deg);
+            pointer-events: auto;
+        }
+        .circular-img.right {
+            opacity: 0.6;
+            z-index: 2;
+            transform: translateX(30%) translateY(-15%) scale(0.8) rotateY(-20deg);
+            pointer-events: auto;
+        }
+        
+        .testimonial-info-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .testimonial-info {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .testimonial-info.active {
+            display: block;
+        }
+        .client-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .client-location {
+            color: var(--orange-main);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .client-quote {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+        .testimonial-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        .nav-btn:hover {
+            background: var(--orange-main);
+            border-color: var(--orange-main);
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.circular-img');
+            const infos = document.querySelectorAll('.testimonial-info');
+            const prevBtn = document.getElementById('testimonialPrev');
+            const nextBtn = document.getElementById('testimonialNext');
+            let currentIndex = 0;
+            const total = images.length;
+
+            function updateTestimonials() {
+                images.forEach((img, index) => {
+                    img.classList.remove('active', 'left', 'right');
+                    
+                    if (index === currentIndex) {
+                        img.classList.add('active');
+                    } else if (index === (currentIndex - 1 + total) % total) {
+                        img.classList.add('left');
+                    } else if (index === (currentIndex + 1) % total) {
+                        img.classList.add('right');
+                    }
+                });
+
+                infos.forEach((info, index) => {
+                    info.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % total;
+                updateTestimonials();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + total) % total;
+                updateTestimonials();
+            });
+
+            // Initial setup
+            updateTestimonials();
+
+            // Autoplay
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % total;
+                updateTestimonials();
+            }, 6000);
+        });
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <!-- Newsletter Section -->
+            <div class="newsletter-box reveal">
+                <div class="newsletter-content">
+                    <h3>Stay ahead with ALCAS Digital</h3>
+                    <p>Join thousands of professionals who trust ALCAS Digital for innovative business solutions.</p>
+                </div>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button class="btn btn-primary">Subscribe Now</button>
+                </div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <div class="brand-text">
+                        <span class="brand-name">ALCAS</span>
+                        <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                    </div>
+                    <p>Empowering businesses with reliable, scalable, and innovative digital solutions. We transform your visions into reality.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Business Automation</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">API Integrations</a></li>
+                        <li><a href="#">Custom Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope" style="margin-right: 10px; color: var(--orange-main);"></i> alcas2k25@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone" style="margin-right: 10px; color: var(--orange-main);"></i> +91 91760 40364</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--orange-main);"></i> No. 249, 9th cross street, M. K. B. Nagar, Chennai - 600039</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALCAS Digital Marketing Agency. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Consolidated Action Hub -->
+    <div class="action-hub" id="actionHub">
+        <div class="action-sub-wrap">
+            <div class="action-btn btn-voicebot" data-label="Voice Bot" onclick="showComingSoon('Voice Bot')">
+                <i class="fas fa-microphone"></i>
+            </div>
+            <div class="action-btn btn-chatbot" data-label="Chatbot" onclick="showComingSoon('Chatbot')">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            <a href="https://wa.me/919176040364" class="action-btn btn-whatsapp" data-label="WhatsApp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        <div class="action-main" id="actionMain">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+
+    <!-- Coming Soon Toast -->
+    <div class="coming-soon-toast" id="comingSoonToast">
+        <i class="fas fa-rocket"></i>
+        <span id="toastMessage">Coming Soon</span>
+    </div>
+
+    <script>
+        // Toggle Action Hub
+        const actionHub = document.getElementById('actionHub');
+        const actionMain = document.getElementById('actionMain');
+        
+        actionMain.addEventListener('click', () => {
+            actionHub.classList.toggle('active');
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!actionHub.contains(e.target)) {
+                actionHub.classList.remove('active');
+            }
+        });
+
+        function showComingSoon(botName) {
+            const toast = document.getElementById('comingSoonToast');
+            const msg = document.getElementById('toastMessage');
+            msg.textContent = botName + " Coming Soon";
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>

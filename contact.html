@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact ALCAS DIGITAL MARKETING AGENCY - Let's transform your digital presence. Reach out to us for premium digital solutions.">
+    <title>Contact Us | ALCAS DIGITAL MARKETING AGENCY</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/jpeg" href="images/alcas.jpg">
+
+    <style>
+        .contact-hero {
+            padding: 180px 0 80px;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-section {
+            padding: 100px 0;
+            background: #fffdf9;
+            color: #1a1a1a;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(230, 81, 0, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange-main);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .info-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .contact-form-container {
+            background: #fff;
+            padding: 3.5rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            background: #fcfcfc;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--orange-main);
+            box-shadow: 0 0 0 4px rgba(230, 81, 0, 0.1);
+        }
+
+        textarea.form-control {
+            height: 150px;
+            resize: none;
+        }
+
+        .map-section {
+            padding: 0;
+            height: 500px;
+            width: 100%;
+            background: #eee;
+            margin-bottom: -100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <img src="images/alcas.jpg" alt="ALCAS Logo" class="nav-logo">
+                <div class="brand-text">
+                    <span class="brand-name">ALCAS</span>
+                    <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                </div>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="contact-hero">
+            <div class="container">
+                <h1 class="reveal">Let's Craft Your Digital Future</h1>
+                <p class="reveal">Have a project in mind? We'd love to hear from you. Reach out to our team of experts and let's start your digital transformation today.</p>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Info Card -->
+                    <div class="info-card reveal">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Our Headquarters</h3>
+                                <p>No. 249, 9th cross street, M. K. B. Nagar,<br>Chennai - 600039<br>(Near Vivekananda School)</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Email Us</h3>
+                                <p>alcas2k25@gmail.com</p>
+                                <p>support@alcasdigital.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Call Us</h3>
+                                <p>+91 91760 40364</p>
+                                <p>Mon - Fri, 9am - 6pm</p>
+                            </div>
+                        </div>
+
+                        <div class="footer-socials" style="margin-top: 3rem;">
+                            <a href="#" class="social-link" style="border: 1px solid rgba(0,0,0,0.1); color: #333;"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link" style="border: 1px solid rgba(0,0,0,0.1); color: #333;"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" style="border: 1px solid rgba(0,0,0,0.1); color: #333;"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" style="border: 1px solid rgba(0,0,0,0.1); color: #333;"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container reveal">
+                        <form id="contactForm">
+                            <div class="grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" placeholder="John" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <select class="form-control">
+                                    <option>Website Development</option>
+                                    <option>Digital Marketing</option>
+                                    <option>CRM Solutions</option>
+                                    <option>Branding</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea class="form-control" placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; margin-top: 1rem;">
+                                Send Message <i class="fas fa-paper-plane" style="margin-left: 10px;"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAP -->
+        <section class="map-section reveal">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.6421044439123!2d80.2458143!3d13.1221379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52659777f72675%3A0xc07941d6b063806a!2sM.K.B.%20Nagar%2C%20Vyasarpadi%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1714658000000!5m2!1sen!2sin" 
+                allowfullscreen="" loading="lazy"></iframe>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <!-- Newsletter Section -->
+            <div class="newsletter-box reveal">
+                <div class="newsletter-content">
+                    <h3>Stay ahead with ALCAS Digital</h3>
+                    <p>Join thousands of professionals who trust ALCAS Digital for innovative business solutions.</p>
+                </div>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button class="btn btn-primary">Subscribe Now</button>
+                </div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <div class="brand-text">
+                        <span class="brand-name">ALCAS</span>
+                        <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                    </div>
+                    <p>Empowering businesses with reliable, scalable, and innovative digital solutions. We transform your visions into reality.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Business Automation</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">API Integrations</a></li>
+                        <li><a href="#">Custom Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope" style="margin-right: 10px; color: var(--orange-main);"></i> alcas2k25@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone" style="margin-right: 10px; color: var(--orange-main);"></i> +91 91760 40364</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--orange-main);"></i> No. 249, 9th cross street, M. K. B. Nagar, Chennai - 600039</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALCAS Digital Marketing Agency. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

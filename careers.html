@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Careers at ALCAS Digital - Join our team of innovators and creators.">
+    <title>Careers | ALCAS DIGITAL MARKETING AGENCY</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/jpeg" href="images/alcas.jpg">
+
+    <style>
+        .coming-soon-hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .spline-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, #000 80%);
+            z-index: 2;
+        }
+
+        .coming-soon-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 111, 0, 0.1);
+            border: 1px solid var(--orange-main);
+            color: var(--orange-main);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 111, 0, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 111, 0, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 111, 0, 0); }
+        }
+
+        .coming-soon-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .coming-soon-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .waitlist-form input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 15px 20px;
+            color: #fff;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .waitlist-form button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .waitlist-form {
+                flex-direction: column;
+                background: transparent;
+                border: none;
+                padding: 0;
+            }
+            .waitlist-form input {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER / NAVBAR -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <img src="images/alcas.jpg" alt="ALCAS Logo" class="nav-logo">
+                <div class="brand-text">
+                    <span class="brand-name">ALCAS</span>
+                    <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                </div>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="careers.html" class="nav-link active">Careers</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- COMING SOON HERO -->
+    <section class="coming-soon-hero">
+        <div class="spline-bg">
+            <canvas id="spline-canvas" style="width: 100%; height: 100%;"></canvas>
+            <script type="module">
+                import { Application } from 'https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.90/build/runtime.js';
+                const canvas = document.getElementById('spline-canvas');
+                const app = new Application(canvas);
+                app.load('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode').catch(err => console.error(err));
+            </script>
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="coming-soon-content">
+            <h1 class="coming-soon-title">Build the Future <br> <span class="gradient-text">With Us</span></h1>
+            <p class="coming-soon-subtitle">Our careers portal is under construction. We're looking for visionary creators, developers, and marketers to join the ALCAS family.</p>
+            
+            <form class="waitlist-form">
+                <input type="email" placeholder="Enter your email for early access">
+                <button type="submit" class="btn btn-primary">Notify Me</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" style="margin-top: 0;">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <div class="brand-text">
+                        <span class="brand-name">ALCAS</span>
+                        <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                    </div>
+                    <p>Empowering businesses with reliable, scalable, and innovative digital solutions. We transform your visions into reality.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Business Automation</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">API Integrations</a></li>
+                        <li><a href="#">Custom Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope" style="margin-right: 10px; color: var(--orange-main);"></i> alcas2k25@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone" style="margin-right: 10px; color: var(--orange-main);"></i> +91 91760 40364</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--orange-main);"></i> No. 249, 9th cross street, M. K. B. Nagar, Chennai - 600039</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALCAS Digital Marketing Agency. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

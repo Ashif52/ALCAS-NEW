@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - ALCAS Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/jpeg" href="images/alcas.jpg">
+    <style>
+        :root {
+            --cream: #fffdf9;
+            --orange-main: #e60000;
+            --orange-gradient: linear-gradient(135deg, #c1121fd9 0%, #c1121fd9 100%);
+            --dark-bg: #0f0f10;
+        }
+
+        .services-page {
+            background: var(--cream);
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .services-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-hero h1 {
+            font-size: 3.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 992px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        .service-full-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-full-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(230, 81, 0, 0.1);
+        }
+
+        .service-icon-wrap {
+            width: 70px;
+            height: 70px;
+            background: var(--orange-gradient);
+            color: #fff;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(0,0,0,0.04);
+            line-height: 1;
+        }
+
+        .service-full-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .service-full-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .service-features-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .service-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .service-features-list i {
+            color: #4caf50;
+        }
+
+        .service-tagline {
+            display: inline-block;
+            background: rgba(230, 81, 0, 0.08);
+            color: var(--orange-main);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .automation-section {
+            background: var(--dark-bg);
+            border-radius: 30px;
+            padding: 4rem;
+            margin-top: 5rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .automation-section::before {
+            content: '🤖';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 15rem;
+            opacity: 0.1;
+        }
+
+        .automation-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .automation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .auto-item {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .auto-item h4 { margin-bottom: 0.5rem; color: #ff0000; }
+
+        .cta-big {
+            text-align: center;
+            margin-top: 6rem;
+            padding: 6rem 2rem;
+            background: var(--orange-gradient);
+            border-radius: 40px;
+            color: #fff;
+        }
+
+        .cta-big h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        .cta-big p { font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.9; }
+        
+        .btn-white {
+            background: #fff;
+            color: var(--orange-main);
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-white:hover { transform: scale(1.05); }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <img src="images/alcas.jpg" alt="ALCAS Logo" class="nav-logo">
+                <div class="brand-text">
+                    <span class="brand-name">ALCAS</span>
+                    <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link active">Services</a></li>
+                <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="services-page">
+        <div class="container">
+            <div class="services-hero">
+                <h1>Our Complete Service Package</h1>
+                <p>We don’t just build websites — we create complete digital ecosystems that help businesses scale, automate, and convert.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 01 -->
+                <div class="service-full-card">
+                    <div class="service-number">01</div>
+                    <div class="service-icon-wrap"><i class="fas fa-code"></i></div>
+                    <h2>Website Development + CRM Systems</h2>
+                    <p>We build high-performance websites integrated with powerful CRM systems, designed to streamline operations and maximize conversions.</p>
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-check-circle"></i> Custom-designed, conversion-focused websites</li>
+                        <li><i class="fas fa-check-circle"></i> Integrated CRM for customer & lead management</li>
+                        <li><i class="fas fa-check-circle"></i> Order & workflow automation systems</li>
+                        <li><i class="fas fa-check-circle"></i> Secure database architecture</li>
+                        <li><i class="fas fa-check-circle"></i> Fully mobile-responsive and optimized</li>
+                    </ul>
+                    <span class="service-tagline">👉 Perfect for businesses that want automation + control</span>
+                </div>
+
+                <!-- Service 02 -->
+                <div class="service-full-card">
+                    <div class="service-number">02</div>
+                    <div class="service-icon-wrap"><i class="fas fa-mobile-alt"></i></div>
+                    <h2>Social Media Growth & Management</h2>
+                    <p>We handle your complete social presence — from strategy to execution — ensuring consistent growth and engagement.</p>
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-check-circle"></i> Content creation (posts, reels, creatives)</li>
+                        <li><i class="fas fa-check-circle"></i> Community engagement & response handling</li>
+                        <li><i class="fas fa-check-circle"></i> Brand positioning & storytelling</li>
+                        <li><i class="fas fa-check-circle"></i> Influencer collaboration strategies</li>
+                        <li><i class="fas fa-check-circle"></i> Monthly performance analytics</li>
+                    </ul>
+                    <span class="service-tagline">👉 Turn your social media into a lead-generating machine</span>
+                </div>
+
+                <!-- Service 03 -->
+                <div class="service-full-card">
+                    <div class="service-number">03</div>
+                    <div class="service-icon-wrap"><i class="fas fa-bullseye"></i></div>
+                    <h2>Performance Marketing & Paid Ads</h2>
+                    <p>We run data-driven ad campaigns that bring high-quality leads and measurable ROI.</p>
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-check-circle"></i> Google Ads (Search, Display, P-Max)</li>
+                        <li><i class="fas fa-check-circle"></i> Facebook & Instagram ad campaigns</li>
+                        <li><i class="fas fa-check-circle"></i> Audience targeting & retargeting funnels</li>
+                        <li><i class="fas fa-check-circle"></i> Conversion tracking & optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Continuous performance scaling</li>
+                    </ul>
+                    <span class="service-tagline">👉 No wasted budget — result-driven campaigns</span>
+                </div>
+
+                <!-- Service 04 -->
+                <div class="service-full-card">
+                    <div class="service-number">04</div>
+                    <div class="service-icon-wrap"><i class="fas fa-paint-brush"></i></div>
+                    <h2>Brand Identity & Positioning</h2>
+                    <p>We craft strong, memorable brands that stand out and build trust instantly.</p>
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-check-circle"></i> Logo & visual identity design</li>
+                        <li><i class="fas fa-check-circle"></i> Brand color systems & typography</li>
+                        <li><i class="fas fa-check-circle"></i> Brand voice and messaging</li>
+                        <li><i class="fas fa-check-circle"></i> Social media branding kits</li>
+                        <li><i class="fas fa-check-circle"></i> Complete brand guidelines</li>
+                    </ul>
+                    <span class="service-tagline">👉 Build a brand people remember</span>
+                </div>
+            </div>
+
+            <!-- Automation & AI -->
+            <div class="automation-section">
+                <div class="automation-content">
+                    <div class="service-tagline" style="background: rgba(255,152,0,0.2); color: #FF9800; margin-bottom: 1rem;">HIGHLY RECOMMENDED</div>
+                    <h2>🤖 05. Automation & AI Solutions</h2>
+                    <p>We integrate smart automation into your business to reduce manual work and improve efficiency.</p>
+                    <div class="automation-grid">
+                        <div class="auto-item">
+                            <h4>AI Chatbots</h4>
+                            <p>Website & WhatsApp intelligent assistants.</p>
+                        </div>
+                        <div class="auto-item">
+                            <h4>Call-to-Text</h4>
+                            <p>Automated SMS fallback for missed calls.</p>
+                        </div>
+                        <div class="auto-item">
+                            <h4>Lead Qualification</h4>
+                            <p>Automated vetting of incoming leads.</p>
+                        </div>
+                        <div class="auto-item">
+                            <h4>Workflow Tools</h4>
+                            <p>Connect your tools for zero-manual-entry.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem; font-weight: 700; color: #FF9800;">👉 Work smarter, not harder</p>
+                </div>
+            </div>
+
+            <!-- CTA SECTION -->
+            <div class="cta-big">
+                <h2>Let’s Build Your Digital System</h2>
+                <p>We don’t offer random services — we build complete business solutions tailored to your growth.</p>
+                <a href="index.html#contact" class="btn-white">👉 Get Started with ALCAS</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <!-- Newsletter Section -->
+            <div class="newsletter-box reveal">
+                <div class="newsletter-content">
+                    <h3>Stay ahead with ALCAS Digital</h3>
+                    <p>Join thousands of professionals who trust ALCAS Digital for innovative business solutions.</p>
+                </div>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button class="btn btn-primary">Subscribe Now</button>
+                </div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <div class="brand-text">
+                        <span class="brand-name">ALCAS</span>
+                        <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                    </div>
+                    <p>Empowering businesses with reliable, scalable, and innovative digital solutions. We transform your visions into reality.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Business Automation</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">API Integrations</a></li>
+                        <li><a href="#">Custom Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope" style="margin-right: 10px; color: var(--orange-main);"></i> alcas2k25@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone" style="margin-right: 10px; color: var(--orange-main);"></i> +91 91760 40364</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--orange-main);"></i> No. 249, 9th cross street, M. K. B. Nagar, Chennai - 600039</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALCAS Digital Marketing Agency. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

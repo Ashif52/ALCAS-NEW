@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transparent and competitive pricing for digital marketing, web development, and branding services at ALCAS.">
+    <title>Pricing Plans | ALCAS DIGITAL MARKETING AGENCY</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/jpeg" href="images/alcas.jpg">
+
+    <style>
+        :root {
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --red-main: #E63946;
+            --red-hover: #C1121F;
+            --grey-border: #dee2e6;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 50px rgba(230, 57, 70, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+
+        .pricing-header-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 180px 0 100px;
+            text-align: center;
+            border-bottom: 1px solid var(--grey-border);
+        }
+
+        .pricing-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .pricing-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-body-section {
+            padding: 80px 0;
+        }
+
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 60px;
+        }
+
+        .category-btn {
+            padding: 10px 25px;
+            border: 2px solid var(--grey-border);
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            border-color: var(--red-main);
+            color: var(--red-main);
+            background: rgba(230, 57, 70, 0.05);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: #fff;
+            border: 1px solid var(--grey-border);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--red-main);
+        }
+
+        .card-type {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--red-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .card-price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .card-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px;
+            flex-grow: 1;
+        }
+
+        .card-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dark);
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        .card-features li i {
+            color: var(--red-main);
+            font-size: 0.9rem;
+        }
+
+        .card-btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--red-main);
+            color: var(--red-main);
+        }
+
+        .card-btn:hover {
+            background: var(--red-main);
+            color: #fff;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Popular Badge Styling */
+        .card-popular {
+            background: #fff;
+            border: 2px solid var(--red-main);
+            box-shadow: var(--shadow-md);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .card-popular::after {
+            content: 'Most Popular';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--red-main);
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 50px;
+        }
+
+        .card-popular .card-btn {
+            background: var(--red-main);
+            color: #fff;
+        }
+
+        @media (max-width: 992px) {
+            .card-popular { transform: scale(1); }
+            .pricing-grid { max-width: 500px; margin: 0 auto; }
+        }
+
+        .footer-cta {
+            background: var(--text-dark);
+            padding: 100px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: 100px;
+        }
+
+        .footer-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-cta {
+            background: var(--red-main);
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background: var(--red-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER / NAVBAR -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <img src="images/alcas.jpg" alt="ALCAS Logo" class="nav-logo">
+                <div class="brand-text">
+                    <span class="brand-name">ALCAS</span>
+                    <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                </div>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="pricing-header-section">
+            <div class="container">
+                <div class="pricing-hero">
+                    <h1>Ready to <span class="gradient-text">Level Up?</span></h1>
+                    <p>High-impact digital solutions with clear, transparent pricing. No guesswork, just results.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-body-section">
+            <div class="container">
+                <div class="category-nav">
+                    <button class="category-btn active" data-category="marketing">Marketing</button>
+                    <button class="category-btn" data-category="development">Development</button>
+                    <button class="category-btn" data-category="branding">Branding</button>
+                    <button class="category-btn" data-category="seo">SEO</button>
+                    <button class="category-btn" data-category="crm-erp">CRM / ERP</button>
+                </div>
+
+                <div class="pricing-grid" id="pricingGrid">
+                    <!-- MARKETING -->
+                    <div class="pricing-card" data-category="marketing">
+                        <div class="card-type">Starter</div>
+                        <h3 class="card-title">Essential Pulse</h3>
+                        <div class="card-price">â‚¹15,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 8 Social Media Posts</li>
+                            <li><i class="fas fa-check"></i> Basic Content Strategy</li>
+                            <li><i class="fas fa-check"></i> Performance Tracking</li>
+                            <li><i class="fas fa-check"></i> Monthly Review Meeting</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Get Started</a>
+                    </div>
+
+                    <div class="pricing-card card-popular" data-category="marketing">
+                        <div class="card-type">Best Seller</div>
+                        <h3 class="card-title">Growth Accelerator</h3>
+                        <div class="card-price">â‚¹35,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 16 Premium Posts & Reels</li>
+                            <li><i class="fas fa-check"></i> Advanced SEO Campaign</li>
+                            <li><i class="fas fa-check"></i> Ad Campaign Management</li>
+                            <li><i class="fas fa-check"></i> Priority Creative Support</li>
+                            <li><i class="fas fa-check"></i> Dedicated Growth Expert</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
+                    </div>
+
+                    <div class="pricing-card" data-category="marketing">
+                        <div class="card-type">Enterprise</div>
+                        <h3 class="card-title">Market Authority</h3>
+                        <div class="card-price">Custom</div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Omnichannel Strategy</li>
+                            <li><i class="fas fa-check"></i> Influencer & PR Integration</li>
+                            <li><i class="fas fa-check"></i> Custom Software Solutions</li>
+                            <li><i class="fas fa-check"></i> 24/7 Priority Access</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
+                    </div>
+
+                    <!-- DEVELOPMENT -->
+                    <div class="pricing-card" data-category="development" style="display:none;">
+                        <div class="card-type">Corporate</div>
+                        <h3 class="card-title">Premium Website</h3>
+                        <div class="card-price">â‚¹45,000<span>/one-time</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 10 Custom Pages</li>
+                            <li><i class="fas fa-check"></i> Fully Responsive Design</li>
+                            <li><i class="fas fa-check"></i> CMS Integration</li>
+                            <li><i class="fas fa-check"></i> 1 Year Free Hosting</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Build Now</a>
+                    </div>
+
+                    <div class="pricing-card card-popular" data-category="development" style="display:none;">
+                        <div class="card-type">E-commerce</div>
+                        <h3 class="card-title">Global Store</h3>
+                        <div class="card-price">â‚¹85,000<span>/one-time</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Unlimited Products</li>
+                            <li><i class="fas fa-check"></i> Payment Gateway Integration</li>
+                            <li><i class="fas fa-check"></i> Inventory Management</li>
+                            <li><i class="fas fa-check"></i> Advanced Checkout Flow</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Launch Store</a>
+                    </div>
+
+                    <div class="pricing-card" data-category="development" style="display:none;">
+                        <div class="card-type">Enterprise</div>
+                        <h3 class="card-title">Custom Software</h3>
+                        <div class="card-price">Custom</div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Tailored Functionality</li>
+                            <li><i class="fas fa-check"></i> API Integrations</li>
+                            <li><i class="fas fa-check"></i> Advanced Security</li>
+                            <li><i class="fas fa-check"></i> Dedicated Dev Team</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Consult Sales</a>
+                    </div>
+
+                    <!-- BRANDING -->
+                    <div class="pricing-card" data-category="branding" style="display:none;">
+                        <div class="card-type">Visuals</div>
+                        <h3 class="card-title">Logo & Identity</h3>
+                        <div class="card-price">â‚¹20,000<span>/one-time</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 3 Concept Designs</li>
+                            <li><i class="fas fa-check"></i> Brand Style Guide</li>
+                            <li><i class="fas fa-check"></i> Stationery Design</li>
+                            <li><i class="fas fa-check"></i> Social Media Kit</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Brand Me</a>
+                    </div>
+
+                    <div class="pricing-card card-popular" data-category="branding" style="display:none;">
+                        <div class="card-type">Professional</div>
+                        <h3 class="card-title">Global Rebrand</h3>
+                        <div class="card-price">â‚¹55,000<span>/one-time</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Complete Market Audit</li>
+                            <li><i class="fas fa-check"></i> New Visual Language</li>
+                            <li><i class="fas fa-check"></i> Brand Voice & Guidelines</li>
+                            <li><i class="fas fa-check"></i> Full Implementation</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Rebrand Now</a>
+                    </div>
+
+                    <div class="pricing-card" data-category="branding" style="display:none;">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Luxury Identity</h3>
+                        <div class="card-price">â‚¹95,000<span>/one-time</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> High-end Art Direction</li>
+                            <li><i class="fas fa-check"></i> Motion Graphics Identity</li>
+                            <li><i class="fas fa-check"></i> Custom Typography</li>
+                            <li><i class="fas fa-check"></i> Brand Strategy Workshop</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Go Luxury</a>
+                    </div>
+
+                    <!-- SEO -->
+                    <div class="pricing-card" data-category="seo" style="display:none;">
+                        <div class="card-type">Local</div>
+                        <h3 class="card-title">Local Presence</h3>
+                        <div class="card-price">â‚¹12,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> GMB Optimization</li>
+                            <li><i class="fas fa-check"></i> Local Citations</li>
+                            <li><i class="fas fa-check"></i> Keyword Tracking</li>
+                            <li><i class="fas fa-check"></i> Reviews Management</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Start Local</a>
+                    </div>
+
+                    <div class="pricing-card card-popular" data-category="seo" style="display:none;">
+                        <div class="card-type">Ranking</div>
+                        <h3 class="card-title">SEO Authority</h3>
+                        <div class="card-price">â‚¹25,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Keyword Research</li>
+                            <li><i class="fas fa-check"></i> Technical SEO Audit</li>
+                            <li><i class="fas fa-check"></i> High DA Backlinks</li>
+                            <li><i class="fas fa-check"></i> Content Optimization</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Rank Higher</a>
+                    </div>
+
+                    <div class="pricing-card" data-category="seo" style="display:none;">
+                        <div class="card-type">National</div>
+                        <h3 class="card-title">Market Dominance</h3>
+                        <div class="card-price">â‚¹60,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> National Keyword Targeting</li>
+                            <li><i class="fas fa-check"></i> PR & Link Building</li>
+                            <li><i class="fas fa-check"></i> Advanced Competitor Analysis</li>
+                            <li><i class="fas fa-check"></i> Weekly Video Reporting</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Dominate Market</a>
+                    </div>
+
+                    <!-- CRM / ERP -->
+                    <div class="pricing-card" data-category="crm-erp" style="display:none;">
+                        <div class="card-type">Operations</div>
+                        <h3 class="card-title">CRM Solutions</h3>
+                        <div class="card-price">Custom</div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Lead Management</li>
+                            <li><i class="fas fa-check"></i> Sales Automation</li>
+                            <li><i class="fas fa-check"></i> Analytics & Reporting</li>
+                            <li><i class="fas fa-check"></i> User Training</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Optimize Sales</a>
+                    </div>
+                    
+                    <div class="pricing-card card-popular" data-category="crm-erp" style="display:none;">
+                        <div class="card-type">Enterprise</div>
+                        <h3 class="card-title">Full ERP Suite</h3>
+                        <div class="card-price">Custom</div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Resource Planning</li>
+                            <li><i class="fas fa-check"></i> Finance & Inventory</li>
+                            <li><i class="fas fa-check"></i> HR Management</li>
+                            <li><i class="fas fa-check"></i> Multi-branch Sync</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
+                    </div>
+
+                    <div class="pricing-card" data-category="crm-erp" style="display:none;">
+                        <div class="card-type">Industrial</div>
+                        <h3 class="card-title">Custom ERP</h3>
+                        <div class="card-price">Custom</div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Tailored Industry Modules</li>
+                            <li><i class="fas fa-check"></i> SAP/Oracle Integrations</li>
+                            <li><i class="fas fa-check"></i> On-premise Deployment</li>
+                            <li><i class="fas fa-check"></i> Lifetime Maintenance</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Get Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="footer-cta">
+            <div class="container">
+                <h2>Need a Custom Solution?</h2>
+                <p style="margin-bottom: 2rem; opacity: 0.8;">We build tailored packages for unique business requirements. Let's talk about your vision.</p>
+                <a href="contact.html" class="btn-cta">Book a Discovery Call</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <!-- Newsletter Section -->
+            <div class="newsletter-box reveal">
+                <div class="newsletter-content">
+                    <h3>Stay ahead with ALCAS Digital</h3>
+                    <p>Join thousands of professionals who trust ALCAS Digital for innovative business solutions.</p>
+                </div>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button class="btn btn-primary">Subscribe Now</button>
+                </div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <div class="brand-text">
+                        <span class="brand-name">ALCAS</span>
+                        <span class="brand-subtitle">DIGITAL MARKETING AGENCY</span>
+                    </div>
+                    <p>Empowering businesses with reliable, scalable, and innovative digital solutions. We transform your visions into reality.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Business Automation</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">API Integrations</a></li>
+                        <li><a href="#">Custom Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope" style="margin-right: 10px; color: var(--red-main);"></i> alcas2k25@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone" style="margin-right: 10px; color: var(--red-main);"></i> +91 91760 40364</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--red-main);"></i> No. 249, 9th cross street, M. K. B. Nagar, Chennai - 600039</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALCAS Digital Marketing Agency. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Category switching logic
+        const tabs = document.querySelectorAll('.category-btn');
+        const cards = document.querySelectorAll('.pricing-card');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Filter cards
+                const target = tab.dataset.category;
+                cards.forEach(card => {
+                    if (card.dataset.category === target) {
+                        card.style.display = 'flex';
+                        // Add fade-in animation
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

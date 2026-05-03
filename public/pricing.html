@@ -284,222 +284,398 @@
             </div>
         </section>
 
-        <section class="pricing-body-section">
+                <section class="pricing-body-section">
             <div class="container">
-                <div class="category-nav">
-                    <button class="category-btn active" data-category="marketing">Marketing</button>
-                    <button class="category-btn" data-category="development">Development</button>
-                    <button class="category-btn" data-category="branding">Branding</button>
+                <div class="category-nav" style="flex-wrap: wrap; gap: 15px;">
+                    <button class="category-btn active" data-category="web-dev">Web Development</button>
+                    <button class="category-btn" data-category="chatbot">Chatbots</button>
+                    <button class="category-btn" data-category="app-dev">App Development</button>
+                    <button class="category-btn" data-category="wa-automation">WA Automation</button>
+                    <button class="category-btn" data-category="wa-marketing">WA Marketing</button>
+                    <button class="category-btn" data-category="email-marketing">Email Marketing</button>
+                    <button class="category-btn" data-category="crm">CRM</button>
+                    <button class="category-btn" data-category="erp">ERP</button>
                     <button class="category-btn" data-category="seo">SEO</button>
-                    <button class="category-btn" data-category="crm-erp">CRM / ERP</button>
+                    <button class="category-btn" data-category="digital-marketing">Digital Marketing</button>
                 </div>
 
                 <div class="pricing-grid" id="pricingGrid">
-                    <!-- MARKETING -->
-                    <div class="pricing-card" data-category="marketing">
-                        <div class="card-type">Starter</div>
-                        <h3 class="card-title">Essential Pulse</h3>
-                        <div class="card-price">â‚¹15,000<span>/mo</span></div>
+                    <!-- WEB DEVELOPMENT -->
+                    <div class="pricing-card" data-category="web-dev">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹30,000<span></span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> 8 Social Media Posts</li>
-                            <li><i class="fas fa-check"></i> Basic Content Strategy</li>
-                            <li><i class="fas fa-check"></i> Performance Tracking</li>
-                            <li><i class="fas fa-check"></i> Monthly Review Meeting</li>
+                            <li><i class="fas fa-check"></i> Up to 5 pages</li>
+                            <li><i class="fas fa-check"></i> Mobile responsive design</li>
+                            <li><i class="fas fa-check"></i> Contact form integration</li>
+                            <li><i class="fas fa-check"></i> Basic SEO setup</li>
+                            <li><i class="fas fa-check"></i> 2 revisions</li>
                         </ul>
                         <a href="contact.html" class="card-btn">Get Started</a>
                     </div>
-
-                    <div class="pricing-card card-popular" data-category="marketing">
-                        <div class="card-type">Best Seller</div>
-                        <h3 class="card-title">Growth Accelerator</h3>
-                        <div class="card-price">â‚¹35,000<span>/mo</span></div>
+                    <div class="pricing-card card-popular" data-category="web-dev">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹50,000<span></span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> 16 Premium Posts & Reels</li>
-                            <li><i class="fas fa-check"></i> Advanced SEO Campaign</li>
-                            <li><i class="fas fa-check"></i> Ad Campaign Management</li>
-                            <li><i class="fas fa-check"></i> Priority Creative Support</li>
-                            <li><i class="fas fa-check"></i> Dedicated Growth Expert</li>
+                            <li><i class="fas fa-check"></i> Up to 10 pages</li>
+                            <li><i class="fas fa-check"></i> Custom UI/UX design</li>
+                            <li><i class="fas fa-check"></i> Blog & dynamic sections</li>
+                            <li><i class="fas fa-check"></i> Full SEO (on-page)</li>
+                            <li><i class="fas fa-check"></i> 3 revisions</li>
                         </ul>
                         <a href="contact.html" class="card-btn">Choose Plan</a>
                     </div>
-
-                    <div class="pricing-card" data-category="marketing">
-                        <div class="card-type">Enterprise</div>
-                        <h3 class="card-title">Market Authority</h3>
-                        <div class="card-price">Custom</div>
+                    <div class="pricing-card" data-category="web-dev">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹70,000+<span></span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Omnichannel Strategy</li>
-                            <li><i class="fas fa-check"></i> Influencer & PR Integration</li>
-                            <li><i class="fas fa-check"></i> Custom Software Solutions</li>
-                            <li><i class="fas fa-check"></i> 24/7 Priority Access</li>
+                            <li><i class="fas fa-check"></i> 15+ pages</li>
+                            <li><i class="fas fa-check"></i> Advanced UI/UX system</li>
+                            <li><i class="fas fa-check"></i> CMS integration</li>
+                            <li><i class="fas fa-check"></i> Speed & security optimization</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics</li>
                         </ul>
                         <a href="contact.html" class="card-btn">Contact Sales</a>
                     </div>
-
-                    <!-- DEVELOPMENT -->
-                    <div class="pricing-card" data-category="development" style="display:none;">
-                        <div class="card-type">Corporate</div>
-                        <h3 class="card-title">Premium Website</h3>
-                        <div class="card-price">â‚¹45,000<span>/one-time</span></div>
+                    <!-- CHATBOT DEVELOPMENT -->
+                    <div class="pricing-card" data-category="chatbot" style="display:none;">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹10,000<span></span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> 10 Custom Pages</li>
-                            <li><i class="fas fa-check"></i> Fully Responsive Design</li>
-                            <li><i class="fas fa-check"></i> CMS Integration</li>
-                            <li><i class="fas fa-check"></i> 1 Year Free Hosting</li>
+                            <li><i class="fas fa-check"></i> FAQ chatbot</li>
+                            <li><i class="fas fa-check"></i> Website integration</li>
+                            <li><i class="fas fa-check"></i> Basic automation replies</li>
+                            <li><i class="fas fa-check"></i> Lead capture</li>
                         </ul>
-                        <a href="contact.html" class="card-btn">Build Now</a>
+                        <a href="contact.html" class="card-btn">Get Started</a>
                     </div>
-
-                    <div class="pricing-card card-popular" data-category="development" style="display:none;">
-                        <div class="card-type">E-commerce</div>
-                        <h3 class="card-title">Global Store</h3>
-                        <div class="card-price">â‚¹85,000<span>/one-time</span></div>
+                    <div class="pricing-card card-popular" data-category="chatbot" style="display:none;">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹25,000<span></span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Unlimited Products</li>
-                            <li><i class="fas fa-check"></i> Payment Gateway Integration</li>
-                            <li><i class="fas fa-check"></i> Inventory Management</li>
-                            <li><i class="fas fa-check"></i> Advanced Checkout Flow</li>
+                            <li><i class="fas fa-check"></i> Lead qualification bot</li>
+                            <li><i class="fas fa-check"></i> CRM integration</li>
+                            <li><i class="fas fa-check"></i> Booking system</li>
+                            <li><i class="fas fa-check"></i> Multi-language support</li>
                         </ul>
-                        <a href="contact.html" class="card-btn">Launch Store</a>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
                     </div>
-
-                    <div class="pricing-card" data-category="development" style="display:none;">
-                        <div class="card-type">Enterprise</div>
-                        <h3 class="card-title">Custom Software</h3>
-                        <div class="card-price">Custom</div>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Tailored Functionality</li>
-                            <li><i class="fas fa-check"></i> API Integrations</li>
-                            <li><i class="fas fa-check"></i> Advanced Security</li>
-                            <li><i class="fas fa-check"></i> Dedicated Dev Team</li>
-                        </ul>
-                        <a href="contact.html" class="card-btn">Consult Sales</a>
-                    </div>
-
-                    <!-- BRANDING -->
-                    <div class="pricing-card" data-category="branding" style="display:none;">
-                        <div class="card-type">Visuals</div>
-                        <h3 class="card-title">Logo & Identity</h3>
-                        <div class="card-price">â‚¹20,000<span>/one-time</span></div>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> 3 Concept Designs</li>
-                            <li><i class="fas fa-check"></i> Brand Style Guide</li>
-                            <li><i class="fas fa-check"></i> Stationery Design</li>
-                            <li><i class="fas fa-check"></i> Social Media Kit</li>
-                        </ul>
-                        <a href="contact.html" class="card-btn">Brand Me</a>
-                    </div>
-
-                    <div class="pricing-card card-popular" data-category="branding" style="display:none;">
-                        <div class="card-type">Professional</div>
-                        <h3 class="card-title">Global Rebrand</h3>
-                        <div class="card-price">â‚¹55,000<span>/one-time</span></div>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Complete Market Audit</li>
-                            <li><i class="fas fa-check"></i> New Visual Language</li>
-                            <li><i class="fas fa-check"></i> Brand Voice & Guidelines</li>
-                            <li><i class="fas fa-check"></i> Full Implementation</li>
-                        </ul>
-                        <a href="contact.html" class="card-btn">Rebrand Now</a>
-                    </div>
-
-                    <div class="pricing-card" data-category="branding" style="display:none;">
+                    <div class="pricing-card" data-category="chatbot" style="display:none;">
                         <div class="card-type">Premium</div>
-                        <h3 class="card-title">Luxury Identity</h3>
-                        <div class="card-price">â‚¹95,000<span>/one-time</span></div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹50,000<span></span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> High-end Art Direction</li>
-                            <li><i class="fas fa-check"></i> Motion Graphics Identity</li>
-                            <li><i class="fas fa-check"></i> Custom Typography</li>
-                            <li><i class="fas fa-check"></i> Brand Strategy Workshop</li>
+                            <li><i class="fas fa-check"></i> AI chatbot</li>
+                            <li><i class="fas fa-check"></i> NLP conversations</li>
+                            <li><i class="fas fa-check"></i> Multi-platform bot</li>
+                            <li><i class="fas fa-check"></i> Advanced automation</li>
                         </ul>
-                        <a href="contact.html" class="card-btn">Go Luxury</a>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
                     </div>
-
+                    <!-- APPLICATION DEVELOPMENT -->
+                    <div class="pricing-card" data-category="app-dev" style="display:none;">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹4,00,000<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Android or iOS app</li>
+                            <li><i class="fas fa-check"></i> Up to 5 screens</li>
+                            <li><i class="fas fa-check"></i> Login system</li>
+                            <li><i class="fas fa-check"></i> Basic database</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card card-popular" data-category="app-dev" style="display:none;">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹4,50,000 - ₹6,50,000<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Android + iOS</li>
+                            <li><i class="fas fa-check"></i> Payment integration</li>
+                            <li><i class="fas fa-check"></i> Admin dashboard</li>
+                            <li><i class="fas fa-check"></i> API integrations</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card" data-category="app-dev" style="display:none;">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹6,50,000+<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Fully custom app</li>
+                            <li><i class="fas fa-check"></i> Real-time features</li>
+                            <li><i class="fas fa-check"></i> Advanced security</li>
+                            <li><i class="fas fa-check"></i> Cloud infrastructure</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
+                    </div>
+                    <!-- WHATSAPP AUTOMATION -->
+                    <div class="pricing-card" data-category="wa-automation" style="display:none;">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹8,000<span>/one-time</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Chatbot setup</li>
+                            <li><i class="fas fa-check"></i> Auto replies</li>
+                            <li><i class="fas fa-check"></i> Lead capture form</li>
+                            <li><i class="fas fa-check"></i> Basic workflows</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card card-popular" data-category="wa-automation" style="display:none;">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹18,000<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Advanced chatbot flows</li>
+                            <li><i class="fas fa-check"></i> CRM integration</li>
+                            <li><i class="fas fa-check"></i> Broadcast automation</li>
+                            <li><i class="fas fa-check"></i> Booking automation</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card" data-category="wa-automation" style="display:none;">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹35,000<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Full automation system</li>
+                            <li><i class="fas fa-check"></i> API integrations</li>
+                            <li><i class="fas fa-check"></i> Sales funnel automation</li>
+                            <li><i class="fas fa-check"></i> Analytics dashboard</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
+                    </div>
+                    <!-- WHATSAPP MARKETING -->
+                    <div class="pricing-card" data-category="wa-marketing" style="display:none;">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹5,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 2 campaigns</li>
+                            <li><i class="fas fa-check"></i> Message templates</li>
+                            <li><i class="fas fa-check"></i> Scheduling</li>
+                            <li><i class="fas fa-check"></i> Basic reports</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card card-popular" data-category="wa-marketing" style="display:none;">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹10,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 4 campaigns/month</li>
+                            <li><i class="fas fa-check"></i> Customer segmentation</li>
+                            <li><i class="fas fa-check"></i> Optimization</li>
+                            <li><i class="fas fa-check"></i> Analytics</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card" data-category="wa-marketing" style="display:none;">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹18,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Advanced campaigns</li>
+                            <li><i class="fas fa-check"></i> Funnel automation</li>
+                            <li><i class="fas fa-check"></i> CRM integration</li>
+                            <li><i class="fas fa-check"></i> Lead scoring</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
+                    </div>
+                    <!-- EMAIL MARKETING -->
+                    <div class="pricing-card" data-category="email-marketing" style="display:none;">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹5,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 2 campaigns</li>
+                            <li><i class="fas fa-check"></i> Template design</li>
+                            <li><i class="fas fa-check"></i> Newsletter setup</li>
+                            <li><i class="fas fa-check"></i> Basic automation</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card card-popular" data-category="email-marketing" style="display:none;">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹12,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 4 campaigns/month</li>
+                            <li><i class="fas fa-check"></i> Funnel setup</li>
+                            <li><i class="fas fa-check"></i> A/B testing</li>
+                            <li><i class="fas fa-check"></i> Optimization</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card" data-category="email-marketing" style="display:none;">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹20,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Advanced automation</li>
+                            <li><i class="fas fa-check"></i> Lead nurturing</li>
+                            <li><i class="fas fa-check"></i> Behavioral triggers</li>
+                            <li><i class="fas fa-check"></i> Weekly reports</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
+                    </div>
+                    <!-- CRM DEVELOPMENT -->
+                    <div class="pricing-card" data-category="crm" style="display:none;">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹75,000<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Lead management</li>
+                            <li><i class="fas fa-check"></i> User roles</li>
+                            <li><i class="fas fa-check"></i> Basic dashboard</li>
+                            <li><i class="fas fa-check"></i> Reporting</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card card-popular" data-category="crm" style="display:none;">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹1,02,000<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> WhatsApp + Email integration</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics</li>
+                            <li><i class="fas fa-check"></i> Automation workflows</li>
+                            <li><i class="fas fa-check"></i> Multi-user system</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card" data-category="crm" style="display:none;">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹1,20,000+<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Full CRM system</li>
+                            <li><i class="fas fa-check"></i> API integrations</li>
+                            <li><i class="fas fa-check"></i> Custom workflows</li>
+                            <li><i class="fas fa-check"></i> Advanced security</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
+                    </div>
+                    <!-- ERP DEVELOPMENT -->
+                    <div class="pricing-card" data-category="erp" style="display:none;">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹1,50,000<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Inventory management</li>
+                            <li><i class="fas fa-check"></i> Sales tracking</li>
+                            <li><i class="fas fa-check"></i> Basic reports</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card card-popular" data-category="erp" style="display:none;">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹2,50,000<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> HR + Finance modules</li>
+                            <li><i class="fas fa-check"></i> Automation workflows</li>
+                            <li><i class="fas fa-check"></i> Analytics dashboard</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card" data-category="erp" style="display:none;">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹4,00,000+<span></span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Full ERP suite</li>
+                            <li><i class="fas fa-check"></i> Custom modules</li>
+                            <li><i class="fas fa-check"></i> API integrations</li>
+                            <li><i class="fas fa-check"></i> Enterprise security</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
+                    </div>
                     <!-- SEO -->
                     <div class="pricing-card" data-category="seo" style="display:none;">
-                        <div class="card-type">Local</div>
-                        <h3 class="card-title">Local Presence</h3>
-                        <div class="card-price">â‚¹12,000<span>/mo</span></div>
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹6,000<span>/mo</span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> GMB Optimization</li>
-                            <li><i class="fas fa-check"></i> Local Citations</li>
-                            <li><i class="fas fa-check"></i> Keyword Tracking</li>
-                            <li><i class="fas fa-check"></i> Reviews Management</li>
+                            <li><i class="fas fa-check"></i> Keyword research</li>
+                            <li><i class="fas fa-check"></i> 1 blog/month</li>
+                            <li><i class="fas fa-check"></i> 15 backlinks</li>
+                            <li><i class="fas fa-check"></i> Basic SEO</li>
                         </ul>
-                        <a href="contact.html" class="card-btn">Start Local</a>
+                        <a href="contact.html" class="card-btn">Get Started</a>
                     </div>
-
                     <div class="pricing-card card-popular" data-category="seo" style="display:none;">
-                        <div class="card-type">Ranking</div>
-                        <h3 class="card-title">SEO Authority</h3>
-                        <div class="card-price">â‚¹25,000<span>/mo</span></div>
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹12,000<span>/mo</span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Keyword Research</li>
-                            <li><i class="fas fa-check"></i> Technical SEO Audit</li>
-                            <li><i class="fas fa-check"></i> High DA Backlinks</li>
-                            <li><i class="fas fa-check"></i> Content Optimization</li>
+                            <li><i class="fas fa-check"></i> 10 keywords</li>
+                            <li><i class="fas fa-check"></i> 2 blogs/month</li>
+                            <li><i class="fas fa-check"></i> Technical SEO</li>
+                            <li><i class="fas fa-check"></i> Rank tracking</li>
                         </ul>
-                        <a href="contact.html" class="card-btn">Rank Higher</a>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
                     </div>
-
                     <div class="pricing-card" data-category="seo" style="display:none;">
-                        <div class="card-type">National</div>
-                        <h3 class="card-title">Market Dominance</h3>
-                        <div class="card-price">â‚¹60,000<span>/mo</span></div>
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹20,000<span>/mo</span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> National Keyword Targeting</li>
-                            <li><i class="fas fa-check"></i> PR & Link Building</li>
-                            <li><i class="fas fa-check"></i> Advanced Competitor Analysis</li>
-                            <li><i class="fas fa-check"></i> Weekly Video Reporting</li>
-                        </ul>
-                        <a href="contact.html" class="card-btn">Dominate Market</a>
-                    </div>
-
-                    <!-- CRM / ERP -->
-                    <div class="pricing-card" data-category="crm-erp" style="display:none;">
-                        <div class="card-type">Operations</div>
-                        <h3 class="card-title">CRM Solutions</h3>
-                        <div class="card-price">Custom</div>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Lead Management</li>
-                            <li><i class="fas fa-check"></i> Sales Automation</li>
-                            <li><i class="fas fa-check"></i> Analytics & Reporting</li>
-                            <li><i class="fas fa-check"></i> User Training</li>
-                        </ul>
-                        <a href="contact.html" class="card-btn">Optimize Sales</a>
-                    </div>
-                    
-                    <div class="pricing-card card-popular" data-category="crm-erp" style="display:none;">
-                        <div class="card-type">Enterprise</div>
-                        <h3 class="card-title">Full ERP Suite</h3>
-                        <div class="card-price">Custom</div>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Resource Planning</li>
-                            <li><i class="fas fa-check"></i> Finance & Inventory</li>
-                            <li><i class="fas fa-check"></i> HR Management</li>
-                            <li><i class="fas fa-check"></i> Multi-branch Sync</li>
+                            <li><i class="fas fa-check"></i> 20 keywords</li>
+                            <li><i class="fas fa-check"></i> 4 blogs/month</li>
+                            <li><i class="fas fa-check"></i> Full SEO strategy</li>
+                            <li><i class="fas fa-check"></i> Weekly reports</li>
                         </ul>
                         <a href="contact.html" class="card-btn">Contact Sales</a>
                     </div>
-
-                    <div class="pricing-card" data-category="crm-erp" style="display:none;">
-                        <div class="card-type">Industrial</div>
-                        <h3 class="card-title">Custom ERP</h3>
-                        <div class="card-price">Custom</div>
+                    <!-- DIGITAL MARKETING -->
+                    <div class="pricing-card" data-category="digital-marketing" style="display:none;">
+                        <div class="card-type">Basic</div>
+                        <h3 class="card-title">Basic</h3>
+                        <div class="card-price">₹25,000<span>/mo</span></div>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Tailored Industry Modules</li>
-                            <li><i class="fas fa-check"></i> SAP/Oracle Integrations</li>
-                            <li><i class="fas fa-check"></i> On-premise Deployment</li>
-                            <li><i class="fas fa-check"></i> Lifetime Maintenance</li>
+                            <li><i class="fas fa-check"></i> 10 posts/month</li>
+                            <li><i class="fas fa-check"></i> 4 reels</li>
+                            <li><i class="fas fa-check"></i> Content strategy</li>
+                            <li><i class="fas fa-check"></i> Organic growth</li>
                         </ul>
-                        <a href="contact.html" class="card-btn">Get Quote</a>
+                        <a href="contact.html" class="card-btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card card-popular" data-category="digital-marketing" style="display:none;">
+                        <div class="card-type">Standard</div>
+                        <h3 class="card-title">Standard</h3>
+                        <div class="card-price">₹40,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 14 posts</li>
+                            <li><i class="fas fa-check"></i> 8 reels</li>
+                            <li><i class="fas fa-check"></i> Paid ads handling</li>
+                            <li><i class="fas fa-check"></i> Branding support</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card" data-category="digital-marketing" style="display:none;">
+                        <div class="card-type">Premium</div>
+                        <h3 class="card-title">Premium</h3>
+                        <div class="card-price">₹60,000<span>/mo</span></div>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 16+ posts</li>
+                            <li><i class="fas fa-check"></i> 12 reels</li>
+                            <li><i class="fas fa-check"></i> Full strategy</li>
+                            <li><i class="fas fa-check"></i> Analytics + scaling</li>
+                        </ul>
+                        <a href="contact.html" class="card-btn">Contact Sales</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="footer-cta">
+<section class="footer-cta">
             <div class="container">
                 <h2>Need a Custom Solution?</h2>
                 <p style="margin-bottom: 2rem; opacity: 0.8;">We build tailored packages for unique business requirements. Let's talk about your vision.</p>

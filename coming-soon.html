@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - ALCAS Digital Solutions</title>
+    <meta name="description" content="This service is coming soon. Stay tuned for the latest from ALCAS Digital Solutions.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="images/alcas.jpg">
+    <style>
+        /* ===== RESET & VARIABLES ===== */
+        :root {
+            --orange-main: #e60000;
+            --orange-gradient: linear-gradient(135deg, #e60000 0%, #e60000 100%);
+            --dark-bg: #0a0a0b;
+            --text-white: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.55);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* ===== 3D ROBOT BACKGROUND ===== */
+        .spline-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .spline-bg canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
+
+        /* ===== HERO / MAIN CONTENT ===== */
+        .hero-section {
+            position: relative;
+            z-index: 5;
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 2rem 6rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 750px;
+            width: 100%;
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo */
+        .logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--orange-main);
+            margin: 0 auto 2rem;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Service Badge */
+        .service-badge {
+            display: inline-block;
+            background: rgba(230, 0, 0, 0.12);
+            border: 1px solid rgba(230, 0, 0, 0.35);
+            color: var(--orange-main);
+            padding: 0.5rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+        }
+
+        /* Heading */
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .hero-content h1 .accent {
+            background: var(--orange-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Description */
+        .hero-content .desc {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Email Form */
+        .notify-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .notify-form input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .notify-form input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .notify-form input:focus {
+            border-color: var(--orange-main);
+            box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.1);
+        }
+
+        .notify-form button {
+            background: var(--orange-gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            box-shadow: 0 8px 25px rgba(230, 0, 0, 0.25);
+        }
+
+        .notify-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(230, 0, 0, 0.4);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--orange-main);
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            position: relative;
+            z-index: 10;
+            background: rgba(10, 10, 11, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange-main);
+            padding-left: 4px;
+        }
+
+        .footer-brand .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--orange-main);
+            display: block;
+        }
+
+        .footer-brand .brand-sub {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            background: var(--orange-main);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--orange-main);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 { font-size: 2.5rem; letter-spacing: -1px; }
+            .hero-content .desc { font-size: 1rem; }
+            .notify-form { flex-direction: column; }
+            .notify-form button { width: 100%; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+            .footer-bottom a { margin-left: 0; margin: 0 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 3D Robot Background -->
+    <div class="spline-bg">
+        <canvas id="spline-canvas"></canvas>
+        <script type="module">
+            import { Application } from 'https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.90/build/runtime.js';
+            const canvas = document.getElementById('spline-canvas');
+            const app = new Application(canvas);
+            app.load('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode').catch(err => console.error(err));
+        </script>
+    </div>
+
+    <!-- Main Content -->
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1>Building<br><span class="accent">The Future</span></h1>
+            <p class="desc">We're engineering a powerful digital solution for this service. Our team is working to deliver a high-performance system that will transform your business.</p>
+            <form class="notify-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓'; this.querySelector('input').disabled=true;">
+                <input type="email" placeholder="Enter your email to get notified" required>
+                <button type="submit">Notify Me</button>
+            </form>
+
+            <a href="services.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Services
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <span class="brand-name">ALCAS</span>
+                    <span class="brand-sub">Digital Marketing Agency</span>
+                    <p>Empowering businesses with reliable, scalable, and innovative digital solutions.</p>
+                    <div class="footer-socials">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919176040364"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="coming-soon?service=Business Automation">Business Automation</a></li>
+                        <li><a href="coming-soon?service=Cloud Services">Cloud Services</a></li>
+                        <li><a href="coming-soon?service=Data Analytics">Data Analytics</a></li>
+                        <li><a href="coming-soon?service=API Integrations">API Integrations</a></li>
+                        <li><a href="coming-soon?service=Custom Software">Custom Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:alcas2k25@gmail.com"><i class="fas fa-envelope" style="margin-right:8px; color:var(--orange-main);"></i>alcas2k25@gmail.com</a></li>
+                        <li><a href="tel:+919176040364"><i class="fas fa-phone" style="margin-right:8px; color:var(--orange-main);"></i>+91 91760 40364</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right:8px; color:var(--orange-main);"></i>Chennai - 600039</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALCAS Digital Solutions. All rights reserved.</p>
+                <div>
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="cookies.html">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dynamic Service Name -->
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const service = params.get('service');
+        if (service) {
+            document.getElementById('serviceBadge').textContent = service;
+        }
+    </script>
+</body>
+</html>

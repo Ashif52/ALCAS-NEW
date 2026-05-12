@@ -21,6 +21,9 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles-v3.css">
 
+    <!-- Dynamic Content Loader (from Admin Panel) -->
+    <script src="js/content-loader.js"></script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="images/alcas.jpg">
 
@@ -473,48 +476,23 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const projects = [
-                    {
-                        image: 'images/NMG WEBSITE.jpeg',
-                        title: 'NMG Marine Service',
-                        role: 'WEBSITE',
-                        description: 'Complete digital platform for marine service operations. Built responsive service website with clear service segmentation, inquiry flow, and optimized UI for industrial/service-based users. Ensured fast performance and deployment-ready architecture.',
-                        link: 'https://nmgmarineservice.com/',
-                        tags: ['Full Stack', 'Production', 'Client Project']
-                    },
-                    {
-                        image: 'images/Lendirt.jpeg',
-                        title: 'Lend-It',
-                        role: 'Future Project',
-                        description: 'Modern lending platform interface focused on simplicity and user engagement. Built responsive UI for loan-related workflows and interactions. Focused on performance, minimal design, and usability.',
-                        link: 'https://lend-it-jade.vercel.app/',
-                        tags: ['Fintech', 'Web App', 'Frontend']
-                    },
-                    {
-                        image: 'images/Bethel.jpeg',
-                        title: 'Bethel Express Impex',
-                        role: 'WEBSITE',
-                        description: 'Corporate website for an import/export company to improve digital presence and lead generation. Built modern UI aligned with global trade business standards. Optimized for mobile responsiveness and SEO visibility.',
-                        link: 'https://www.bethelexpressimpex.com/',
-                        tags: ['Corporate', 'SEO', 'Branding']
-                    },
-                    {
-                        image: 'images/NMG CRM.jpeg',
-                        title: 'NMG Marine Dashboard',
-                        role: 'CRM',
-                        description: 'Admin dashboard for managing marine service operations, requests, and internal data. Implemented role-based access and structured data handling. Managed multiple domain deployments and improved UI consistency across builds.',
-                        link: 'https://www.nmgmarineservice.in/dashboard',
-                        tags: ['Dashboard', 'Admin', 'Enterprise']
-                    },
-                    {
-                        image: 'images/niyafit.png',
-                        title: 'NiyaFitness',
-                        role: 'WEBSITE',
-                        description: 'Vibrant fitness website with workout plans, personal training services, and membership options. Bold typography with energetic color scheme and responsive layout across all devices.',
-                        link: 'https://niyafit46.wixsite.com/niyafitness',
-                        tags: ['Fitness', 'Branding', 'Website']
-                    }
+                // Fallback projects (used when admin backend is offline)
+                const fallbackProjects = [
+                    { image: 'images/NMG WEBSITE.jpeg', title: 'NMG Marine Service', role: 'WEBSITE', description: 'Complete digital platform for marine service operations.', link: 'https://nmgmarineservice.com/', tags: ['Full Stack', 'Production', 'Client Project'] },
+                    { image: 'images/Lendirt.jpeg', title: 'Lend-It', role: 'Future Project', description: 'Modern lending platform interface.', link: 'https://lend-it-jade.vercel.app/', tags: ['Fintech', 'Web App', 'Frontend'] },
+                    { image: 'images/Bethel.jpeg', title: 'Bethel Express Impex', role: 'WEBSITE', description: 'Corporate website for import/export.', link: 'https://www.bethelexpressimpex.com/', tags: ['Corporate', 'SEO', 'Branding'] },
+                    { image: 'images/NMG CRM.jpeg', title: 'NMG Marine Dashboard', role: 'CRM', description: 'Admin dashboard for marine service operations.', link: 'https://www.nmgmarineservice.in/dashboard', tags: ['Dashboard', 'Admin', 'Enterprise'] },
+                    { image: 'images/niyafit.png', title: 'NiyaFitness', role: 'WEBSITE', description: 'Vibrant fitness website with workout plans.', link: 'https://niyafit46.wixsite.com/niyafitness', tags: ['Fitness', 'Branding', 'Website'] }
                 ];
+                const projects = window.__ALCAS_PROJECTS || fallbackProjects;
+                
+                // Helper to resolve image paths
+                const resolveImage = (path) => {
+                    if (!path) return '';
+                    if (path.startsWith('http')) return path;
+                    if (path.startsWith('uploads/')) return '/' + path; // Use proxied path
+                    return path;
+                };
 
                 const carousel = document.getElementById('projectCarousel');
                 const modal = document.getElementById('projectModal');
@@ -543,7 +521,7 @@
                         loadedCount++;
                         if (loadedCount === projects.length) updateCards();
                     };
-                    img.src = project.image;
+                    img.src = resolveImage(project.image);
 
                     const label = document.createElement('div');
                     label.className = 'carousel-label';
@@ -561,7 +539,7 @@
                 // --- Modal logic ---
                 function openModal(index) {
                     const p = projects[index];
-                    document.getElementById('modalImage').src = p.image;
+                    document.getElementById('modalImage').src = resolveImage(p.image);
                     document.getElementById('modalImage').alt = p.title;
                     document.getElementById('modalTitle').textContent = p.title;
                     document.getElementById('modalRole').textContent = p.role;
@@ -686,7 +664,7 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const brands = [
+                const fallbackBrands = [
                     { id: 'healthifem', label: 'Healthifem', icon: 'fas fa-heartbeat', image: 'resources/logos/healthifem.png?v=2', desc: 'Empowering wellness through digital transformation.' },
                     { id: 'gulf_parlor', label: 'Gulf Parlor', icon: 'fas fa-utensils', image: 'resources/logos/gulf_parlor.png?v=2', desc: 'Premium dining experiences redefined.' },
                     { id: 'freaks', label: 'Freaks 2.0', icon: 'fas fa-wand-magic-sparkles', image: 'resources/logos/freaks.png?v=2', desc: 'Creative boundary-pushing design.' },
@@ -698,6 +676,12 @@
                     { id: 'pixel', label: 'Pixel', icon: 'fas fa-camera', image: 'resources/logos/pixel.png?v=2', desc: 'Perfecting detail in digital photography.' },
                     { id: 'osia', label: 'Osia', icon: 'fas fa-crown', image: 'resources/logos/osia.png?v=2', desc: 'Luxury brand positioning and identities.' }
                 ];
+                const brands = window.__ALCAS_LOGOS || fallbackBrands;
+                brands.forEach(b => {
+                    if (b.image && !b.image.startsWith('http')) {
+                        if (b.image.startsWith('uploads/')) b.image = '/' + b.image;
+                    }
+                });
 
                 const navTrack = document.getElementById('featureNavTrack');
                 const cardStack = document.getElementById('featureCardStack');
@@ -889,43 +873,22 @@
                 <h2>Client <span class="gradient-text">Success Stories</span></h2>
                 <p>Hear from the visionaries who leveled up their businesses with ALCAS.</p>
             </div>
-            
-            <div class="circular-testimonial-wrapper reveal">
+                  <div class="circular-testimonial-wrapper reveal">
                 <div class="circular-testimonial-grid">
-                    <!-- Images Column -->
                     <div class="testimonial-images-container" id="testimonialImages">
-                        <img src="images/11 SBJ logo.png" alt="SBJ Jewelry" class="circular-img active" data-index="0">
-                        <img src="images/niyafit.png" alt="Niya Fit" class="circular-img" data-index="1">
-                        <img src="images/mithras-briyani.png" alt="Mithra's Biryani" class="circular-img" data-index="2">
+                        <!-- Dynamically populated -->
                     </div>
-
-                    <!-- Content Column -->
                     <div class="testimonial-info-container">
                         <div id="testimonialContent">
-                            <div class="testimonial-info active" data-index="0">
-                                <h3 class="client-name">SBJ Jewelry</h3>
-                                <p class="client-location">Chennai, India</p>
-                                <p class="client-quote">"Thanks to the stunning logo you created for our shop, we experienced a 45% increase in brand visibility and a 30% growth in new customer visits within the first quarter. You truly made our brand look premium!"</p>
-                            </div>
-                            <div class="testimonial-info" data-index="1">
-                                <h3 class="client-name">Niya Fit</h3>
-                                <p class="client-location">Chennai, India</p>
-                                <p class="client-quote">"We needed a fresh, modern platform to represent our fitness brand. They delivered a stunning website, fully optimized with SEO best practices, resulting in a 300% increase in organic traffic and customer engagement."</p>
-                            </div>
-                            <div class="testimonial-info" data-index="2">
-                                <h3 class="client-name">Mithra's Biryani</h3>
-                                <p class="client-location">Chennai, India</p>
-                                <p class="client-quote">"Your creative logo design helped Mithra’s Biryani achieve a 35% growth in new customer reach after our rebranding. Your sense of branding and communication made the entire process perfectly elegant."</p>
-                            </div>
+                            <!-- Dynamically populated -->
                         </div>
-
                         <div class="testimonial-nav">
                             <button class="nav-btn" id="testimonialPrev"><i class="fas fa-arrow-left"></i></button>
                             <button class="nav-btn" id="testimonialNext"><i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>    </div>
         </div>
     </section>
 
@@ -1053,6 +1016,35 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Fallback testimonials
+            const fallbackTestimonials = [
+                { image: 'images/11 SBJ logo.png', name: 'SBJ Jewelry', location: 'Chennai, India', quote: 'Thanks to the stunning logo you created for our shop, we experienced a 45% increase in brand visibility and a 30% growth in new customer visits within the first quarter. You truly made our brand look premium!' },
+                { image: 'images/niyafit.png', name: 'Niya Fit', location: 'Chennai, India', quote: 'We needed a fresh, modern platform to represent our fitness brand. They delivered a stunning website, fully optimized with SEO best practices, resulting in a 300% increase in organic traffic and customer engagement.' },
+                { image: 'images/mithras-briyani.png', name: "Mithra's Biryani", location: 'Chennai, India', quote: "Your creative logo design helped Mithra's Biryani achieve a 35% growth in new customer reach after our rebranding. Your sense of branding and communication made the entire process perfectly elegant." }
+            ];
+            const testimonials = window.__ALCAS_TESTIMONIALS || fallbackTestimonials;
+            const BASE = window.__ALCAS_PUBLIC_BASE || '';
+
+            // Build testimonial DOM
+            const imgContainer = document.getElementById('testimonialImages');
+            const contentContainer = document.getElementById('testimonialContent');
+            testimonials.forEach((t, i) => {
+                const imgSrc = (t.image && !t.image.startsWith('http')) ? 
+                    (t.image.startsWith('uploads/') ? '/' + t.image : t.image) : t.image;
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = t.name;
+                img.className = 'circular-img' + (i === 0 ? ' active' : '');
+                img.dataset.index = i;
+                imgContainer.appendChild(img);
+
+                const info = document.createElement('div');
+                info.className = 'testimonial-info' + (i === 0 ? ' active' : '');
+                info.dataset.index = i;
+                info.innerHTML = `<h3 class="client-name">${t.name}</h3><p class="client-location">${t.location}</p><p class="client-quote">"${t.quote}"</p>`;
+                contentContainer.appendChild(info);
+            });
+
             const images = document.querySelectorAll('.circular-img');
             const infos = document.querySelectorAll('.testimonial-info');
             const prevBtn = document.getElementById('testimonialPrev');
@@ -1063,39 +1055,17 @@
             function updateTestimonials() {
                 images.forEach((img, index) => {
                     img.classList.remove('active', 'left', 'right');
-                    
-                    if (index === currentIndex) {
-                        img.classList.add('active');
-                    } else if (index === (currentIndex - 1 + total) % total) {
-                        img.classList.add('left');
-                    } else if (index === (currentIndex + 1) % total) {
-                        img.classList.add('right');
-                    }
+                    if (index === currentIndex) img.classList.add('active');
+                    else if (index === (currentIndex - 1 + total) % total) img.classList.add('left');
+                    else if (index === (currentIndex + 1) % total) img.classList.add('right');
                 });
-
-                infos.forEach((info, index) => {
-                    info.classList.toggle('active', index === currentIndex);
-                });
+                infos.forEach((info, index) => info.classList.toggle('active', index === currentIndex));
             }
 
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % total;
-                updateTestimonials();
-            });
-
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + total) % total;
-                updateTestimonials();
-            });
-
-            // Initial setup
+            nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % total; updateTestimonials(); });
+            prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + total) % total; updateTestimonials(); });
             updateTestimonials();
-
-            // Autoplay
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % total;
-                updateTestimonials();
-            }, 6000);
+            setInterval(() => { currentIndex = (currentIndex + 1) % total; updateTestimonials(); }, 6000);
         });
     </script>
 
@@ -1134,11 +1104,11 @@
                 <div class="footer-col">
                     <h4>Solutions</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Business Automation</a></li>
-                        <li><a href="#">Cloud Services</a></li>
-                        <li><a href="#">Data Analytics</a></li>
-                        <li><a href="#">API Integrations</a></li>
-                        <li><a href="#">Custom Software</a></li>
+                        <li><a href="coming-soon?service=Business Automation">Business Automation</a></li>
+                        <li><a href="coming-soon?service=Cloud Services">Cloud Services</a></li>
+                        <li><a href="coming-soon?service=Data Analytics">Data Analytics</a></li>
+                        <li><a href="coming-soon?service=API Integrations">API Integrations</a></li>
+                        <li><a href="coming-soon?service=Custom Software">Custom Software</a></li>
                     </ul>
                 </div>
 

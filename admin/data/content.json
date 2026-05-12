@@ -1,0 +1,211 @@
+{
+  "projects": [
+    {
+      "id": "proj_1",
+      "image": "images/NMG WEBSITE.jpeg",
+      "title": "NMG Marine Service",
+      "role": "WEBSITE",
+      "description": "Complete digital platform for marine service operations. Built responsive service website with clear service segmentation, inquiry flow, and optimized UI for industrial/service-based users. Ensured fast performance and deployment-ready architecture.",
+      "link": "https://nmgmarineservice.com/",
+      "tags": [
+        "Full Stack",
+        "Production",
+        "Client Project"
+      ]
+    },
+    {
+      "id": "proj_2",
+      "image": "images/Lendirt.jpeg",
+      "title": "Lend-It",
+      "role": "Future Project",
+      "description": "Modern lending platform interface focused on simplicity and user engagement. Built responsive UI for loan-related workflows and interactions. Focused on performance, minimal design, and usability.",
+      "link": "https://lend-it-jade.vercel.app/",
+      "tags": [
+        "Fintech",
+        "Web App",
+        "Frontend"
+      ]
+    },
+    {
+      "id": "proj_3",
+      "image": "images/Bethel.jpeg",
+      "title": "Bethel Express Impex",
+      "role": "WEBSITE",
+      "description": "Corporate website for an import/export company to improve digital presence and lead generation. Built modern UI aligned with global trade business standards. Optimized for mobile responsiveness and SEO visibility.",
+      "link": "https://www.bethelexpressimpex.com/",
+      "tags": [
+        "Corporate",
+        "SEO",
+        "Branding"
+      ]
+    },
+    {
+      "id": "proj_4",
+      "image": "images/NMG CRM.jpeg",
+      "title": "NMG Marine Dashboard",
+      "role": "CRM",
+      "description": "Admin dashboard for managing marine service operations, requests, and internal data. Implemented role-based access and structured data handling. Managed multiple domain deployments and improved UI consistency across builds.",
+      "link": "https://www.nmgmarineservice.in/dashboard",
+      "tags": [
+        "Dashboard",
+        "Admin",
+        "Enterprise"
+      ]
+    },
+    {
+      "id": "proj_5",
+      "image": "images/niyafit.png",
+      "title": "NiyaFitness",
+      "role": "WEBSITE",
+      "description": "Vibrant fitness website with workout plans, personal training services, and membership options. Bold typography with energetic color scheme and responsive layout across all devices.",
+      "link": "https://niyafit46.wixsite.com/niyafitness",
+      "tags": [
+        "Fitness",
+        "Branding",
+        "Website"
+      ]
+    },
+    {
+      "id": "proj_a6e4939ccbf6",
+      "image": "uploads/projects/presentpickz_0e27db4d.jpeg",
+      "title": "Present Pickz",
+      "role": "WEBSITE",
+      "description": "PresentPickz is a trendy gifting and collectibles store offering anime figures, toys, gadgets, and unique surprise gifts curated for modern pop-culture lovers.",
+      "link": "https://presentpickz.com/",
+      "tags": [
+        "TOYS",
+        "ECOMMERCE"
+      ]
+    }
+  ],
+  "logos": [
+    {
+      "id": "logo_1",
+      "label": "Healthifem",
+      "icon": "fas fa-heartbeat",
+      "image": "resources/logos/healthifem.png",
+      "desc": "Empowering wellness through digital transformation."
+    },
+    {
+      "id": "logo_2",
+      "label": "Gulf Parlor",
+      "icon": "fas fa-utensils",
+      "image": "resources/logos/gulf_parlor.png",
+      "desc": "Premium dining experiences redefined."
+    },
+    {
+      "id": "logo_3",
+      "label": "Freaks 2.0",
+      "icon": "fas fa-wand-magic-sparkles",
+      "image": "resources/logos/freaks.png",
+      "desc": "Creative boundary-pushing design."
+    },
+    {
+      "id": "logo_4",
+      "label": "BSC",
+      "icon": "fas fa-briefcase",
+      "image": "resources/logos/bsc.png",
+      "desc": "Streamlined corporate identity systems."
+    },
+    {
+      "id": "logo_5",
+      "label": "AL Sam",
+      "icon": "fas fa-globe",
+      "image": "resources/logos/al_sam.png",
+      "desc": "Global logistics and trade connectivity."
+    },
+    {
+      "id": "logo_6",
+      "label": "Sacola",
+      "icon": "fas fa-shopping-bag",
+      "image": "resources/logos/sacola.png",
+      "desc": "Innovative retail solutions for the next gen."
+    },
+    {
+      "id": "logo_7",
+      "label": "Quest",
+      "icon": "fas fa-search",
+      "image": "resources/logos/quest.png",
+      "desc": "Data-driven research and analytics."
+    },
+    {
+      "id": "logo_8",
+      "label": "PP",
+      "icon": "fas fa-check-circle",
+      "image": "resources/logos/pp.png",
+      "desc": "Uncompromising quality and precision."
+    },
+    {
+      "id": "logo_9",
+      "label": "Pixel",
+      "icon": "fas fa-camera",
+      "image": "resources/logos/pixel.png",
+      "desc": "Perfecting detail in digital photography."
+    },
+    {
+      "id": "logo_10",
+      "label": "Osia",
+      "icon": "fas fa-crown",
+      "image": "resources/logos/osia.png",
+      "desc": "Luxury brand positioning and identities."
+    },
+    {
+      "id": "logo_764dd80d7501",
+      "label": "Eat and Eat",
+      "icon": "fas fa-star",
+      "image": "uploads/logos/eat_and_eat_cb9d0e5e.png",
+      "desc": ""
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test_1",
+      "image": "uploads/testimonials/testimonials_sbj_9190b0e6.png",
+      "name": "SBJ Jewelry",
+      "location": "Chennai, India",
+      "quote": "Mohamed Fahad from ALCAS Digital Marketing Agency, working with you was truly a wonderful experience. The logo and brand identity you created for Sri Balaji Jewellers perfectly matched our vision and gave our business a premium and elegant look. Your creativity, professionalism, and attention to detail clearly reflect the passion you have for your work.\n\nThe entire process was smooth and easy because of your excellent communication and dedication. Every design element was thoughtfully crafted, and the final outcome exceeded our expectations. The quality of work you delivered at such an affordable price is highly commendable.\n\nWe highly recommend Mohamed Fahad and ALCAS Digital Marketing Agency for anyone looking for high-quality logo design and branding services. Thank you for making our brand stand out beautifully."
+    },
+    {
+      "id": "test_3",
+      "image": "uploads/testimonials/testimonials_mb_7280654f.png",
+      "name": "Mithra's Biryani",
+      "location": "Chennai, India",
+      "quote": "ALCAS Digital Marketing Agency, led by the talented designer Mohamed Fahad, consistently delivers high-quality and creative work. The team has a keen eye for detail and a strong understanding of branding and marketing principles. Mohamed Fahad is highly responsive, professional, and easy to work with, making the entire design and marketing process smooth and enjoyable. I highly recommend ALCAS Digital Marketing Agency to anyone looking for professional and affordable branding, logo design, and digital marketing services. They don’t just create stunning visuals — they help build strong brand identities and business growth. All the very best for your future endeavors. You’re truly doing an amazing job. Way to go, bro. Thank you!"
+    },
+    {
+      "id": "test_7e888b06f40e",
+      "image": "uploads/testimonials/testimonials_tb_6142eb30.png",
+      "name": "Thowfic Bai Kalyana Biryani",
+      "location": "Chennai, India",
+      "quote": "Mohamed Fahad from ALCAS Digital Marketing Agency, you are a highly talented and creative designer, and we are proud to have worked with you for our brand identity. The logo and branding you created for Thowfic Bai Kalyana Biryani perfectly captured our vision and gave our business a strong and professional identity.\n\nYour creativity, dedication, and attention to detail truly impressed us throughout the project. The communication was smooth, the delivery was on time, and every aspect of the work reflected quality and passion. Your ability to understand our business and transform ideas into impactful designs makes you stand out.\n\nWe highly recommend Mohamed Fahad and ALCAS Digital Marketing Agency for anyone looking for professional logo design and branding services. Wishing you continued success and growth in your future projects. Thank you for the amazing work."
+    },
+    {
+      "id": "test_e8a022e1bede",
+      "image": "uploads/testimonials/testimonials_vinay_4a8766aa.png",
+      "name": "Vinay Renovation & Beyond",
+      "location": "Chennai, India",
+      "quote": "Mohamed Fahad from ALCAS Digital Marketing Agency brought creativity and precision to our company branding. He has an exceptional ability to understand business needs and transform them into powerful and professional designs. The logo and brand identity created for us perfectly represent our vision and values.\n\nHis dedication to quality, attention to detail, and timely delivery exceeded our expectations. Fahad is not just a designer; he is someone who truly helps bring brand ideas to life. The entire experience was smooth, professional, and highly satisfying.\n\nWe highly recommend Mohamed Fahad and ALCAS Digital Marketing Agency for anyone looking for outstanding logo design and branding services. Thank you for the amazing work and support throughout the project."
+    },
+    {
+      "id": "test_2e7c901255fc",
+      "image": "uploads/testimonials/testimonials_bethel_b471a094.png",
+      "name": "Bethel Express & Impex",
+      "location": "Chennai, India",
+      "quote": "Team ALCAS Digital Marketing Agency provided exceptional branding services & Website Service for Bethel Express & Impex. Their creative approach, timely delivery, and attention to detail helped us establish a strong and professional visual identity. The entire process was smooth and highly satisfying. Thank you for the amazing work and support."
+    },
+    {
+      "id": "test_180fa7f2f1d7",
+      "image": "uploads/testimonials/testimonials_gulf_90da9aeb.png",
+      "name": "Gulf Parlor Unisex Salon",
+      "location": "Chennai, India",
+      "quote": "Working with Team ALCAS Digital Marketing Agency was an excellent experience. They created a stylish and professional brand identity for Gulf Parlor Unisex Salon that perfectly represents our business. Their creativity, fast response, and high-quality work made the entire process easy and enjoyable. Highly recommended for branding and logo design services."
+    },
+    {
+      "id": "test_f837688be143",
+      "image": "uploads/testimonials/testimonials_vss_ac22f697.png",
+      "name": "Vaishvi’s Stationery Stop",
+      "location": "Chennai, India",
+      "quote": "Team ALCAS Digital Marketing Agency delivered a creative and modern brand identity for Vaishvi’s Stationery Stop. Their attention to detail, professionalism, and understanding of our requirements resulted in an outstanding final design. We are extremely happy with the outcome and highly recommend their services."
+    }
+  ]
+}

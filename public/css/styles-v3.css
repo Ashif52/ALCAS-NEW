@@ -5,9 +5,9 @@
 /* ===== CSS VARIABLES ===== */
 :root {
     /* Color Palette - Orange Premium Theme */
-    --deep-orange: #C1121F;
-    --orange-main: #E63946;
-    --orange-light: #F94144;
+    --deep-orange: #e60000;
+    --orange-main: #e60000;
+    --orange-light: #e60000;
     --orange-accent: #FFB5A7;
     --cream: #F8F9FA;
     --white: #FFFFFF;
@@ -16,7 +16,7 @@
     --success-green: #43A047;
     --alcas-purple: #6C63FF;
     /* Gradients */
-    --orange-gradient: linear-gradient(135deg, #C1121F 0%, #E63946 100%);
+    --orange-gradient: linear-gradient(135deg, #c1121f 0%, #e60000 100%);
     --light-gradient: linear-gradient(135deg, #ADB5BD 0%, #DEE2E6 100%);
     --gold-gradient: linear-gradient(135deg, #FFD54F 0%, #FFB300 100%);
     --alcas-gradient: linear-gradient(135deg, #6C63FF 0%, #5A52D5 100%);
@@ -32,7 +32,7 @@
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, #E63946, #6C63FF);
+    background: linear-gradient(90deg, #e60000, #6C63FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -40,7 +40,7 @@
 }
 
 .shining-text {
-    background: linear-gradient(110deg, #E63946 35%, #fff 50%, #E63946 75%);
+    background: linear-gradient(110deg, #e60000 35%, #fff 50%, #e60000 75%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -430,7 +430,7 @@ body {
 
 .header.scrolled {
     padding: 0;
-    background: rgba(230, 57, 70, 0.95); /* Red premium background */
+    background: rgba(230, 0, 0, 0.95); /* Deeper vivid red on scroll */
     backdrop-filter: blur(15px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
@@ -440,7 +440,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 2rem;
-    background: rgba(230, 57, 70, 0.85); /* Red semi-transparent background */
+    background: rgba(230, 0, 0, 0.9); /* Deeper, more vivid red */
     backdrop-filter: blur(12px);
     border-radius: 50px;
     margin: 0 auto;
@@ -570,7 +570,7 @@ body {
     }
 
     .header.scrolled .navbar {
-        background: rgba(230, 57, 70, 0.95);
+        background: rgba(230, 0, 0, 0.95);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -3317,7 +3317,7 @@ section {
     border-radius: 25px;
     text-align: center;
     color: white;
-    box-shadow: 0 15px 40px rgba(230, 81, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(230, 0, 0, 0.3);
 }
 
 .pricing-cta h3 {
@@ -3426,7 +3426,7 @@ section {
     align-items: center;
     justify-content: center;
     margin: 0 auto 2rem;
-    box-shadow: 0 8px 25px rgba(230, 81, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(230, 0, 0, 0.3);
 }
 
 .step-icon i {
@@ -3719,7 +3719,7 @@ section {
     left: 20%;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(230, 81, 0, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(230, 0, 0, 0.1) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -3821,7 +3821,7 @@ section {
 .social-link:hover {
     background: var(--orange-main);
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(230, 81, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(230, 0, 0, 0.3);
 }
 
 .footer-col h4 {
@@ -4196,7 +4196,7 @@ section {
     color: #fff;
     font-size: 26px;
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(230, 81, 0, 0.4);
+    box-shadow: 0 8px 25px rgba(230, 0, 0, 0.4);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 10;
 }

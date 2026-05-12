@@ -1,5 +1,13 @@
 {
+  "version": 2,
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "admin/**"
+    }
+  },
   "rewrites": [
-    { "source": "/", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/admin/(.*)", "destination": "/api" },
+    { "source": "/admin", "destination": "/api" }
   ]
 }

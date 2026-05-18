@@ -8,6 +8,46 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // ══════════════════════════════════════════════════════
+// AUTHENTICATION
+// Set ADMIN_PASSWORD env var (defaults to 'alcas2025')
+// ══════════════════════════════════════════════════════
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'alcas2025';
+const activeSessions = new Map(); // token -> { createdAt }
+const SESSION_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
+function generateToken() {
+    return crypto.randomBytes(32).toString('hex');
+}
+
+function cleanExpiredSessions() {
+    const now = Date.now();
+    for (const [token, session] of activeSessions) {
+        if (now - session.createdAt > SESSION_TTL) {
+            activeSessions.delete(token);
+        }
+    }
+}
+
+function isAuthenticated(req) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) return false;
+    const token = authHeader.split(' ')[1];
+    const session = activeSessions.get(token);
+    if (!session) return false;
+    if (Date.now() - session.createdAt > SESSION_TTL) {
+        activeSessions.delete(token);
+        return false;
+    }
+    return true;
+}
+
+// Middleware: protect write API routes
+function requireAuth(req, res, next) {
+    if (isAuthenticated(req)) return next();
+    res.status(401).json({ error: 'Unauthorized. Please log in.' });
+}
+
+// ══════════════════════════════════════════════════════
 // CLOUD vs LOCAL MODE
 // Set MONGODB_URI + CLOUDINARY env vars for Vercel
 // Without them, runs locally with JSON file + disk uploads
@@ -123,7 +163,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Cache-Control', 'no-store, no-cache, must-revalidate');
     res.header('Pragma', 'no-cache');
     res.header('Expires', '0');
@@ -134,6 +174,32 @@ app.use((req, res, next) => {
 app.use('/admin', express.static(__dirname));
 app.use('/public', express.static(PUBLIC_DIR));
 app.use(express.static(PUBLIC_DIR));
+
+// ═══════════════════════════════════════════════════
+// ── AUTH API ──
+// ═══════════════════════════════════════════════════
+app.post('/api/auth/login', (req, res) => {
+    cleanExpiredSessions();
+    const { password } = req.body;
+    if (!password || password !== ADMIN_PASSWORD) {
+        return res.status(401).json({ error: 'Invalid password' });
+    }
+    const token = generateToken();
+    activeSessions.set(token, { createdAt: Date.now() });
+    res.json({ success: true, token });
+});
+
+app.post('/api/auth/logout', (req, res) => {
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+        activeSessions.delete(authHeader.split(' ')[1]);
+    }
+    res.json({ success: true });
+});
+
+app.get('/api/auth/verify', (req, res) => {
+    res.json({ authenticated: isAuthenticated(req) });
+});
 
 // ── Multer (memory for cloud, disk for local) ──
 const storage = cloudinary
@@ -164,7 +230,7 @@ const upload = multer({
 });
 
 // ── Upload API ──
-app.post('/api/upload/:type', upload.single('image'), async (req, res) => {
+app.post('/api/upload/:type', requireAuth, upload.single('image'), async (req, res) => {
     try {
         if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
@@ -194,7 +260,7 @@ app.get('/api/projects', async (req, res) => {
     res.json(data.projects);
 });
 
-app.post('/api/projects', async (req, res) => {
+app.post('/api/projects', requireAuth, async (req, res) => {
     const data = await readData();
     const project = {
         id: 'proj_' + crypto.randomBytes(6).toString('hex'),
@@ -207,7 +273,7 @@ app.post('/api/projects', async (req, res) => {
     res.json({ success: true, project });
 });
 
-app.put('/api/projects/:id', async (req, res) => {
+app.put('/api/projects/:id', requireAuth, async (req, res) => {
     const data = await readData();
     const idx = data.projects.findIndex(p => p.id === req.params.id);
     if (idx === -1) return res.status(404).json({ error: 'Not found' });
@@ -216,14 +282,14 @@ app.put('/api/projects/:id', async (req, res) => {
     res.json({ success: true, project: data.projects[idx] });
 });
 
-app.delete('/api/projects/:id', async (req, res) => {
+app.delete('/api/projects/:id', requireAuth, async (req, res) => {
     const data = await readData();
     data.projects = data.projects.filter(p => p.id !== req.params.id);
     await writeData(data);
     res.json({ success: true });
 });
 
-app.post('/api/projects/reorder', async (req, res) => {
+app.post('/api/projects/reorder', requireAuth, async (req, res) => {
     const data = await readData();
     const { orderedIds } = req.body;
     if (!orderedIds) return res.status(400).json({ error: 'orderedIds required' });
@@ -240,7 +306,7 @@ app.get('/api/logos', async (req, res) => {
     res.json(data.logos);
 });
 
-app.post('/api/logos', async (req, res) => {
+app.post('/api/logos', requireAuth, async (req, res) => {
     const data = await readData();
     const logo = {
         id: 'logo_' + crypto.randomBytes(6).toString('hex'),
@@ -252,7 +318,7 @@ app.post('/api/logos', async (req, res) => {
     res.json({ success: true, logo });
 });
 
-app.put('/api/logos/:id', async (req, res) => {
+app.put('/api/logos/:id', requireAuth, async (req, res) => {
     const data = await readData();
     const idx = data.logos.findIndex(l => l.id === req.params.id);
     if (idx === -1) return res.status(404).json({ error: 'Not found' });
@@ -261,7 +327,7 @@ app.put('/api/logos/:id', async (req, res) => {
     res.json({ success: true, logo: data.logos[idx] });
 });
 
-app.delete('/api/logos/:id', async (req, res) => {
+app.delete('/api/logos/:id', requireAuth, async (req, res) => {
     const data = await readData();
     data.logos = data.logos.filter(l => l.id !== req.params.id);
     await writeData(data);
@@ -276,7 +342,7 @@ app.get('/api/testimonials', async (req, res) => {
     res.json(data.testimonials);
 });
 
-app.post('/api/testimonials', async (req, res) => {
+app.post('/api/testimonials', requireAuth, async (req, res) => {
     const data = await readData();
     const testimonial = {
         id: 'test_' + crypto.randomBytes(6).toString('hex'),
@@ -288,7 +354,7 @@ app.post('/api/testimonials', async (req, res) => {
     res.json({ success: true, testimonial });
 });
 
-app.put('/api/testimonials/:id', async (req, res) => {
+app.put('/api/testimonials/:id', requireAuth, async (req, res) => {
     const data = await readData();
     const idx = data.testimonials.findIndex(t => t.id === req.params.id);
     if (idx === -1) return res.status(404).json({ error: 'Not found' });
@@ -297,7 +363,7 @@ app.put('/api/testimonials/:id', async (req, res) => {
     res.json({ success: true, testimonial: data.testimonials[idx] });
 });
 
-app.delete('/api/testimonials/:id', async (req, res) => {
+app.delete('/api/testimonials/:id', requireAuth, async (req, res) => {
     const data = await readData();
     data.testimonials = data.testimonials.filter(t => t.id !== req.params.id);
     await writeData(data);

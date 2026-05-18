@@ -1,13 +1,96 @@
-const API = 'http://localhost:4000/api';
-const PUBLIC = 'http://localhost:4000/public';
+// ── Auth & API Config ──
+const API = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? `http://localhost:${window.location.port || 4000}/api`
+    : '/api';
+const PUBLIC = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? `http://localhost:${window.location.port || 4000}/public`
+    : '/public';
+
 let allData = { projects: [], logos: [], testimonials: [] };
 
+function getToken() { return sessionStorage.getItem('alcas_admin_token'); }
+function setToken(t) { sessionStorage.setItem('alcas_admin_token', t); }
+function clearToken() { sessionStorage.removeItem('alcas_admin_token'); }
+function authHeaders() {
+    const token = getToken();
+    const h = { 'Content-Type': 'application/json' };
+    if (token) h['Authorization'] = `Bearer ${token}`;
+    return h;
+}
+function authHeadersMultipart() {
+    const token = getToken();
+    const h = {};
+    if (token) h['Authorization'] = `Bearer ${token}`;
+    return h;
+}
+
+// ── Login / Logout ──
+async function handleLogin(e) {
+    e.preventDefault();
+    const btn = document.getElementById('loginBtn');
+    const errEl = document.getElementById('loginError');
+    const password = document.getElementById('loginPassword').value;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Signing in...';
+    errEl.textContent = '';
+    try {
+        const res = await fetch(`${API}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.token) {
+            errEl.textContent = data.error || 'Invalid password';
+            btn.disabled = false;
+            btn.innerHTML = '<span>Sign In</span><i class="fas fa-arrow-right"></i>';
+            return;
+        }
+        setToken(data.token);
+        document.getElementById('loginOverlay').classList.add('hidden');
+        loadAllData();
+    } catch {
+        errEl.textContent = 'Connection failed. Is the server running?';
+        btn.disabled = false;
+        btn.innerHTML = '<span>Sign In</span><i class="fas fa-arrow-right"></i>';
+    }
+}
+
+async function handleLogout() {
+    try {
+        await fetch(`${API}/auth/logout`, {
+            method: 'POST', headers: authHeaders()
+        });
+    } catch { /* ignore */ }
+    clearToken();
+    document.getElementById('loginOverlay').classList.remove('hidden');
+    document.getElementById('loginPassword').value = '';
+    document.getElementById('loginError').textContent = '';
+}
+
 // ── Init ──
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Check if we have a valid session
+    const token = getToken();
+    if (token) {
+        try {
+            const res = await fetch(`${API}/auth/verify`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const data = await res.json();
+            if (data.authenticated) {
+                document.getElementById('loginOverlay').classList.add('hidden');
+            } else {
+                clearToken();
+            }
+        } catch {
+            clearToken();
+        }
+    }
     setupNav();
     setupModal();
     setupButtons();
-    loadAllData();
+    if (getToken()) loadAllData();
 });
 
 // ── Navigation ──
@@ -94,7 +177,11 @@ function updateDashboard() {
 function imgSrc(p) {
     if (!p) return '';
     if (p.startsWith('http')) return p;
-    return `${PUBLIC}/${p}`;
+    // Local paths: server serves public dir at root, so just use origin + path
+    const origin = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? `http://localhost:${window.location.port || 4000}`
+        : '';
+    return `${origin}/${p}`;
 }
 
 // ═══════════════════════════════════════
@@ -187,7 +274,7 @@ async function saveProject(e, editId) {
     try {
         const url = editId ? `${API}/projects/${editId}` : `${API}/projects`;
         const method = editId ? 'PUT' : 'POST';
-        await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        await fetch(url, { method, headers: authHeaders(), body: JSON.stringify(body) });
         showToast(editId ? 'Project updated!' : 'Project added!');
         closeModal();
         await loadAllData();
@@ -266,7 +353,7 @@ async function saveLogo(e, editId) {
     try {
         await fetch(editId ? `${API}/logos/${editId}` : `${API}/logos`, {
             method: editId ? 'PUT' : 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: authHeaders(),
             body: JSON.stringify(body)
         });
         showToast(editId ? 'Logo updated!' : 'Logo added!');
@@ -345,7 +432,7 @@ async function saveTestimonial(e, editId) {
     try {
         await fetch(editId ? `${API}/testimonials/${editId}` : `${API}/testimonials`, {
             method: editId ? 'PUT' : 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: authHeaders(),
             body: JSON.stringify(body)
         });
         showToast(editId ? 'Testimonial updated!' : 'Testimonial added!');
@@ -353,13 +440,46 @@ async function saveTestimonial(e, editId) {
     } catch { showToast('Failed to save', 'error'); }
 }
 
-// ═══════════════════════════════════════
-// ── SHARED UTILITIES ──
-// ═══════════════════════════════════════
+// ── Custom Confirm Dialog ──
+let confirmResolve = null;
+
+function showConfirm(message) {
+    return new Promise((resolve) => {
+        confirmResolve = resolve;
+        document.getElementById('confirmMessage').textContent = message || 'This action cannot be undone. Are you sure you want to delete this item?';
+        document.getElementById('confirmOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+}
+
+function closeConfirm() {
+    document.getElementById('confirmOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('confirmCancelBtn').addEventListener('click', () => {
+        closeConfirm();
+        if (confirmResolve) { confirmResolve(false); confirmResolve = null; }
+    });
+    document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
+        closeConfirm();
+        if (confirmResolve) { confirmResolve(true); confirmResolve = null; }
+    });
+    document.getElementById('confirmOverlay').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+            closeConfirm();
+            if (confirmResolve) { confirmResolve(false); confirmResolve = null; }
+        }
+    });
+});
+
 async function deleteItem(type, id) {
-    if (!confirm('Are you sure you want to delete this item?')) return;
+    const confirmed = await showConfirm('This action cannot be undone. Are you sure you want to delete this item?');
+    if (!confirmed) return;
     try {
-        await fetch(`${API}/${type}/${id}`, { method: 'DELETE' });
+        const btn = document.getElementById('confirmDeleteBtn');
+        await fetch(`${API}/${type}/${id}`, { method: 'DELETE', headers: authHeaders() });
         showToast('Item deleted');
         await loadAllData();
     } catch { showToast('Delete failed', 'error'); }
@@ -371,10 +491,10 @@ async function handleUpload(input, type, previewId, pathId) {
     const formData = new FormData();
     formData.append('image', file);
     try {
-        const res = await fetch(`${API}/upload/${type}`, { method: 'POST', body: formData });
+        const res = await fetch(`${API}/upload/${type}`, { method: 'POST', body: formData, headers: authHeadersMultipart() });
         const data = await res.json();
         if (data.success) {
-            document.getElementById(previewId).src = `${PUBLIC}/${data.path}`;
+            document.getElementById(previewId).src = imgSrc(data.path);
             document.getElementById(pathId).value = data.path;
             input.closest('.upload-zone').classList.add('has-image');
             showToast('Image uploaded!');

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon - ALCAS Digital Solutions</title>
-    <meta name="description" content="This service is coming soon. Stay tuned for the latest from ALCAS Digital Solutions.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/jpeg" href="images/alcas.jpg">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coming Soon - ALCAS Digital Solutions</title>
+<meta content="This service is coming soon. Stay tuned for the latest from ALCAS Digital Solutions." name="description"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="images/alcas.jpg" rel="icon" type="image/jpeg"/>
+<style>
         /* ===== RESET & VARIABLES ===== */
         :root {
             --orange-main: #e60000;
@@ -336,97 +337,124 @@
             .footer-bottom a { margin-left: 0; margin: 0 0.5rem; }
         }
     </style>
-</head>
+<link href="https://alcasdigital.com/coming-soon.html" rel="canonical"/></head>
 <body>
-
-    <!-- 3D Robot Background -->
-    <div class="spline-bg">
-        <canvas id="spline-canvas"></canvas>
-        <script type="module">
-            import { Application } from 'https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.90/build/runtime.js';
-            const canvas = document.getElementById('spline-canvas');
-            const app = new Application(canvas);
-            app.load('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode').catch(err => console.error(err));
+<!-- 3D Robot Background -->
+<div class="spline-bg">
+<canvas id="spline-canvas" style="width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease;"></canvas>
+<!-- Preloader Placeholder -->
+<div id="spline-placeholder" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1c1510 0%, #000 80%); z-index: 1; transition: opacity 0.8s ease;">
+<div style="position: absolute; width: 300px; height: 300px; background: #e60000; filter: blur(150px); opacity: 0.15; border-radius: 50%;"></div>
+<div style="text-align: center; z-index: 2;">
+<div class="spline-spinner" style="width: 45px; height: 45px; border: 3px solid rgba(255,255,255,0.05); border-top-color: #e60000; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 12px;"></div>
+<span style="font-size: 0.8rem; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase;">Initializing 3D Space...</span>
+</div>
+</div>
+<style>
+            @keyframes spin {
+                to { transform: rotate(360deg); }
+            }
+        </style>
+<script type="module">
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.innerWidth > 992) {
+                    import('https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.90/build/runtime.js')
+                        .then(({ Application }) => {
+                            const canvas = document.getElementById('spline-canvas');
+                            const placeholder = document.getElementById('spline-placeholder');
+                            const app = new Application(canvas);
+                            app.load('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode')
+                                .then(() => {
+                                    canvas.style.opacity = '1';
+                                    if (placeholder) {
+                                        placeholder.style.opacity = '0';
+                                        setTimeout(() => placeholder.remove(), 800);
+                                    }
+                                })
+                                .catch(err => {
+                                    console.error(err);
+                                    if (placeholder) placeholder.style.display = 'none';
+                                });
+                        });
+                } else {
+                    const canvas = document.getElementById('spline-canvas');
+                    const placeholder = document.getElementById('spline-placeholder');
+                    if (canvas) canvas.style.display = 'none';
+                    if (placeholder) placeholder.style.display = 'none';
+                }
+            });
         </script>
-    </div>
-
-    <!-- Main Content -->
-    <main class="hero-section">
-        <div class="hero-content">
-            <h1>Building<br><span class="accent">The Future</span></h1>
-            <p class="desc">We're engineering a powerful digital solution for this service. Our team is working to deliver a high-performance system that will transform your business.</p>
-            <form class="notify-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓'; this.querySelector('input').disabled=true;">
-                <input type="email" placeholder="Enter your email to get notified" required>
-                <button type="submit">Notify Me</button>
-            </form>
-
-            <a href="services.html" class="back-link">
-                <i class="fas fa-arrow-left"></i> Back to Services
+</div>
+<!-- Main Content -->
+<main class="hero-section">
+<div class="hero-content">
+<h1>Building<br/><span class="accent">The Future</span></h1>
+<p class="desc">We're engineering a powerful digital solution for this service. Our team is working to deliver a high-performance system that will transform your business.</p>
+<form class="notify-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓'; this.querySelector('input').disabled=true;">
+<input placeholder="Enter your email to get notified" required="" type="email"/>
+<button type="submit">Notify Me</button>
+</form>
+<a class="back-link" href="services.html">
+<i class="fas fa-arrow-left"></i> Back to Services
             </a>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand footer-col">
-                    <span class="brand-name">ALCAS</span>
-                    <span class="brand-sub">Digital Marketing Agency</span>
-                    <p>Empowering businesses with reliable, scalable, and innovative digital solutions.</p>
-                    <div class="footer-socials">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/919176040364"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Solutions</h4>
-                    <ul class="footer-links">
-                        <li><a href="coming-soon?service=Business Automation">Business Automation</a></li>
-                        <li><a href="coming-soon?service=Cloud Services">Cloud Services</a></li>
-                        <li><a href="coming-soon?service=Data Analytics">Data Analytics</a></li>
-                        <li><a href="coming-soon?service=API Integrations">API Integrations</a></li>
-                        <li><a href="coming-soon?service=Custom Software">Custom Software</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">About Us</a></li>
-                        <li><a href="services.html">Our Services</a></li>
-                        <li><a href="pricing.html">Pricing Plans</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:alcas2k25@gmail.com"><i class="fas fa-envelope" style="margin-right:8px; color:var(--orange-main);"></i>alcas2k25@gmail.com</a></li>
-                        <li><a href="tel:+919176040364"><i class="fas fa-phone" style="margin-right:8px; color:var(--orange-main);"></i>+91 91760 40364</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right:8px; color:var(--orange-main);"></i>Chennai - 600039</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 ALCAS Digital Solutions. All rights reserved.</p>
-                <div>
-                    <a href="terms.html">Terms</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="cookies.html">Cookies</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Dynamic Service Name -->
-    <script>
+</div>
+</main>
+<!-- Footer -->
+<footer class="site-footer">
+<div class="footer-container">
+<div class="footer-grid">
+<div class="footer-brand footer-col">
+<span class="brand-name">ALCAS</span>
+<span class="brand-sub">Digital Marketing Agency</span>
+<p>Empowering businesses with reliable, scalable, and innovative digital solutions.</p>
+<div class="footer-socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://wa.me/919176040364"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Solutions</h4>
+<ul class="footer-links">
+<li><a href="coming-soon?service=Business Automation">Business Automation</a></li>
+<li><a href="coming-soon?service=Cloud Services">Cloud Services</a></li>
+<li><a href="coming-soon?service=Data Analytics">Data Analytics</a></li>
+<li><a href="coming-soon?service=API Integrations">API Integrations</a></li>
+<li><a href="coming-soon?service=Custom Software">Custom Software</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Company</h4>
+<ul class="footer-links">
+<li><a href="index.html">About Us</a></li>
+<li><a href="services.html">Our Services</a></li>
+<li><a href="pricing.html">Pricing Plans</a></li>
+<li><a href="faqs.html">FAQs</a></li>
+<li><a href="careers.html">Careers</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Contact Us</h4>
+<ul class="footer-links">
+<li><a href="mailto:alcas2k25@gmail.com"><i class="fas fa-envelope" style="margin-right:8px; color:var(--orange-main);"></i>alcas2k25@gmail.com</a></li>
+<li><a href="tel:+919176040364"><i class="fas fa-phone" style="margin-right:8px; color:var(--orange-main);"></i>+91 91760 40364</a></li>
+<li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right:8px; color:var(--orange-main);"></i>Chennai - 600039</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2024 ALCAS Digital Solutions. All rights reserved.</p>
+<div>
+<a href="terms.html">Terms</a>
+<a href="privacy.html">Privacy</a>
+<a href="cookies.html">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Dynamic Service Name -->
+<script>
         const params = new URLSearchParams(window.location.search);
         const service = params.get('service');
         if (service) {

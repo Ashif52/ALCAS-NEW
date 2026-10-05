@@ -85,7 +85,8 @@ if (!CLOUD_MODE) {
     [path.join(__dirname, 'data'), UPLOADS_DIR,
      path.join(UPLOADS_DIR, 'projects'),
      path.join(UPLOADS_DIR, 'logos'),
-     path.join(UPLOADS_DIR, 'testimonials')
+     path.join(UPLOADS_DIR, 'testimonials'),
+     path.join(UPLOADS_DIR, 'videos')
     ].forEach(dir => {
         if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     });
@@ -117,6 +118,11 @@ function getDefaultData() {
             { id: 'test_1', image: 'images/11 SBJ logo.png', name: 'SBJ Jewelry', location: 'Chennai, India', quote: 'Thanks to the stunning logo you created for our shop, we experienced a 45% increase in brand visibility and a 30% growth in new customer visits within the first quarter.' },
             { id: 'test_2', image: 'images/niyafit.png', name: 'Niya Fit', location: 'Chennai, India', quote: 'We needed a fresh, modern platform to represent our fitness brand. They delivered a stunning website, fully optimized with SEO best practices.' },
             { id: 'test_3', image: 'images/mithras-briyani.png', name: "Mithra's Biryani", location: 'Chennai, India', quote: "Your creative logo design helped Mithra's Biryani achieve a 35% growth in new customer reach after our rebranding." }
+        ],
+        videos: [
+            { id: 'vid_1', title: 'Brand Story Reel', subtitle: 'ALCAS Agency Overview', videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-vertical-view-of-a-neon-sign-at-night-42898-large.mp4', poster: 'images/alcas.jpg' },
+            { id: 'vid_2', title: 'Client Showcase', subtitle: 'SBJ Jewellers Branding', videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-with-a-vertical-screen-41551-large.mp4', poster: 'images/alcas.jpg' },
+            { id: 'vid_3', title: 'Creative Design', subtitle: '3D Motion & Graphics', videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-a-futuristic-tunnel-with-lights-42903-large.mp4', poster: 'images/alcas.jpg' }
         ]
     };
 }
@@ -128,21 +134,32 @@ if (!CLOUD_MODE && !fs.existsSync(DATA_FILE)) {
 
 // ── Data Read/Write (works both locally and in cloud) ──
 async function readData() {
+    let data;
     if (CLOUD_MODE) {
         const db = await getDB();
         const doc = await db.collection('content').findOne({ _id: 'main' });
         if (!doc) {
-            const data = getDefaultData();
+            data = getDefaultData();
             await db.collection('content').insertOne({ _id: 'main', ...data });
             return data;
         }
-        const { _id, ...data } = doc;
+        const { _id, ...rest } = doc;
+        data = rest;
+        if (!Array.isArray(data.videos) || data.videos.length === 0) {
+            data.videos = getDefaultData().videos;
+            await db.collection('content').updateOne({ _id: 'main' }, { $set: { videos: data.videos } });
+        }
         return data;
     }
     try {
-        return JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
+        data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
+        if (!Array.isArray(data.videos) || data.videos.length === 0) {
+            data.videos = getDefaultData().videos;
+            fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+        }
+        return data;
     } catch {
-        const data = getDefaultData();
+        data = getDefaultData();
         fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
         return data;
     }
@@ -221,23 +238,33 @@ const storage = cloudinary
 
 const upload = multer({
     storage,
-    limits: { fileSize: 10 * 1024 * 1024 },
+    limits: { fileSize: 500 * 1024 * 1024 },
     fileFilter: (req, file, cb) => {
-        const allowed = /jpeg|jpg|png|gif|webp|svg/;
-        if (allowed.test(path.extname(file.originalname).toLowerCase()) && allowed.test(file.mimetype)) return cb(null, true);
-        cb(new Error('Only image files allowed'));
+        const allowed = /jpeg|jpg|png|gif|webp|svg|mp4|webm|mov|ogg|m4v|quicktime/;
+        const ext = path.extname(file.originalname).toLowerCase();
+        const mime = (file.mimetype || '').toLowerCase();
+        if (allowed.test(ext) || mime.includes('video') || mime.includes('image')) return cb(null, true);
+        cb(new Error('Only image or video files allowed'));
     }
 });
 
 // ── Upload API ──
-app.post('/api/upload/:type', requireAuth, upload.single('image'), async (req, res) => {
+app.post('/api/upload/:type', requireAuth, (req, res, next) => {
+    upload.single('image')(req, res, (err) => {
+        if (err) {
+            console.error('Upload Error:', err);
+            return res.status(400).json({ error: err.message || 'Upload failed' });
+        }
+        next();
+    });
+}, async (req, res) => {
     try {
         if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
         if (cloudinary) {
             const result = await new Promise((resolve, reject) => {
                 const stream = cloudinary.uploader.upload_stream(
-                    { folder: `alcas/${req.params.type}` },
+                    { folder: `alcas/${req.params.type}`, resource_type: 'auto' },
                     (err, result) => err ? reject(err) : resolve(result)
                 );
                 stream.end(req.file.buffer);
@@ -366,6 +393,47 @@ app.put('/api/testimonials/:id', requireAuth, async (req, res) => {
 app.delete('/api/testimonials/:id', requireAuth, async (req, res) => {
     const data = await readData();
     data.testimonials = data.testimonials.filter(t => t.id !== req.params.id);
+    await writeData(data);
+    res.json({ success: true });
+});
+
+// ═══════════════════════════════════════════════════
+// ── VIDEOS (9:16 REELS) API ──
+// ═══════════════════════════════════════════════════
+app.get('/api/videos', async (req, res) => {
+    const data = await readData();
+    res.json(data.videos || []);
+});
+
+app.post('/api/videos', requireAuth, async (req, res) => {
+    const data = await readData();
+    if (!data.videos) data.videos = [];
+    const video = {
+        id: 'vid_' + crypto.randomBytes(6).toString('hex'),
+        title: req.body.title || '',
+        subtitle: req.body.subtitle || '',
+        videoUrl: req.body.videoUrl || '',
+        poster: req.body.poster || ''
+    };
+    data.videos.push(video);
+    await writeData(data);
+    res.json({ success: true, video });
+});
+
+app.put('/api/videos/:id', requireAuth, async (req, res) => {
+    const data = await readData();
+    if (!data.videos) data.videos = [];
+    const idx = data.videos.findIndex(v => v.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Not found' });
+    data.videos[idx] = { ...data.videos[idx], ...req.body };
+    await writeData(data);
+    res.json({ success: true, video: data.videos[idx] });
+});
+
+app.delete('/api/videos/:id', requireAuth, async (req, res) => {
+    const data = await readData();
+    if (!data.videos) data.videos = [];
+    data.videos = data.videos.filter(v => v.id !== req.params.id);
     await writeData(data);
     res.json({ success: true });
 });

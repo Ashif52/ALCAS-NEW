@@ -76,6 +76,17 @@
         "TOYS",
         "ECOMMERCE"
       ]
+    },
+    {
+      "id": "proj_6eeb63d98df4",
+      "image": "uploads/projects/screenshot__40__1__cfc6d5ac.png",
+      "title": "Relaxaa",
+      "role": "Website",
+      "description": "Clothing & Bedsheet Brand",
+      "link": "https://ashif52.github.io/Relaxaa/home.html#",
+      "tags": [
+        "Website"
+      ]
     }
   ],
   "logos": [
@@ -206,6 +217,36 @@
       "name": "Vaishvi’s Stationery Stop",
       "location": "Chennai, India",
       "quote": "Team ALCAS Digital Marketing Agency delivered a creative and modern brand identity for Vaishvi’s Stationery Stop. Their attention to detail, professionalism, and understanding of our requirements resulted in an outstanding final design. We are extremely happy with the outcome and highly recommend their services."
+    }
+  ],
+  "videos": [
+    {
+      "id": "vid_1",
+      "title": "Brand Story Reel",
+      "subtitle": "ALCAS Agency Overview",
+      "videoUrl": "uploads/videos/bethel_colour__e1bbe3b7.mp4",
+      "poster": "images/alcas.jpg"
+    },
+    {
+      "id": "vid_2",
+      "title": "Client Showcase",
+      "subtitle": "SBJ Jewellers Branding",
+      "videoUrl": "uploads/videos/wishtoranju_70d3df5d.mp4",
+      "poster": "images/alcas.jpg"
+    },
+    {
+      "id": "vid_3",
+      "title": "Creative Design",
+      "subtitle": "3D Motion & Graphics",
+      "videoUrl": "uploads/videos/bethel_2_colour__5c460487.mp4",
+      "poster": "images/alcas.jpg"
+    },
+    {
+      "id": "vid_24cbb29462cc",
+      "title": "Bethel colour ",
+      "subtitle": "bethel",
+      "videoUrl": "uploads/videos/922_141891343_small_d1c3737f.mp4",
+      "poster": ""
     }
   ]
 }

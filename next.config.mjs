@@ -4,15 +4,27 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:4000/api/:path*',
+        destination: 'http://127.0.0.1:4000/api/:path*',
+      },
+      {
+        source: '/admin',
+        destination: 'http://127.0.0.1:4000/admin/index.html',
+      },
+      {
+        source: '/admin/',
+        destination: 'http://127.0.0.1:4000/admin/index.html',
+      },
+      {
+        source: '/admin/:path*',
+        destination: 'http://127.0.0.1:4000/admin/:path*',
       },
       {
         source: '/uploads/:path*',
-        destination: 'http://localhost:4000/uploads/:path*',
+        destination: 'http://127.0.0.1:4000/uploads/:path*',
       },
       {
         source: '/public/:path*',
-        destination: 'http://localhost:4000/public/:path*',
+        destination: 'http://127.0.0.1:4000/public/:path*',
       },
       {
         source: '/',

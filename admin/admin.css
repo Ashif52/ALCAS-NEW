@@ -181,7 +181,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); disp
     text-align: center; cursor: pointer; transition: all 0.3s; position: relative;
     background: var(--bg);
 }
-.upload-zone:hover { border-color: var(--accent); background: var(--accent-glow); }
+.upload-zone:hover, .upload-zone.dragover { border-color: var(--accent); background: var(--accent-glow); }
 .upload-zone.has-image { padding: 0; border-style: solid; }
 .upload-zone i { font-size: 2rem; color: var(--text-muted); margin-bottom: 0.75rem; display: block; }
 .upload-zone p { color: var(--text-muted); font-size: 0.85rem; }
@@ -429,4 +429,113 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); disp
 }
 .confirm-delete-btn:disabled {
     opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none;
+}
+
+/* ═══════════════════════════════════════ */
+/* ── CROPPER MODAL ──                   */
+/* ═══════════════════════════════════════ */
+.cropper-overlay {
+    position: fixed; inset: 0; z-index: 12000;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    padding: 1rem;
+}
+.cropper-overlay.active { opacity: 1; visibility: visible; }
+.cropper-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 1.5rem;
+    width: 100%; max-width: 750px;
+    transform: scale(0.85) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.cropper-overlay.active .cropper-card {
+    transform: scale(1) translateY(0);
+}
+.cropper-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;
+}
+.cropper-header h3 {
+    font-size: 1.25rem; font-weight: 700; color: var(--text);
+    display: flex; align-items: center; gap: 10px;
+}
+.cropper-header h3 i {
+    color: var(--accent);
+}
+.cropper-close-btn {
+    background: transparent; border: none; color: var(--text-muted);
+    font-size: 1.75rem; cursor: pointer; line-height: 1;
+    transition: color 0.2s;
+}
+.cropper-close-btn:hover { color: var(--danger); }
+.cropper-body {
+    background: #121214;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex; justify-content: center; align-items: center;
+    border: 1px solid var(--border);
+}
+.cropper-wrapper {
+    width: 100%;
+    max-height: 380px;
+    height: 380px;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden;
+}
+.cropper-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+.cropper-toolbar {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.tool-group {
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.tool-label {
+    font-size: 0.85rem; font-weight: 600; color: var(--text-muted);
+    margin-right: 0.25rem;
+}
+.tool-btn {
+    padding: 0.5rem 0.85rem; border-radius: 8px;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); font-weight: 500; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.2s;
+    font-family: var(--font);
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+.tool-btn:hover {
+    background: rgba(255,255,255,0.05); border-color: var(--text-muted);
+}
+.tool-btn.active {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.cropper-footer {
+    display: flex; justify-content: flex-end; gap: 0.75rem;
+}
+
+/* Make cropper overlay styles fully responsive */
+@media (max-width: 600px) {
+    .cropper-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+    .tool-group {
+        justify-content: space-between;
+    }
+    .cropper-wrapper {
+        height: 280px;
+        max-height: 280px;
+    }
 }

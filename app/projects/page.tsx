@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import ProjectShowcase from "@/components/ui/demo";
 import { TestimonialsSection } from "@/components/testimonials-section";
+import { GallerySection } from "@/components/gallery-section";
 import ProjectCarousel from "@/components/ui/feature-carousel";
 import Link from "next/link";
 
@@ -139,6 +140,9 @@ export default function Home() {
            />
         </div>
       </section>
+
+      {/* 3D VIDEO & MEDIA GALLERY (NEXT.JS COMPONENT) */}
+      <GallerySection />
 
       {/* CORE SERVICES SUMMARY */}
       <section className="benefits py-24" id="services-summary">

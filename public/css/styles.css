@@ -4121,7 +4121,10 @@ section {
     height: 85%;
     object-fit: contain;
     transition: all 0.8s ease;
-    filter: brightness(0.8); /* Slightly dimmed when inactive */
+    filter: brightness(0.8);
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 20px;
 }
 
 .feature-card.active img {
@@ -4383,4 +4386,104 @@ section {
     .brand-subtitle {
         font-size: 0.6rem;
     }
+}
+
+/* ===== IMPACT / ACHIEVEMENT SECTION ===== */
+.impact-section {
+    padding: 100px 0;
+    background: #050505;
+    color: var(--white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.impact-section .cs-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border: 1px solid var(--orange-main);
+    background: rgba(230, 0, 0, 0.08);
+    border-radius: 50px;
+    padding: 6px 16px;
+    margin: 0 auto 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--orange-main);
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+.impact-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.impact-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at top left, rgba(230, 0, 0, 0.15) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.impact-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--orange-main);
+    box-shadow: 0 15px 40px rgba(230, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.impact-card:hover::before {
+    opacity: 1;
+}
+
+.impact-icon {
+    font-size: 2.2rem;
+    color: var(--orange-main);
+    margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    background: rgba(230, 0, 0, 0.08);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.impact-card:hover .impact-icon {
+    background: var(--orange-gradient);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.impact-num {
+    font-size: 3.2rem;
+    font-weight: 800;
+    font-family: var(--font-display);
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.impact-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }

@@ -1,12 +1,12 @@
 // ── Auth & API Config ──
 const API = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-    ? `http://localhost:${window.location.port || 4000}/api`
+    ? 'http://localhost:4000/api'
     : '/api';
 const PUBLIC = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-    ? `http://localhost:${window.location.port || 4000}/public`
+    ? 'http://localhost:4000/public'
     : '/public';
 
-let allData = { projects: [], logos: [], testimonials: [] };
+let allData = { projects: [], logos: [], testimonials: [], videos: [] };
 
 function getToken() { return sessionStorage.getItem('alcas_admin_token'); }
 function setToken(t) { sessionStorage.setItem('alcas_admin_token', t); }
@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupNav();
     setupModal();
     setupButtons();
+    setupCropper();
     if (getToken()) loadAllData();
 });
 
@@ -112,7 +113,7 @@ function setupNav() {
 function switchSection(name) {
     document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.section === name));
     document.querySelectorAll('.section-panel').forEach(p => p.classList.toggle('active', p.id === `sec-${name}`));
-    const titles = { dashboard: 'Dashboard', projects: 'Projects', logos: 'Brand Logos', testimonials: 'Testimonials' };
+    const titles = { dashboard: 'Dashboard', projects: 'Projects', logos: 'Brand Logos', testimonials: 'Testimonials', videos: 'Videos (9:16)' };
     document.getElementById('pageTitle').textContent = titles[name] || name;
     document.getElementById('sidebar').classList.remove('open');
 }
@@ -150,6 +151,7 @@ function setupButtons() {
     document.getElementById('addProjectBtn').addEventListener('click', () => showProjectForm());
     document.getElementById('addLogoBtn').addEventListener('click', () => showLogoForm());
     document.getElementById('addTestimonialBtn').addEventListener('click', () => showTestimonialForm());
+    document.getElementById('addVideoBtn')?.addEventListener('click', () => showVideoForm());
 }
 
 // ── Data Loading ──
@@ -157,10 +159,12 @@ async function loadAllData() {
     try {
         const res = await fetch(`${API}/content`);
         allData = await res.json();
+        if (!allData.videos) allData.videos = [];
         updateDashboard();
         renderProjects();
         renderLogos();
         renderTestimonials();
+        renderVideos();
     } catch (err) {
         showToast('Failed to load data. Is the server running?', 'error');
     }
@@ -170,18 +174,17 @@ function updateDashboard() {
     document.getElementById('statProjects').textContent = allData.projects.length;
     document.getElementById('statLogos').textContent = allData.logos.length;
     document.getElementById('statTestimonials').textContent = allData.testimonials.length;
-    document.getElementById('statImages').textContent = allData.projects.length + allData.logos.length + allData.testimonials.length;
+    document.getElementById('statImages').textContent = allData.projects.length + allData.logos.length + allData.testimonials.length + (allData.videos ? allData.videos.length : 0);
 }
 
-// ── Image path helper ──
 function imgSrc(p) {
     if (!p) return '';
     if (p.startsWith('http')) return p;
-    // Local paths: server serves public dir at root, so just use origin + path
     const origin = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? `http://localhost:${window.location.port || 4000}`
+        ? 'http://localhost:4000'
         : '';
-    return `${origin}/${p}`;
+    const cleanPath = p.startsWith('/') ? p.slice(1) : p;
+    return `${origin}/${cleanPath}`;
 }
 
 // ═══════════════════════════════════════
@@ -485,21 +488,201 @@ async function deleteItem(type, id) {
     } catch { showToast('Delete failed', 'error'); }
 }
 
-async function handleUpload(input, type, previewId, pathId) {
-    const file = input.files[0];
+let activeCropper = null;
+let currentCropCallback = null;
+
+function setupCropper() {
+    const overlay = document.getElementById('cropperOverlay');
+    if (!overlay) return;
+    
+    document.getElementById('cropperCloseBtn').addEventListener('click', closeCropper);
+    document.getElementById('cropperCancelBtn').addEventListener('click', closeCropper);
+    
+    document.getElementById('cropRotateLeft').addEventListener('click', () => activeCropper && activeCropper.rotate(-90));
+    document.getElementById('cropRotateRight').addEventListener('click', () => activeCropper && activeCropper.rotate(90));
+    
+    let isFlippedH = false;
+    document.getElementById('cropFlipH').addEventListener('click', () => {
+        if (!activeCropper) return;
+        isFlippedH = !isFlippedH;
+        activeCropper.scaleX(isFlippedH ? -1 : 1);
+    });
+    
+    let isFlippedV = false;
+    document.getElementById('cropFlipV').addEventListener('click', () => {
+        if (!activeCropper) return;
+        isFlippedV = !isFlippedV;
+        activeCropper.scaleY(isFlippedV ? -1 : 1);
+    });
+    
+    document.querySelectorAll('.cropper-toolbar [data-ratio]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (!activeCropper) return;
+            document.querySelectorAll('.cropper-toolbar [data-ratio]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const ratio = btn.dataset.ratio;
+            if (ratio === 'free') {
+                activeCropper.setAspectRatio(NaN);
+            } else {
+                activeCropper.setAspectRatio(parseFloat(ratio));
+            }
+        });
+    });
+    
+    document.getElementById('cropperSaveBtn').addEventListener('click', executeCropAndUpload);
+}
+
+function handleUpload(input, type, previewId, pathId) {
+    const file = input.files ? input.files[0] : null;
     if (!file) return;
+    
+    if (input && typeof input.value !== 'undefined') input.value = '';
+    
+    if (file.type.startsWith('video/') || file.name.match(/\.(mp4|webm|mov|ogg|m4v)$/i)) {
+        // Direct video upload
+        const formData = new FormData();
+        formData.append('image', file);
+        showToast('Uploading video file...');
+        fetch(`${API}/upload/${type}`, { method: 'POST', body: formData, headers: authHeadersMultipart() })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    const pathEl = document.getElementById(pathId);
+                    if (pathEl) pathEl.value = data.path;
+                    const prevEl = document.getElementById(previewId);
+                    if (prevEl) {
+                        prevEl.src = imgSrc(data.path);
+                        prevEl.style.display = 'block';
+                        const zone = prevEl.closest('.upload-zone');
+                        if (zone) zone.classList.add('has-image');
+                    }
+                    showToast('Video uploaded successfully!');
+                } else {
+                    showToast(data.error || 'Upload failed', 'error');
+                }
+            })
+            .catch(() => showToast('Upload failed', 'error'));
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        openCropper(e.target.result, (croppedBlob) => {
+            uploadCroppedImage(croppedBlob, file.name, type, previewId, pathId);
+        });
+    };
+    reader.readAsDataURL(file);
+}
+
+function openCropper(imageSrc, callback) {
+    const overlay = document.getElementById('cropperOverlay');
+    const imgEl = document.getElementById('cropperImageSrc');
+    if (!overlay || !imgEl) return;
+    
+    imgEl.src = imageSrc;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    currentCropCallback = callback;
+    
+    if (activeCropper) {
+        activeCropper.destroy();
+        activeCropper = null;
+    }
+    
+    document.querySelectorAll('.cropper-toolbar [data-ratio]').forEach(b => {
+        b.classList.toggle('active', b.dataset.ratio === 'free');
+    });
+    
+    // Initialize Cropper.js
+    activeCropper = new Cropper(imgEl, {
+        viewMode: 1,
+        dragMode: 'move',
+        autoCropArea: 0.8,
+        restore: false,
+        guides: true,
+        center: true,
+        highlight: false,
+        cropBoxMovable: true,
+        cropBoxResizable: true,
+        toggleDragModeOnDblclick: false
+    });
+}
+
+function closeCropper() {
+    const overlay = document.getElementById('cropperOverlay');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    if (activeCropper) {
+        activeCropper.destroy();
+        activeCropper = null;
+    }
+    currentCropCallback = null;
+}
+
+function executeCropAndUpload() {
+    if (!activeCropper || !currentCropCallback) return;
+    
+    const btn = document.getElementById('cropperSaveBtn');
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Processing...';
+    
+    const canvas = activeCropper.getCroppedCanvas({
+        maxWidth: 1600,
+        maxHeight: 1600,
+        imageSmoothingQuality: 'high'
+    });
+    
+    if (!canvas) {
+        showToast('Failed to crop image', 'error');
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        return;
+    }
+    
+    canvas.toBlob((blob) => {
+        if (blob) {
+            currentCropCallback(blob);
+        } else {
+            showToast('Failed to generate image blob', 'error');
+        }
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        closeCropper();
+    }, 'image/jpeg', 0.9);
+}
+
+async function uploadCroppedImage(blob, originalName, type, previewId, pathId) {
     const formData = new FormData();
-    formData.append('image', file);
+    const fileName = originalName ? originalName.replace(/\.[^/.]+$/, "") + "_cropped.jpg" : "image_cropped.jpg";
+    formData.append('image', blob, fileName);
+    
     try {
-        const res = await fetch(`${API}/upload/${type}`, { method: 'POST', body: formData, headers: authHeadersMultipart() });
+        const res = await fetch(`${API}/upload/${type}`, { 
+            method: 'POST', 
+            body: formData, 
+            headers: authHeadersMultipart() 
+        });
         const data = await res.json();
         if (data.success) {
             document.getElementById(previewId).src = imgSrc(data.path);
             document.getElementById(pathId).value = data.path;
-            input.closest('.upload-zone').classList.add('has-image');
-            showToast('Image uploaded!');
+            
+            const previewEl = document.getElementById(previewId);
+            if (previewEl) {
+                const zone = previewEl.closest('.upload-zone');
+                if (zone) zone.classList.add('has-image');
+            }
+            
+            showToast('Image cropped and uploaded!');
+        } else {
+            showToast(data.error || 'Upload failed', 'error');
         }
-    } catch { showToast('Upload failed', 'error'); }
+    } catch { 
+        showToast('Upload failed', 'error'); 
+    }
 }
 
 function addTag(e, containerId) {
@@ -519,4 +702,96 @@ function esc(str) {
     const d = document.createElement('div');
     d.textContent = str;
     return d.innerHTML;
+}
+
+// ═══════════════════════════════════════
+// ── VIDEOS (9:16 REELS) ──
+// ═══════════════════════════════════════
+function renderVideos() {
+    const grid = document.getElementById('videosGrid');
+    if (!grid) return;
+    const list = allData.videos || [];
+    if (!list.length) {
+        grid.innerHTML = `<div class="empty-state"><i class="fas fa-video"></i><h4>No videos uploaded yet</h4><p>Click "Add Video" to upload your 9:16 vertical reels & videos</p></div>`;
+        return;
+    }
+    grid.innerHTML = list.map(v => {
+        const isVid = v.videoUrl && (v.videoUrl.match(/\.(mp4|webm|mov|ogg|m4v)(\?.*)?$/i) || v.videoUrl.includes('/uploads/videos/'));
+        return `
+        <div class="item-card">
+            <div class="card-video-container" style="position:relative; width:100%; height:280px; overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center; border-radius:12px 12px 0 0;">
+                ${isVid ? `
+                    <video src="${imgSrc(v.videoUrl)}" controls muted playsinline style="width:100%; height:100%; object-fit:cover;"></video>
+                ` : `
+                    <img class="card-image" src="${imgSrc(v.poster || v.videoUrl)}" alt="${esc(v.title)}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%231a1a26%22 width=%22400%22 height=%22200%22/><text x=%22200%22 y=%22100%22 fill=%22%2371717a%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2216%22>Video</text></svg>'">
+                `}
+                <span style="position:absolute; top:8px; right:8px; background:rgba(230,57,70,0.9); color:#fff; padding:3px 8px; border-radius:4px; font-size:11px; font-weight:600;">9:16 Reel</span>
+            </div>
+            <div class="card-body">
+                <h4>${esc(v.title)}</h4>
+                <div class="card-role">${esc(v.subtitle || 'Vertical Video')}</div>
+            </div>
+            <div class="card-actions">
+                <button class="card-action-btn edit-btn" onclick="showVideoForm('${v.id}')"><i class="fas fa-pen"></i> Edit</button>
+                <button class="card-action-btn delete-btn" onclick="deleteItem('videos','${v.id}')"><i class="fas fa-trash"></i> Delete</button>
+            </div>
+        </div>
+    `}).join('');
+}
+
+function showVideoForm(editId) {
+    const item = editId ? (allData.videos || []).find(v => v.id === editId) : null;
+    const title = item ? 'Edit 9:16 Video' : 'Add 9:16 Video';
+    
+    openModal(title, `
+        <form id="videoForm" onsubmit="saveVideo(event, '${editId || ''}')">
+            <div class="form-group">
+                <label>Title <span class="required">*</span></label>
+                <input type="text" class="form-input" id="vTitle" required value="${esc(item?.title || '')}" placeholder="e.g. Brand Story Reel">
+            </div>
+            <div class="form-group">
+                <label>Subtitle / Description</label>
+                <input type="text" class="form-input" id="vSubtitle" value="${esc(item?.subtitle || '')}" placeholder="e.g. 9:16 Campaign Video">
+            </div>
+            <div class="form-group">
+                <label>Video File (9:16 Vertical format MP4/WebM/MOV) <span class="required">*</span></label>
+                <div class="upload-zone ${item?.videoUrl ? 'has-image' : ''}" onclick="if(!event.target.closest('video')) this.querySelector('input').click()" ondragover="event.preventDefault(); this.classList.add('dragover');" ondragleave="this.classList.remove('dragover');" ondrop="event.preventDefault(); this.classList.remove('dragover'); if(event.dataTransfer.files.length) handleUpload({files: event.dataTransfer.files}, 'videos', 'vPrev', 'vPath');">
+                    <i class="fas fa-film"></i>
+                    <p>Click or drag 9:16 Video file here</p>
+                    <video id="vPrev" class="upload-preview" src="${item?.videoUrl ? imgSrc(item.videoUrl) : ''}" controls muted style="${item?.videoUrl ? 'display:block;' : 'display:none;'}"></video>
+                    <span class="upload-change">Change Video</span>
+                    <input type="file" accept="video/*,.mp4,.webm,.mov,.m4v" onchange="handleUpload(this, 'videos', 'vPrev', 'vPath')">
+                </div>
+                <input type="hidden" id="vPath" value="${esc(item?.videoUrl || '')}">
+                <p class="form-hint" style="margin-top: 8px;">Or paste an external Video URL below:</p>
+                <input type="url" class="form-input" id="vUrlInput" value="${esc(item?.videoUrl || '')}" placeholder="https://example.com/video.mp4" onchange="document.getElementById('vPath').value = this.value; const prev=document.getElementById('vPrev'); prev.src=this.value; prev.style.display='block'; prev.closest('.upload-zone').classList.add('has-image');">
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button type="submit" class="btn-save" id="vSaveBtn"><i class="fas fa-check"></i> Save Video</button>
+            </div>
+        </form>
+    `);
+}
+
+async function saveVideo(e, editId) {
+    e.preventDefault();
+    const title = document.getElementById('vTitle').value;
+    const subtitle = document.getElementById('vSubtitle').value;
+    const videoUrl = document.getElementById('vPath').value || document.getElementById('vUrlInput').value;
+    if (!videoUrl) return showToast('Please upload or provide a video URL', 'error');
+
+    const body = { title, subtitle, videoUrl };
+    const method = editId ? 'PUT' : 'POST';
+    const url = editId ? `${API}/videos/${editId}` : `${API}/videos`;
+
+    try {
+        const res = await fetch(url, { method, headers: authHeaders(), body: JSON.stringify(body) });
+        const data = await res.json();
+        if (data.success) {
+            showToast(editId ? 'Video updated!' : 'Video added!');
+            closeModal();
+            loadAllData();
+        } else showToast(data.error || 'Failed to save', 'error');
+    } catch { showToast('Server error', 'error'); }
 }
